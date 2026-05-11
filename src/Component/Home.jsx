@@ -884,9 +884,9 @@ export default function Home() {
 
       {/* ====================== FAQ SECTION ====================== */}
       <section
-        className={`py-24 px-6 md:px-12 lg:px-24 transition-colors
-        ${isDark ? "bg-gradient-to-b from-gray-950 to-black" : "bg-gray-50"}`}
-      >
+          className={`relative py-20 md:py-24 lg:py-28 px-5 sm:px-8 md:px-10 lg:px-16 overflow-hidden rounded-3xl my-12 md:my-16
+          ${isDark ? "bg-gray-950/90 border border-red-900/50" : "bg-white border border-gray-100 shadow-2xl"}`}
+        >
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="hidden"

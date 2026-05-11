@@ -1,8 +1,8 @@
+
+
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// ====================== THUNKS ======================
-
-// Fetch categories
 export const fetchCategories = createAsyncThunk(
   "technology/fetchCategories",
   async (_, { rejectWithValue }) => {
@@ -14,7 +14,7 @@ export const fetchCategories = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message || "Failed to load categories");
     }
-  },
+  }
 );
 
 // Fetch products (list)
@@ -23,11 +23,10 @@ export const fetchProducts = createAsyncThunk(
   async (categoryId, { rejectWithValue }) => {
     try {
       let url = "http://localhost:8000/api/technology/product";
-      if (categoryId) url += `?categoryId=${categoryId}`;
+      if (categoryId) url += `?category=${categoryId}`;
 
       const res = await fetch(url);
       if (!res.ok) throw new Error("Failed to fetch products");
-
       const data = await res.json();
       let items = data.data || [];
       if (!Array.isArray(items)) items = [];
@@ -35,6 +34,7 @@ export const fetchProducts = createAsyncThunk(
       return items.map((item, index) => ({
         id: item._id || `item-${index + 1}`,
         _id: item._id,
+        slug: item.slug,                    // ← Added Slug
         title: item.title || item.name || "Untitled",
         description: item.description || "No description available",
         date:
@@ -45,7 +45,7 @@ export const fetchProducts = createAsyncThunk(
                   month: "short",
                   day: "numeric",
                   year: "numeric",
-                },
+                }
               )
             : "Recently",
         category: item.category?.name || "General",
@@ -61,101 +61,135 @@ export const fetchProducts = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message || "Failed to load products");
     }
-  },
+  }
 );
 
-// Fetch Single Post (Important for Detail Page)
+// Fetch Single Post by Slug
+// export const fetchSinglePost = createAsyncThunk(
+//   "technology/fetchSinglePost",
+//   async (slug, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(
+//         `http://localhost:8000/api/technology/product/technology/${slug}`
+//       );
+//       if (!res.ok) throw new Error("Failed to fetch post");
+//       const data = await res.json();
+//       const item = data.data || data;
+//       return {
+//         id: item._id,
+//         _id: item._id,
+//         slug: item.slug,                    // ← Added Slug
+//         title: item.title || item.name || "Untitled",
+//         description: item.description || "",
+//         date: item.updatedAt
+//           ? new Date(item.updatedAt).toLocaleDateString("en-US", {
+//               month: "short",
+//               day: "numeric",
+//               year: "numeric",
+//             })
+//           : "Recently",
+//         category: item.category?.name || "General",
+//         image: item.images?.[0] || null,
+//         images: item.images || [],
+//         views: item.views || 0,
+//         likes: item.likes || 0,
+//         comments: item.comments || [],
+//         author: item.author || "Tech Team",
+//       };
+//     } catch (err) {
+//       return rejectWithValue(err.message || "Failed to fetch post details");
+//     }
+//   }
+// );
+// Fetch Single Post by Slug
 export const fetchSinglePost = createAsyncThunk(
   "technology/fetchSinglePost",
-  async (postId, { rejectWithValue }) => {
+  async (slug, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `http://localhost:8000/api/technology/product/technology/${postId}`,
+        `http://localhost:8000/api/technology/product/technology/${slug}`   // ← Correct
       );
-      if (!res.ok) throw new Error("Failed to fetch post");
 
+      if (!res.ok) throw new Error(`Failed to fetch post: ${res.status}`);
+      
       const data = await res.json();
+      console.log("✅ Single Post Response:", data);   // Debugging
+
       const item = data.data || data;
 
       return {
         id: item._id,
         _id: item._id,
+        slug: item.slug,
         title: item.title || item.name || "Untitled",
-        description: item.description || "",
-        date: item.updatedAt
-          ? new Date(item.updatedAt).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })
-          : "Recently",
+        description: item.description || item.content || "",
+        date: item.updatedAt ? new Date(item.updatedAt).toLocaleDateString("en-US", {
+          month: "short", day: "numeric", year: "numeric"
+        }) : "Recently",
         category: item.category?.name || "General",
         image: item.images?.[0] || null,
-        images: item.images || [],
         views: item.views || 0,
         likes: item.likes || 0,
         comments: item.comments || [],
         author: item.author || "Tech Team",
       };
     } catch (err) {
-      return rejectWithValue(err.message || "Failed to fetch post details");
+      console.error("Fetch Error:", err);
+      return rejectWithValue(err.message);
     }
-  },
+  }
 );
+// ====================== ENGAGEMENT THUNKS ======================
 
-// Engagement Thunks
 export const incrementPostView = createAsyncThunk(
   "technology/incrementView",
-  async (postId, { rejectWithValue }) => {
+  async (slug, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `http://localhost:8000/api/technology/product/technology/${postId}/view`,
-        { method: "PUT" },
+        `http://localhost:8000/api/technology/product/technology/${slug}/view`,
+        { method: "PUT" }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
-      return { postId, views: data.views };
+      return { slug, views: data.views };
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 export const togglePostLike = createAsyncThunk(
   "technology/toggleLike",
-  async (payload, { rejectWithValue }) => {
+  async ({ slug, email }, { rejectWithValue }) => {
     try {
-      const { postId, email } =
-        typeof payload === "string" ? { postId: payload } : payload;
       const res = await fetch(
-        `http://localhost:8000/api/technology/product/technology/${postId}/like`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/like`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
-      return { postId, likes: data.likes, liked: data.liked };
+      return { slug, likes: data.likes, liked: data.liked };
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 export const sendCommentOtp = createAsyncThunk(
   "technology/sendCommentOtp",
-  async (payload, { rejectWithValue }) => {
+  async ({ slug, name, email, phone }, { rejectWithValue }) => {
     try {
-      const { postId, name, email, phone } = payload;
       const res = await fetch(
-        `http://localhost:8000/api/technology/product/technology/${postId}/send-otp`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/send-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, phone }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
@@ -163,28 +197,28 @@ export const sendCommentOtp = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 export const postCommentWithOtp = createAsyncThunk(
   "technology/postCommentWithOtp",
-  async ({ postId, email, otp, comment }, { rejectWithValue }) => {
+  async ({ slug, email, otp, comment }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `http://localhost:8000/api/technology/product/technology/${postId}/comment`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/add-comment`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, otp, comment }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
-      return { postId, comments: data.comments };
+      return { slug, comments: data.comments };
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 // ====================== SLICE ======================
@@ -240,13 +274,12 @@ const technologySlice = createSlice({
       .addCase(fetchSinglePost.fulfilled, (state, action) => {
         state.loading = false;
         const index = state.newsItems.findIndex(
-          (item) => item._id === action.payload._id,
+          (item) => item.slug === action.payload.slug || item._id === action.payload._id
         );
-
         if (index !== -1) {
           state.newsItems[index] = action.payload;
         } else {
-          state.newsItems.unshift(action.payload); // Add if not exists
+          state.newsItems.unshift(action.payload);
         }
       })
       .addCase(fetchSinglePost.rejected, (state, action) => {
@@ -256,25 +289,25 @@ const technologySlice = createSlice({
 
       // Engagement Cases
       .addCase(incrementPostView.fulfilled, (state, action) => {
-        const { postId, views } = action.payload;
+        const { slug, views } = action.payload;
         const item = state.newsItems.find(
-          (i) => i._id === postId || i.id === postId,
+          (i) => i.slug === slug || i._id === slug
         );
         if (item) item.views = views;
       })
 
       .addCase(togglePostLike.fulfilled, (state, action) => {
-        const { postId, likes } = action.payload;
+        const { slug, likes } = action.payload;
         const item = state.newsItems.find(
-          (i) => i._id === postId || i.id === postId,
+          (i) => i.slug === slug || i._id === slug
         );
         if (item) item.likes = likes;
       })
 
       .addCase(postCommentWithOtp.fulfilled, (state, action) => {
-        const { postId, comments } = action.payload;
+        const { slug, comments } = action.payload;
         const item = state.newsItems.find(
-          (i) => i._id === postId || i.id === postId,
+          (i) => i.slug === slug || i._id === slug
         );
         if (item) item.comments = comments;
       });

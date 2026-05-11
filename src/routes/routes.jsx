@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
       // Technology
       { path: "technology", element: <Technology /> },
       { path: "technews", element: <TechNews /> },
-      { path: "technology/:id", element: <TechnologyDetail /> },
+      { path: "technology/:slug", element: <TechnologyDetail /> },
 
       // Work & Career
       { path: "recentwork", element: <RecentWork /> },
@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
 
       // Blog
       { path: "blog", element: <Blog /> },
-      { path: "blog/:id", element: <BlogDetail /> },
+      { path: "blog/:slug", element: <BlogDetail /> },
 
       // Services
       { path: "digital-marketing", element: <DigitalMarketing /> },

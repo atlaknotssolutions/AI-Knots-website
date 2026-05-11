@@ -1,3 +1,260 @@
+// import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+// // Async thunk to fetch categories
+// export const fetchCategories = createAsyncThunk(
+//   "blog/fetchCategories",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch("http://localhost:8000/api/blogcategory");
+//       if (!res.ok) throw new Error("Failed to fetch categories");
+//       const data = await res.json();
+//       if (!data.success) throw new Error(data.message || "Failed");
+//       return ["All", ...data.data.map((c) => c.name)];
+//     } catch (err) {
+//       return rejectWithValue(err.message || "Error fetching categories");
+//     }
+//   },
+// );
+
+// // Async thunk to fetch all blog posts
+// export const fetchBlogPosts = createAsyncThunk(
+//   "blog/fetchBlogPosts",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch("http://localhost:8000/api/product");
+//       if (!res.ok) throw new Error("Failed to fetch posts");
+//       const data = await res.json();
+//       if (!data.success) throw new Error(data.message || "Failed");
+//       return data.data || [];
+//     } catch (err) {
+//       return rejectWithValue(err.message || "Error fetching blog posts");
+//     }
+//   },
+// );
+
+// // Async thunk to fetch SINGLE blog post by ID
+// export const fetchBlogPostById = createAsyncThunk(
+//   "blog/fetchBlogPostById",
+//   async (postId, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(`http://localhost:8000/api/product/${postId}`);
+//       if (!res.ok) throw new Error("Post not found");
+//       const data = await res.json();
+//       if (!data.success) throw new Error(data.message || "Failed to load post");
+//       return data.data;
+//     } catch (err) {
+//       return rejectWithValue(err.message || "Error loading blog post");
+//     }
+//   },
+// );
+
+// // ====================== NEW THUNKS ======================
+
+// export const incrementPostView = createAsyncThunk(
+//   "blog/incrementView",
+//   async (postId, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(
+//         `http://localhost:8000/api/product/${postId}/view`,
+//         {
+//           method: "PUT",
+//         },
+//       );
+//       const data = await res.json();
+//       if (!data.success) throw new Error(data.message);
+//       return { postId, views: data.views };
+//     } catch (err) {
+//       return rejectWithValue(err.message);
+//     }
+//   },
+// );
+
+// export const togglePostLike = createAsyncThunk(
+//   "blog/toggleLike",
+//   async (payload, { rejectWithValue }) => {
+//     try {
+//       const { postId, email } =
+//         typeof payload === "string" ? { postId: payload } : payload;
+//       const res = await fetch(
+//         `http://localhost:8000/api/product/${postId}/like`,
+//         {
+//           method: "PUT",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify({ email }),
+//         },
+//       );
+//       const data = await res.json();
+//       if (!data.success) throw new Error(data.message);
+//       return { postId, likes: data.likes, liked: data.liked };
+//     } catch (err) {
+//       return rejectWithValue(err.message);
+//     }
+//   },
+// );
+
+// export const sendCommentOtp = createAsyncThunk(
+//   "blog/sendCommentOtp",
+//   async (payload, { rejectWithValue }) => {
+//     try {
+//       const { postId, name, email, phone } = payload;
+//       const res = await fetch(
+//         `http://localhost:8000/api/product/${postId}/send-otp`,
+//         {
+//           method: "POST",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify({ name, email, phone }),
+//         },
+//       );
+//       const data = await res.json();
+//       if (!data.success) throw new Error(data.message);
+//       return data;
+//     } catch (err) {
+//       return rejectWithValue(err.message);
+//     }
+//   },
+// );
+
+// export const verifyCommentOtp = createAsyncThunk(
+//   "blog/verifyCommentOtp",
+//   async ({ postId, email, otp }, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(
+//         `http://localhost:8000/api/product/${postId}/verify-otp`,
+//         {
+//           method: "POST",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify({ email, otp }),
+//         },
+//       );
+//       const data = await res.json();
+//       if (!data.success)
+//         throw new Error(data.message || "OTP verification failed");
+//       return { userId: data.userId, email };
+//     } catch (err) {
+//       return rejectWithValue(err.message || "Error verifying OTP");
+//     }
+//   },
+// );
+
+// export const postComment = createAsyncThunk(
+//   "blog/postComment",
+//   async ({ postId, email, comment }, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(
+//         `http://localhost:8000/api/product/${postId}/comment`,
+//         {
+//           method: "POST",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify({ userEmail: email, comment }),
+//         },
+//       );
+//       const data = await res.json();
+//       if (!data.success)
+//         throw new Error(data.message || "Failed to post comment");
+//       return { postId, comments: data.comments };
+//     } catch (err) {
+//       return rejectWithValue(err.message || "Error posting comment");
+//     }
+//   },
+// );
+
+// const blogSlice = createSlice({
+//   name: "blog",
+//   initialState: {
+//     categories: ["All"],
+//     posts: [],
+//     activeCategory: "All",
+
+//     // List page
+//     status: "idle",
+//     error: null,
+
+//     // Detail page
+//     currentPost: null,
+//     detailStatus: "idle",
+//     detailError: null,
+
+//     // Engagement loading states (optional but useful)
+//     likeStatus: "idle",
+//     commentStatus: "idle",
+//   },
+//   reducers: {
+//     setActiveCategory: (state, action) => {
+//       state.activeCategory = action.payload;
+//     },
+//     clearCurrentPost: (state) => {
+//       state.currentPost = null;
+//       state.detailStatus = "idle";
+//       state.detailError = null;
+//     },
+//   },
+//   extraReducers: (builder) => {
+//     builder
+//       // Categories
+//       .addCase(fetchCategories.pending, (state) => {
+//         state.status = "loading";
+//       })
+//       .addCase(fetchCategories.fulfilled, (state, action) => {
+//         state.status = "succeeded";
+//         state.categories = action.payload;
+//       })
+//       .addCase(fetchCategories.rejected, (state, action) => {
+//         state.status = "failed";
+//         state.error = action.payload;
+//       })
+
+//       // All Posts (list)
+//       .addCase(fetchBlogPosts.pending, (state) => {
+//         state.status = "loading";
+//       })
+//       .addCase(fetchBlogPosts.fulfilled, (state, action) => {
+//         state.status = "succeeded";
+//         state.posts = action.payload;
+//       })
+//       .addCase(fetchBlogPosts.rejected, (state, action) => {
+//         state.status = "failed";
+//         state.error = action.payload;
+//       })
+
+//       // Single Post (detail)
+//       .addCase(fetchBlogPostById.pending, (state) => {
+//         state.detailStatus = "loading";
+//         state.detailError = null;
+//       })
+//       .addCase(fetchBlogPostById.fulfilled, (state, action) => {
+//         state.detailStatus = "succeeded";
+//         state.currentPost = action.payload;
+//       })
+//       .addCase(fetchBlogPostById.rejected, (state, action) => {
+//         state.detailStatus = "failed";
+//         state.detailError = action.payload;
+//       })
+
+//       // ====================== NEW CASES ======================
+//       .addCase(incrementPostView.fulfilled, (state, action) => {
+//         const { postId, views } = action.payload;
+//         const post = state.posts.find((p) => p._id === postId);
+//         if (post) post.views = views;
+//       })
+
+//       .addCase(togglePostLike.fulfilled, (state, action) => {
+//         const { postId, likes } = action.payload;
+//         const post = state.posts.find((p) => p._id === postId);
+//         if (post) post.likes = likes;
+//       })
+
+//       .addCase(postComment.fulfilled, (state, action) => {
+//         const { postId, comments } = action.payload;
+//         const post = state.posts.find((p) => p._id === postId);
+//         if (post) post.comments = comments;
+//       });
+//   },
+// });
+
+// export const { setActiveCategory, clearCurrentPost } = blogSlice.actions;
+// export default blogSlice.reducer;
+
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Async thunk to fetch categories
@@ -13,7 +270,7 @@ export const fetchCategories = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message || "Error fetching categories");
     }
-  },
+  }
 );
 
 // Async thunk to fetch all blog posts
@@ -29,26 +286,30 @@ export const fetchBlogPosts = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message || "Error fetching blog posts");
     }
-  },
+  }
 );
 
-// Async thunk to fetch SINGLE blog post by ID
+// ==================== FIXED: Works with SLUG ====================
 export const fetchBlogPostById = createAsyncThunk(
   "blog/fetchBlogPostById",
-  async (postId, { rejectWithValue }) => {
+  async (identifier, { rejectWithValue }) => {     // identifier = slug or id
     try {
-      const res = await fetch(`http://localhost:8000/api/product/${postId}`);
+      if (!identifier) throw new Error("Slug/ID is required");
+
+      const res = await fetch(`http://localhost:8000/api/product/${identifier}`);
       if (!res.ok) throw new Error("Post not found");
+
       const data = await res.json();
       if (!data.success) throw new Error(data.message || "Failed to load post");
+
       return data.data;
     } catch (err) {
       return rejectWithValue(err.message || "Error loading blog post");
     }
-  },
+  }
 );
 
-// ====================== NEW THUNKS ======================
+// ====================== Engagement Thunks ======================
 
 export const incrementPostView = createAsyncThunk(
   "blog/incrementView",
@@ -56,9 +317,7 @@ export const incrementPostView = createAsyncThunk(
     try {
       const res = await fetch(
         `http://localhost:8000/api/product/${postId}/view`,
-        {
-          method: "PUT",
-        },
+        { method: "PUT" }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
@@ -66,7 +325,7 @@ export const incrementPostView = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 export const togglePostLike = createAsyncThunk(
@@ -75,21 +334,22 @@ export const togglePostLike = createAsyncThunk(
     try {
       const { postId, email } =
         typeof payload === "string" ? { postId: payload } : payload;
+
       const res = await fetch(
         `http://localhost:8000/api/product/${postId}/like`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
-      return { postId, likes: data.likes, liked: data.liked };
+      return { postId, likes: data.likes };
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 export const sendCommentOtp = createAsyncThunk(
@@ -103,7 +363,7 @@ export const sendCommentOtp = createAsyncThunk(
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, phone }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
@@ -111,7 +371,7 @@ export const sendCommentOtp = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message);
     }
-  },
+  }
 );
 
 export const verifyCommentOtp = createAsyncThunk(
@@ -124,7 +384,7 @@ export const verifyCommentOtp = createAsyncThunk(
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, otp }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success)
@@ -133,7 +393,7 @@ export const verifyCommentOtp = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message || "Error verifying OTP");
     }
-  },
+  }
 );
 
 export const postComment = createAsyncThunk(
@@ -146,7 +406,7 @@ export const postComment = createAsyncThunk(
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userEmail: email, comment }),
-        },
+        }
       );
       const data = await res.json();
       if (!data.success)
@@ -155,7 +415,7 @@ export const postComment = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.message || "Error posting comment");
     }
-  },
+  }
 );
 
 const blogSlice = createSlice({
@@ -165,18 +425,12 @@ const blogSlice = createSlice({
     posts: [],
     activeCategory: "All",
 
-    // List page
     status: "idle",
     error: null,
 
-    // Detail page
     currentPost: null,
     detailStatus: "idle",
     detailError: null,
-
-    // Engagement loading states (optional but useful)
-    likeStatus: "idle",
-    commentStatus: "idle",
   },
   reducers: {
     setActiveCategory: (state, action) => {
@@ -191,9 +445,7 @@ const blogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // Categories
-      .addCase(fetchCategories.pending, (state) => {
-        state.status = "loading";
-      })
+      .addCase(fetchCategories.pending, (state) => { state.status = "loading"; })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.categories = action.payload;
@@ -203,10 +455,8 @@ const blogSlice = createSlice({
         state.error = action.payload;
       })
 
-      // All Posts (list)
-      .addCase(fetchBlogPosts.pending, (state) => {
-        state.status = "loading";
-      })
+      // All Posts
+      .addCase(fetchBlogPosts.pending, (state) => { state.status = "loading"; })
       .addCase(fetchBlogPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.posts = action.payload;
@@ -216,7 +466,7 @@ const blogSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Single Post (detail)
+      // Single Post (Now supports Slug)
       .addCase(fetchBlogPostById.pending, (state) => {
         state.detailStatus = "loading";
         state.detailError = null;
@@ -230,23 +480,26 @@ const blogSlice = createSlice({
         state.detailError = action.payload;
       })
 
-      // ====================== NEW CASES ======================
+      // Engagement
       .addCase(incrementPostView.fulfilled, (state, action) => {
         const { postId, views } = action.payload;
         const post = state.posts.find((p) => p._id === postId);
         if (post) post.views = views;
+        if (state.currentPost?._id === postId) state.currentPost.views = views;
       })
 
       .addCase(togglePostLike.fulfilled, (state, action) => {
         const { postId, likes } = action.payload;
         const post = state.posts.find((p) => p._id === postId);
         if (post) post.likes = likes;
+        if (state.currentPost?._id === postId) state.currentPost.likes = likes;
       })
 
       .addCase(postComment.fulfilled, (state, action) => {
         const { postId, comments } = action.payload;
         const post = state.posts.find((p) => p._id === postId);
         if (post) post.comments = comments;
+        if (state.currentPost?._id === postId) state.currentPost.comments = comments;
       });
   },
 });
