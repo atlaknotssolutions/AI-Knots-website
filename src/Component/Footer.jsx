@@ -95,7 +95,7 @@ const Footer = () => {
 
             <div className="flex gap-6 mt-8">
               <SocialLink
-                href="https://www.facebook.com/atlaknots"
+                href="https://www.facebook.com/profile.php?id=61588297089600"
                 icon={<Facebook size={22} />}
                 label="Facebook"
                 isDark={isDark}
@@ -107,7 +107,7 @@ const Footer = () => {
                 isDark={isDark}
               />
               <SocialLink
-                href="https://www.linkedin.com/company/atlaknots"
+                href="https://www.linkedin.com/in/atla-knots-solutions-756702394"
                 icon={<Linkedin size={22} />}
                 label="LinkedIn"
                 isDark={isDark}

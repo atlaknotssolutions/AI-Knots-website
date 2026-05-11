@@ -37,7 +37,7 @@ import background2 from "../assets/Images/backgroundimage2.jpeg";
 import background3 from "../assets/Images/backgroundimage3.jpeg";
 
 // React Router for navigation
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -223,16 +223,18 @@ export default function Home() {
               <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-10 ">
                 <div className="text-center max-w-4/5xl ">
                   <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 md:mb-6 drop-shadow-2xl">
-                    Your AI Knots Growth Journey
+                    Power Your Brand Growth with 
                     <br />
-                    <span className="text-red-500">{slide.title}</span>
+                    <span className="text-red-500">AI KNOTS {slide.title}</span>
                   </h2>
                   <p className="text-lg sm:text-xl md:text-2xl text-white/95 font-medium mb-8 md:mb-12 max-w-4xl mx-auto drop-shadow-lg">
                     {slide.subtitle}
                   </p>
-                  <button className="bg-gradient-to-r from-red-600 via-red-500 to-rose-600 text-white font-bold uppercase tracking-wider px-10 py-5 mb-3 rounded-xl shadow-2xl hover:shadow-3xl hover:-translate-y-1.5 transition-all duration-300 text-lg md:text-xl">
-                    {slide.cta} →
-                  </button>
+                  <Link to="/service">
+                    <button className="bg-gradient-to-r from-red-600 via-red-500 to-rose-600 text-white font-bold uppercase tracking-wider px-10 py-5 mb-3 rounded-xl shadow-2xl hover:shadow-3xl hover:-translate-y-1.5 transition-all duration-300 text-lg md:text-xl">
+                      {slide.cta} →
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -348,6 +350,8 @@ export default function Home() {
                 GET STARTED
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </button>
+
+              <Link to="/portfolio">
               <button
                 className={`group px-10 py-5 border-2 rounded-full text-lg font-semibold transition-all
                   ${
@@ -358,6 +362,7 @@ export default function Home() {
               >
                 VIEW OUR WORK
               </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -395,7 +400,7 @@ export default function Home() {
               <h3
                 className={`text-4xl md:text-5xl font-bold mb-8 text-center tracking-tight ${sectionHeadingAccent}`}
               >
-                1. Information Technology Services
+                Information Technology Services
               </h3>
               <p
                 className={`text-lg md:text-xl mb-12 text-center max-w-4xl mx-auto leading-relaxed ${bodyClass}`}
@@ -472,7 +477,7 @@ export default function Home() {
               <h3
                 className={`text-4xl md:text-5xl font-bold mb-8 text-center tracking-tight ${sectionHeadingAccent}`}
               >
-                2. Business Process Outsourcing (BPO) Services
+                Business Process Outsourcing (BPO) Services
               </h3>
               <p
                 className={`text-lg md:text-xl mb-12 text-center max-w-3xl mx-auto leading-relaxed ${bodyClass}`}
@@ -540,7 +545,7 @@ export default function Home() {
               <h3
                 className={`text-4xl md:text-5xl font-bold mb-8 tracking-tight ${sectionHeadingAccent}`}
               >
-                3. Digital &amp; Marketing Services
+                Digital &amp; Marketing Services
               </h3>
               <p
                 className={`text-lg md:text-xl leading-relaxed ${bodyClass} mb-12`}
@@ -884,9 +889,9 @@ export default function Home() {
 
       {/* ====================== FAQ SECTION ====================== */}
       <section
-          className={`relative py-20 md:py-24 lg:py-28 px-5 sm:px-8 md:px-10 lg:px-16 overflow-hidden rounded-3xl my-12 md:my-16
+        className={`relative py-20 md:py-24 lg:py-28 px-5 sm:px-8 md:px-10 lg:px-16 overflow-hidden rounded-3xl my-12 md:my-16
           ${isDark ? "bg-gray-950/90 border border-red-900/50" : "bg-white border border-gray-100 shadow-2xl"}`}
-        >
+      >
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="hidden"
@@ -1016,15 +1021,15 @@ export default function Home() {
                 </div>
 
                 <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-gray-900 dark:text-white mb-3">
-                  Get up to <span className="text-red-600">50% OFF</span>
+                  Get up to <span className="text-red-600">5% OFF</span>
                   <br />
-                  on IT Projects & Services
+                  on IT Services & Business Solutions
                 </h2>
-                <p className="text-lg text-red-600 font-medium mb-8">
-                  Trusted IT Partner for Startups & Enterprises
+                <p className="text-lg text-red-600 font-medium mb-5">
+                  Grow Your Business with Atla Knots IT Solution
                 </p>
 
-                <div className="relative flex justify-center my-8">
+                <div className="relative flex justify-center my-5">
                   <img
                     src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070"
                     alt="AI Knots IT Services"
@@ -1074,7 +1079,7 @@ export default function Home() {
               <div className="lg:w-1/2 bg-white dark:bg-gray-900 p-8 lg:p-10 pb-16 flex flex-col">
                 <div className="text-center mb-8">
                   <h3 className="text-red-600 text-2xl font-bold">
-                    Book Free Consultation
+                    Book Your FREE IT Consultation Today
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm">
                     Get expert advice • No obligation • Quick Response
