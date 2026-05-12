@@ -6,13 +6,22 @@ import { store } from "./store.js";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { HelmetProvider } from "react-helmet-async";
 
-
-createRoot(document.getElementById("root")).render(
+const app = (
   <Provider store={store}>
     <ThemeProvider>
       <HelmetProvider>
         <App />
       </HelmetProvider>
     </ThemeProvider>
-  </Provider>,
+  </Provider>
 );
+
+export default app;
+
+if (typeof window !== "undefined") {
+  createRoot(document.getElementById("root")).render(app);
+}
+
+if (typeof window !== "undefined") {
+  createRoot(document.getElementById("root")).render(app);
+}
