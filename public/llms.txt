@@ -1,10 +1,31 @@
-# LLMs.txt
+# ATLA Knots - IT Solutions
 
-This file lists the Large Language Models (LLMs) used in generating content for this website, in accordance with SEO best practices and transparency guidelines.
+> ATLA Knots is a modern IT services and software development company based in Bhopal, India. We deliver custom software, website development, mobile apps, digital marketing, and 24/7 BPO support to help businesses build, grow, and scale digitally.
 
-## LLMs Used:
-- GPT-4 (OpenAI)
-- Claude (Anthropic)
-- Gemini (Google)
+We specialize in making technology simple, reliable, and impactful for businesses of all sizes.
 
-For more information about our content generation process, please contact us.
+## Content Creation Transparency
+This website uses AI assistance for content generation with full human oversight:
+
+- **GPT-4** (OpenAI) — Drafting and ideation
+- **Claude** (Anthropic) — Editing, reasoning, and long-form content
+- **Gemini** (Google) — Research synthesis and analysis
+
+**All published content undergoes human review, fact-checking, and final editing.** AI tools are used strictly as collaborative assistants.
+
+## Core Pages
+- [Home](https://www.atlaknots.com/)
+- [About Us](https://www.atlaknots.com/about)
+- [Our Services](https://www.atlaknots.com/service)
+- [Contact](https://www.atlaknots.com/contact)
+
+## Important Resources
+- [Services & Solutions](https://www.atlaknots.com/service)
+- [Portfolio / Projects](https://www.atlaknots.com/portfolio) *(if available)*
+- [Blog](https://www.atlaknots.com/blog) *(if available)*
+
+For inquiries: admin@atlaknots.com | +91 78696 36070
+
+---
+
+*Last updated: May 2026*

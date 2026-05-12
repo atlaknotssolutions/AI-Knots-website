@@ -148,10 +148,13 @@ const TechnologyDetail = () => {
           />
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+      
 
         {/* Title & Meta - Moved inside hero for better design */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 max-w-5xl mx-auto">
+        
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12  max-w-5xl mx-auto">
           <span
             className={`inline-block px-4 py-1.5 mb-4 text-sm rounded-full border ${
               isDark
@@ -180,10 +183,10 @@ const TechnologyDetail = () => {
             {post.title}
           </h1>
         </div>
-      </div>
 
-      {/* Main Content */}
+      
       <main className="max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-20">
+        
         <article className={`prose max-w-none ${isDark ? "prose-invert" : ""}`}>
           {sanitizedContent ? (
             <div
@@ -239,12 +242,8 @@ const TechnologyDetail = () => {
                   <div className="flex justify-between mb-3">
                     <div>
                       <p className="font-semibold">
-                        {comment.name ||
-                          comment.username ||
-                          comment.email ||
-                          comment.user?.name ||
-                          comment.user?.user ||
-                          comment.user?.email ||
+                        {
+                          comment.user.email ||
                           "Anonymous"}
                       </p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">
