@@ -308,6 +308,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   ChevronDown,
@@ -443,6 +444,19 @@ export default function LocalMarketing() {
     }`;
 
   return (
+
+     <>
+             <Helmet>
+                    <title>Local Marketing Services Bhopal | Atla IKS</title>
+                    <meta
+                      name="description"
+                      content="Improve business visibility with local marketing and local SEO services in Bhopal."
+                    />
+                    <meta
+                      name="keywords"
+                      content="Local Marketing Services	Local SEO, GBP Optimization"
+                    />
+                  </Helmet>
     <div
       className={`min-h-screen transition-colors duration-700 overflow-hidden
       ${isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"}`}
@@ -804,5 +818,6 @@ export default function LocalMarketing() {
         </motion.section>
       </main>
     </div>
+     </>
   );
 }

@@ -11,6 +11,7 @@ import {
   Users,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useTheme } from "../../context/ThemeContext";
 // High-quality images for visual appeal (Unsplash free stock - perfect for software dev theme)
 const images = {
@@ -113,6 +114,18 @@ export default function SoftwareDevelopment() {
   };
 
   return (
+     <>
+             <Helmet>
+                    <title>Software Development Company India | Atla IKS</title>
+                    <meta
+                      name="description"
+                      content="Custom software development company for CRM, ERP and scalable business software solutions."
+                    />
+                    <meta
+                      name="keywords"
+                      content="Software Development Company India	CRM Software, ERP Development"
+                    />
+                  </Helmet>
     <div
       className={`relative overflow-hidden ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900"}`}
     >
@@ -724,5 +737,6 @@ export default function SoftwareDevelopment() {
         </svg>
       </button>
     </div>
+    </>
   );
 }

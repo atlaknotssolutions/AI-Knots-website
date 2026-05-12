@@ -8,6 +8,7 @@ import React, {
 import axios from "axios";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { Helmet } from 'react-helmet-async';
 import {
   motion,
   useMotionValue,
@@ -452,6 +453,18 @@ export default function About() {
     : "bg-white border-gray-200 hover:border-red-200 hover:shadow-xl";
 
   return (
+      <>
+          <Helmet>
+            <title>About Atla Inteligent Knots Solution</title>
+            <meta
+              name="description"
+              content="Learn about Atla Inteligent Knots Solution, a trusted IT company offering web, software & digital solutions."
+            />
+            <meta
+              name="keywords"
+              content="About IT Company Software Company, Digital Agency India, Web Development Company, Software Development Company, Digital Marketing Agency, SEO Services, Social Media Management, ERP Solutions"
+            />
+          </Helmet>
     <div
       className={`min-h-screen ${bg} ${text} relative overflow-x-hidden transition-colors duration-500`}
     >
@@ -1297,5 +1310,6 @@ export default function About() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }

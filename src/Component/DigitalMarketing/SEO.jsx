@@ -907,6 +907,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   Search,
@@ -1054,6 +1055,18 @@ export default function SEO() {
     : "bg-white border border-gray-200 hover:border-red-300 hover:shadow-2xl";
 
   return (
+    <>
+     <Helmet>
+            <title>	SEO Services Company in Bhopal | Atla IKS</title>
+            <meta
+              name="description"
+              content="Improve Google rankings with SEO services including local SEO, on-page SEO & technical SEO."
+            />
+            <meta
+              name="keywords"
+              content="SEO Company in Bhopal	Local SEO, Technical SEO"
+            />
+          </Helmet>
     <div
       className={`min-h-screen overflow-hidden transition-colors duration-700
       ${isDark ? "bg-black text-white" : "bg-white text-gray-900"}`}
@@ -1448,5 +1461,6 @@ export default function SEO() {
         </svg>
       </button>
     </div>
+    </>
   );
 }

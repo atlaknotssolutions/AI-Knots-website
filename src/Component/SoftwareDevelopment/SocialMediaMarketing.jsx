@@ -824,7 +824,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
-
+import { Helmet } from "react-helmet-async";
 const images = {
   hero: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=2340", // High quality social media dashboard
   growth:
@@ -958,6 +958,8 @@ const faqs = [
 ];
 
 export default function SocialMediaMarketing() {
+
+     
   const [isDark, setIsDark] = useState(() =>
     document.documentElement.classList.contains("dark"),
   );
@@ -992,6 +994,18 @@ export default function SocialMediaMarketing() {
     }`;
 
   return (
+     <>
+      <Helmet>
+        <title>Social Media Marketing Bhopal | Atla IKS</title>
+        <meta
+          name="description"
+          content="Boost your brand visibility with expert social media marketing services in Bhopal & India."
+        />
+        <meta
+          name="keywords"
+          content="Social Media Marketing Bhopal, Digital Marketing Agency, Social Media Management, Content Marketing, Paid Advertising, Influencer Marketing"
+        />
+      </Helmet>
     <div
       className={`min-h-screen overflow-hidden transition-colors duration-700
       ${isDark ? "bg-black text-white" : "bg-white text-gray-900"}`}
@@ -1332,5 +1346,6 @@ export default function SocialMediaMarketing() {
 
       {/* Scroll to Top */}
     </div>
+  </>
   );
 }

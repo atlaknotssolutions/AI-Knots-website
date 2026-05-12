@@ -321,7 +321,7 @@ const navItems = [
   { name: "Recent Work", path: "/recentwork" },
   {
     name: "Service",
-    path: "/service",
+    
     hasDropdown: true,
     dropdownItems: [
       {

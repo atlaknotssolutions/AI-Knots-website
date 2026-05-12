@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, ArrowUp } from "lucide-react";
 import serviceimg1 from "../assets/Images/service.jpeg";
 import serviceimg2 from "../assets/Images/service2.jpeg";
-
+import { Helmet } from "react-helmet-async";
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -135,6 +135,18 @@ const Service = () => {
   };
 
   return (
+      <>
+          <Helmet>
+            <title>IT & Digital Marketing Services | Atla IKS</title>
+            <meta
+              name="description"
+              content="Explore website development, SEO, app development, software & branding services for business growth."
+            />
+            <meta
+              name="keywords"
+              content="IT Services Company	Digital Marketing Services, Web Solutions, Software Development, Branding Services, SEO Services, App Development, BPO Services, IT Solutions Provider, Digital Marketing Agency, Custom Software, Website Development, Online Marketing, Business Growth Solutions"
+            />
+          </Helmet>
     <div
       className={`relative min-h-screen overflow-x-hidden transition-colors duration-500
       ${isDark ? "bg-black text-gray-100" : "bg-gray-50 text-gray-900"}`}
@@ -456,6 +468,7 @@ const Service = () => {
         </button>
       )}
     </div>
+    </>
   );
 };
 
