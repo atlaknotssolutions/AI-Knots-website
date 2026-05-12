@@ -243,7 +243,7 @@ const TechnologyDetail = () => {
                     <div>
                       <p className="font-semibold">
                         {
-                          comment.user.email ||
+                          comment.user.username ||comment.user.email.split("@")[0] ||
                           "Anonymous"}
                       </p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">
