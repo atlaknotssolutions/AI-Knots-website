@@ -20,7 +20,7 @@ const Layout = () => {
         <Navbar />
       </header>
 
-      {/* Main Content - FULL SCREEN */}
+    
       <main className="flex-grow w-full">
         <Outlet />
       </main>
