@@ -113,7 +113,7 @@ const Footer = () => {
                 isDark={isDark}
               />
               <SocialLink
-                href="https://www.instagram.com/atlaknots"
+                href="https://www.instagram.com/atlaknotsitsolutions/"
                 icon={<Instagram size={22} />}
                 label="Instagram"
                 isDark={isDark}
