@@ -378,6 +378,7 @@
 import React, { useState } from "react";
 import { useTheme } from "../../context/ThemeContext"; // ← Added Theme Hook
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import {
   Palette,
   Code,
@@ -522,6 +523,18 @@ export default function WebsiteDesignDevelopment() {
   const accentClass = "text-red-500";
 
   return (
+     <>
+              <Helmet>
+                <title>Website Development Company Bhopal | Atla IKS</title>
+                <meta
+                  name="description"
+                  content="Professional website design & development company in Bhopal for businesses."
+                />
+                <meta
+                  name="keywords"
+                  content="Website Development Company Bhopal	Web Design Company, Website Services"
+                />
+              </Helmet>
     <div
       className={`min-h-screen transition-colors duration-700 overflow-hidden
       ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gray-50 text-gray-900"}`}
@@ -960,5 +973,6 @@ export default function WebsiteDesignDevelopment() {
         </div>
       </section>
     </div>
+     </>
   );
 }

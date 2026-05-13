@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReCAPTCHA from "react-google-recaptcha";
-
+import { Helmet } from "react-helmet-async";
 import { useTheme } from "../context/ThemeContext";
 
 import {
@@ -121,6 +121,18 @@ const Contact = () => {
   };
 
   return (
+    <>
+                  <Helmet>
+                    <title>Contact Atla Inteligent Knots Solution</title>
+                    <meta
+                      name="description"
+                      content="Contact us for website development, SEO, software & digital marketing services."
+                    />
+                    <meta
+                      name="keywords"
+                      content="Contact IT Company	IT Services Contact, Marketing Agency"
+                    />
+                  </Helmet>
     <div
       className={`relative min-h-screen overflow-hidden transition-colors duration-700
       ${isDark ? "bg-black text-gray-100" : "bg-white text-gray-900"}`}
@@ -459,6 +471,7 @@ const Contact = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { Helmet } from "react-helmet-async";
 
 import {
   Code2,
@@ -259,6 +260,18 @@ const Technology = () => {
   const accentClass = "text-red-600";
 
   return (
+    <>
+              <Helmet>
+                <title>Technology Solutions Company | Atla IKS</title>
+                <meta
+                  name="description"
+                  content="Explore software, cloud, AI & advanced technology solutions for businesses."
+                />
+                <meta
+                  name="keywords"
+                  content="Technology Solutions Company	IT Services, Tech Solutions"
+                />
+              </Helmet>
     <div
       className={`min-h-screen overflow-x-hidden relative transition-colors duration-700
       ${isDark ? "bg-black text-white" : "bg-gray-50 text-gray-900"}`}
@@ -789,6 +802,7 @@ const Technology = () => {
         }
       `}</style>
     </div>
+     </>
   );
 };
 

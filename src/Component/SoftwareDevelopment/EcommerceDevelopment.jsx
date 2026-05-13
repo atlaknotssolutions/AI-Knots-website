@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import {
   ShoppingCart,
   Search,
@@ -178,6 +179,21 @@ export default function EcommerceDevelopment() {
   };
 
   return (
+
+    <>
+    
+                 <Helmet>
+                        <title>Ecommerce Website Development | Atla IKS</title>
+                        <meta
+                          name="description"
+                          content="Build secure ecommerce websites with custom online store development services"
+                        />
+                        <meta
+                          name="keywords"
+                          content="Ecommerce Website Development	Ecommerce Company, Online Store"
+                        />
+                      </Helmet>
+
     <div
       className={`relative overflow-hidden ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900"}`}
     >
@@ -493,5 +509,6 @@ export default function EcommerceDevelopment() {
         </svg>
       </button>
     </div>
+    </>
   );
 }

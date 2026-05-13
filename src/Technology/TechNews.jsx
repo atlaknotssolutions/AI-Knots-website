@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "../context/ThemeContext";
 import { Newspaper, ExternalLink, Clock, Cpu, Zap, Globe, ArrowUp } from "lucide-react";
-
+import { Helmet } from "react-helmet-async";
 import DOMPurify from "dompurify";
 
 import {
@@ -115,6 +115,18 @@ const TechNews = () => {
   }
 
   return (
+       <>
+                  <Helmet>
+                    <title>Latest Tech News India | Atla IKS</title>
+                    <meta
+                      name="description"
+                      content="Stay updated with latest technology news, AI updates, software trends & IT insights."
+                    />
+                    <meta
+                      name="keywords"
+                      content="Latest Tech News India	Technology Updates, IT News"
+                    />
+                  </Helmet>
     <div className={`min-h-screen p-6 md:p-10 relative transition-colors duration-700
       ${isDark ? "bg-black text-gray-100" : "bg-gray-50 text-gray-900"}`}>
 
@@ -228,6 +240,7 @@ const TechNews = () => {
         <ArrowUp className="w-6 h-6" />
       </button>
     </div>
+     </>
   );
 };
 

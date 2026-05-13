@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { Helmet } from "react-helmet-async";
 function CareerPage() {
   const { isDark } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -220,6 +220,18 @@ function CareerPage() {
   const accentClass = "text-red-600";
 
   return (
+      <>
+                      <Helmet>
+                        <title>Join our IT company for software, marketing & development career opportunities.</title>
+                        <meta
+                          name="description"
+                          content="Join our IT company for software, marketing & development career opportunities."
+                        />
+                        <meta
+                          name="keywords"
+                          content="IT Jobs in Bhopal	Software Jobs, Digital Marketing Jobs"
+                        />
+                      </Helmet>
     <div
       className={`min-h-screen transition-colors duration-700 relative overflow-hidden
       ${isDark ? "bg-black text-white" : "bg-gray-50 text-gray-900"}`}
@@ -610,6 +622,7 @@ function CareerPage() {
         </svg>
       </button>
     </div>
+      </>
   );
 }
 
