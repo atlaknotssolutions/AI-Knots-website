@@ -120,7 +120,10 @@ export default function DigitalMarketing() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post("http://localhost:8000/query/create", formData);
+      await axios.post(
+        "https://ai-knots-it-solution-2.onrender.com/query/create",
+        formData,
+      );
       setSuccess(true);
       setFormData({
         name: "",
@@ -151,7 +154,7 @@ export default function DigitalMarketing() {
     ? "bg-gray-900/70 backdrop-blur-sm border border-gray-800 hover:border-red-500/60 hover:shadow-red-900/30"
     : "bg-white border border-gray-200 hover:border-red-300 hover:shadow-2xl";
 
-  const buttonClass = `px-12 py-6 rounded-full text-xl font-bold transition-all flex items-center gap-3 group shadow-xl
+  const buttonClass = `px-8 md:px-12 py-4 md:py-6 rounded-full text-lg md:text-xl font-bold transition-all flex items-center gap-3 group shadow-xl
     ${
       isDark
         ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 shadow-red-900/60"
@@ -254,7 +257,7 @@ export default function DigitalMarketing() {
                 <div
                   className={`w-full max-w-3xl rounded-3xl p-8 bg-white shadow-2xl ${isDark ? "bg-gray-950 text-white" : "bg-white text-gray-900"}`}
                 >
-                  <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-start justify-between mt-20">
                     <div>
                       <h2 className="text-3xl font-black mb-2">
                         Request a Quote
@@ -347,7 +350,7 @@ export default function DigitalMarketing() {
 
         {/* ====================== TRANSFORM YOUR VISION ====================== */}
         <section
-          className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-gray-50"}`}
+          className={`py-12 md:py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-gray-50"}`}
         >
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -443,7 +446,7 @@ export default function DigitalMarketing() {
 
         {/* ====================== SERVICES SECTION ====================== */}
         <section
-          className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"}`}
+          className={`py-12 md:py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"}`}
         >
           <div className="max-w-7xl mx-auto">
             <motion.h2
@@ -466,7 +469,7 @@ export default function DigitalMarketing() {
               your business goals.
             </motion.p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {services.map((service, idx) => (
                 <motion.div
                   key={idx}
@@ -495,7 +498,7 @@ export default function DigitalMarketing() {
 
         {/* ====================== INDUSTRIES WE SERVE ====================== */}
         <section
-          className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-gray-50"}`}
+          className={`py-12 md:py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-gray-50"}`}
         >
           <div className="max-w-7xl mx-auto">
             <motion.h2
@@ -526,7 +529,7 @@ export default function DigitalMarketing() {
 
         {/* ====================== INNOVATION + GROWTH SECTION ====================== */}
         <section
-          className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-gray-50"}`}
+          className={`py-12 md:py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-gray-50"}`}
         >
           <div className="max-w-7xl mx-auto text-center">
             <motion.h2
@@ -552,7 +555,7 @@ export default function DigitalMarketing() {
 
         {/* ====================== PROCESS + FINAL CTA ====================== */}
         <section
-          className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-white"}`}
+          className={`py-12 md:py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-white"}`}
         >
           <div className="max-w-7xl mx-auto">
             <motion.h2
