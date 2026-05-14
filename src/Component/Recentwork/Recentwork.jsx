@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 const API_BASE_URL = "https://ai-knots-it-solution-2.onrender.com"; // Change to production URL later
 
 export default function RecentWork() {
+  const navigate = useNavigate();
   const [isDark, setIsDark] = useState(() =>
     document.documentElement.classList.contains("dark"),
   );
@@ -237,18 +239,19 @@ export default function RecentWork() {
             >
               Let's create something powerful together.
             </p>
-            <a
-              href="/contact"
+            <button
+              onClick={() => navigate("/contact")}
               className={`
               inline-flex items-center gap-3 px-10 py-5 rounded-full text-xl font-bold text-white
               transition-all duration-300 hover:-translate-y-1
               bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 
               shadow-xl shadow-red-900/50 hover:shadow-red-800/60
             `}
+              type="button"
             >
               Let's Talk
               <ArrowRight size={24} />
-            </a>
+            </button>
           </div>
         </div>
       </div>

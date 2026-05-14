@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import {
   ShoppingCart,
   Search,
@@ -24,7 +25,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 // Placeholder images (replace with your own branded/project shots)
 const images = {
-  hero: "https://images.unsplash.com/photo-1556740714-a8395b3a74dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+  hero: "https://www.orangemantra.com/wp-content/uploads/2025/05/case-study.webp",
   projects:
     "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
   platforms:
@@ -159,7 +160,7 @@ const faqs = [
 export default function EcommerceDevelopment() {
   const { isDark } = useTheme();
   const [openFaq, setOpenFaq] = useState(null);
-
+  const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -196,87 +197,84 @@ export default function EcommerceDevelopment() {
         className={`relative overflow-hidden ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900"}`}
       >
         {/* Hero */}
-        <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-          <div className="absolute inset-0">
-            <img
-              src={images.hero}
-              alt="Modern ecommerce dashboard"
-              className="w-full h-full object-cover opacity-30 brightness-50"
-              loading="lazy"
-            />
-            <div
-              className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black via-black/80 to-transparent" : "bg-gradient-to-t from-white via-white/80 to-transparent"}`}
-            />
-          </div>
+        {/* Hero Section - Balanced Overlay */}
+<section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+  <div className="absolute inset-0">
+    <img
+      src={images.hero}
+      alt="Modern ecommerce dashboard"
+      className="w-full h-full object-cover"
+      loading="lazy"
+    />
+    
+    {/* Improved Overlay - Less Dark in Dark Mode */}
+    <div
+      className={`absolute inset-0 transition-all duration-700 ${
+        isDark 
+          ? "bg-gradient-to-b from-black/70 via-black/80 to-black/85"   // ← Reduced darkness
+          : "bg-gradient-to-b from-black/75 via-black/85 to-black/90"
+      }`}
+    />
+  </div>
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="relative z-10 max-w-7xl mx-auto text-center"
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight"
-            >
-              Build High-Converting{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-                E-Commerce Stores
-              </span>
-            </motion.h1>
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={staggerContainer}
+    className="relative z-10 max-w-7xl mx-auto text-center"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className={`text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight ${
+        isDark ? "text-white" : "text-gray-200"
+      }`}
+    >
+      Build High-Converting{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
+        E-Commerce Stores
+      </span>
+    </motion.h1>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-2xl md:text-4xl font-bold text-red-400 mb-8"
-            >
-              Don't Settle for Average — Convert Visitors to Customers
-            </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className={`text-2xl md:text-4xl font-bold mb-8 ${
+        isDark ? "text-red-400" : "text-red-600"
+      }`}
+    >
+      Don't Settle for Average — Convert Visitors to Customers
+    </motion.p>
 
-            <motion.p
-              variants={fadeInUp}
-              className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed ${isDark ? "text-gray-300" : "text-gray-700"}`}
-            >
-              At{" "}
-              <span className="text-red-400 font-semibold">
-                Atlas Knots IT Solutions
-              </span>
-              , we craft fast, secure, scalable, and fully customized eCommerce
-              websites & software that drive real sales growth.
-            </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed ${
+        isDark ? "text-gray-200" : "text-gray-200"
+      }`}
+    >
+      At{" "}
+      <span className="text-red-400 font-semibold">
+        Atlas Knots IT Solutions
+      </span>
+      , we craft fast, secure, scalable, and fully customized eCommerce
+      websites & software that drive real sales growth.
+    </motion.p>
 
-            <motion.ul
-              variants={fadeInUp}
-              className="flex flex-wrap justify-center gap-6 mb-12 text-lg"
-            >
-              {[
-                "Conversion-driven design",
-                "Advanced integrations",
-                "Omnichannel experience",
-                "100% customized",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-red-500" /> {item}
-                </li>
-              ))}
-            </motion.ul>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
-            >
-              <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group">
-                Get Free Quote{" "}
-                <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-              </button>
-              <button
-                className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "border-red-600/70 text-red-400 hover:bg-red-950/50" : "border-red-600 text-red-600 hover:bg-red-50"}`}
-              >
-                Free Consultation
-              </button>
-            </motion.div>
-          </motion.div>
-        </section>
-
+    <motion.ul
+      variants={fadeInUp}
+      className="flex flex-wrap justify-center gap-6 mb-12 text-lg text-white font-bold"
+    >
+      {[
+        "Conversion-driven design",
+        "Advanced integrations",
+        "Omnichannel experience",
+        "100% customized",
+      ].map((item) => (
+        <li key={item} className="flex items-center gap-2">
+          <CheckCircle2 className="w-6 h-6 text-red-500" /> {item}
+        </li>
+      ))}
+    </motion.ul>
+  </motion.div>
+</section>
         {/* Platforms */}
         <section
           className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black/50" : "bg-white/50"}`}
@@ -468,35 +466,14 @@ export default function EcommerceDevelopment() {
               whileTap={{ scale: 0.98 }}
               className="px-14 py-7 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-2xl md:text-3xl font-black shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 transition-all"
             >
-              Get Started Today →
+              <button onClick={() => navigate("/contact")} className="flex items-center gap-3">
+                Get Started Today →
+              </button>
             </motion.button>
           </div>
         </section>
 
-        <button
-          onClick={scrollToTop}
-          className={`fixed bottom-6 right-6 z-50 p-4 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 ${isDark ? "bg-red-600 hover:bg-red-700 shadow-red-900/50" : "bg-red-500 hover:bg-red-600 shadow-red-400/50"} ${
-            showScrollTop
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-16 pointer-events-none"
-          }`}
-          aria-label="Scroll back to top"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            />
-          </svg>
-        </button>
+        
       </div>
     </>
   );

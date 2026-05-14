@@ -166,7 +166,7 @@ export default function MobileAppDevelopment() {
                 <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
               </button>
               <button className={`px-12 py-6 border-2 rounded-full text-xl font-bold transition-all
-                ${isDark ? "border-red-600/70 text-red-400 hover:bg-red-950/50" : "border-red-600 text-red-600 hover:bg-red-50"}`}>
+                ${isDark ? "border-red-600/70 text-red-400 hover:bg-red-950/50" : "border-red-600 text-red-600 hover:bg-red-50"}`} onClick={() => navigate("/portfolio")}>
                 View Our Portfolio →
               </button>
             </motion.div>

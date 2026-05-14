@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import backgroundimage from "../../assets/Images/ERPbackground.jpeg";
 import industury from "../../assets/Images/ERPbackground.jpeg";
 import { Helmet } from "react-helmet-async";
-
+import { useNavigate } from "react-router-dom";
 const images = {
   hero: backgroundimage,
   team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
@@ -66,6 +66,7 @@ export default function ERPDevelopment() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navigate = useNavigate();
   return (
     <>
       <Helmet>
@@ -138,18 +139,18 @@ export default function ERPDevelopment() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-6 justify-center"
             >
-              <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group">
-                Request a Quote{" "}
-                <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-              </button>
               <button
-                className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all ${
+                onClick={() => navigate("/contact")}
+                className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all duration-300 flex items-center gap-2 group ${
                   isDark
-                    ? "border-red-600/70 text-red-400 hover:bg-red-950/50"
-                    : "border-red-600 text-red-600 hover:bg-red-50"
+                    ? "border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600 shadow-lg shadow-red-900/30"
+                    : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 shadow-lg shadow-red-200"
                 }`}
               >
-                Free Consultation →
+                Free Consultation
+                <span className="group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
               </button>
             </motion.div>
           </motion.div>
@@ -228,16 +229,7 @@ export default function ERPDevelopment() {
               business goals and growth.
             </motion.p>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <button className="px-14 py-7 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all">
-                Connect with India's Best ERP Software Development Company →
-              </button>
-            </motion.div>
+           
           </div>
         </section>
 
@@ -539,31 +531,7 @@ export default function ERPDevelopment() {
           </div>
         </section>
 
-        {/* Scroll to Top Button */}
-        <button
-          onClick={scrollToTop}
-          className={`fixed bottom-6 right-6 z-50 p-4 rounded-full bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-900/50 transition-all duration-300 hover:scale-110 active:scale-95 ${
-            showScrollTop
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-16 pointer-events-none"
-          }`}
-          aria-label="Scroll back to top"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            />
-          </svg>
-        </button>
+       
       </div>
     </>
   );
