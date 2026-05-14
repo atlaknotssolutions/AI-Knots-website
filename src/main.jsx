@@ -21,7 +21,3 @@ export default app;
 if (typeof window !== "undefined") {
   createRoot(document.getElementById("root")).render(app);
 }
-
-if (typeof window !== "undefined") {
-  createRoot(document.getElementById("root")).render(app);
-}

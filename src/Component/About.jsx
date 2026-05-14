@@ -8,7 +8,7 @@ import React, {
 import axios from "axios";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import {
   motion,
   useMotionValue,
@@ -402,7 +402,10 @@ export default function About() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post("http://localhost:8000/query/create", formData);
+      await axios.post(
+        "https://ai-knots-it-solution-2.onrender.com/query/create",
+        formData,
+      );
       setSuccess(true);
       setFormData({
         name: "",
@@ -453,312 +456,55 @@ export default function About() {
     : "bg-white border-gray-200 hover:border-red-200 hover:shadow-xl";
 
   return (
-      <>
-          <Helmet>
-            <title>About Atla Inteligent Knots Solution</title>
-            <meta
-              name="description"
-              content="Learn about Atla Inteligent Knots Solution, a trusted IT company offering web, software & digital solutions."
-            />
-            <meta
-              name="keywords"
-              content="About IT Company Software Company, Digital Agency India, Web Development Company, Software Development Company, Digital Marketing Agency, SEO Services, Social Media Management, ERP Solutions"
-            />
-          </Helmet>
-    <div
-      className={`min-h-screen ${bg} ${text} relative overflow-x-hidden transition-colors duration-500`}
-    >
-      {/* Particles */}
-      {isDark && (
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={particlesOptions}
-          className="absolute inset-0 z-0"
+    <>
+      <Helmet>
+        <title>About Atla Inteligent Knots Solution</title>
+        <meta
+          name="description"
+          content="Learn about Atla Inteligent Knots Solution, a trusted IT company offering web, software & digital solutions."
         />
-      )}
+        <meta
+          name="keywords"
+          content="About IT Company Software Company, Digital Agency India, Web Development Company, Software Development Company, Digital Marketing Agency, SEO Services, Social Media Management, ERP Solutions"
+        />
+      </Helmet>
+      <div
+        className={`min-h-screen ${bg} ${text} relative overflow-x-hidden transition-colors duration-500`}
+      >
+        {/* Particles */}
+        {isDark && (
+          <Particles
+            id="tsparticles"
+            init={particlesInit}
+            options={particlesOptions}
+            className="absolute inset-0 z-0"
+          />
+        )}
 
-      {/* Gradient Blobs */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div
-          className={`absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl animate-pulse ${isDark ? "bg-red-600/20" : "bg-red-100/60"}`}
-        />
-        <div
-          className={`absolute bottom-40 left-0 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000 ${isDark ? "bg-red-800/15" : "bg-red-100/40"}`}
-        />
-      </div>
-
-      {/* ====================== HERO SECTION ====================== */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2340&q=80"
-            alt="About Background"
-            className="w-full h-full object-cover"
+        {/* Gradient Blobs */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className={`absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl animate-pulse ${isDark ? "bg-red-600/20" : "bg-red-100/60"}`}
           />
           <div
-            className={`absolute inset-0 ${isDark ? "bg-gradient-to-br from-black/85 via-black/75 to-black/90" : "bg-gradient-to-br from-black/60 via-black/50 to-black/40"}`}
+            className={`absolute bottom-40 left-0 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000 ${isDark ? "bg-red-800/15" : "bg-red-100/40"}`}
           />
         </div>
 
-        <div className="absolute inset-0 z-10">
-          <Canvas>
-            <Suspense fallback={null}>
-              <Scene3D />
-            </Suspense>
-          </Canvas>
-        </div>
-
-        <div
-          className={`absolute inset-0 z-20 ${isDark ? "bg-gradient-to-br from-red-950/40 via-black/60 to-black/80" : "bg-gradient-to-br from-red-50/70 via-white/60 to-white/80"}`}
-        />
-
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="relative z-30 w-full max-w-7xl mx-auto text-center"
-        >
-          <motion.div variants={fadeInUp} className="mb-10 pt-20 md:pt-24">
-            <h1
-              className={`text-6xl md:text-7xl lg:text-8xl font-black mb-6 ${text}`}
-            >
-              ABOUT AI Knots
-            </h1>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
-              <span
-                className={
-                  isDark
-                    ? "text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-red-600"
-                    : "text-red-600"
-                }
-              >
-                Your Technology Partner
-              </span>
-            </h2>
-          </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className={`text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed px-4 ${subText}`}
-          >
-            We provide complete digital services,{" "}
-            <span
-              className={`font-semibold ${isDark ? "text-red-500" : "text-red-600"}`}
-            >
-              including SEO, digital marketing,
-            </span>{" "}
-            website development, social media management, software development,
-            and ERP solutions.
-          </motion.p>
-
-          {/* Image Blocks */}
-          <div className="space-y-16 lg:space-y-24 pb-16 pt-20">
-            <div className="flex flex-col md:flex-row items-stretch min-h-[500px] lg:min-h-[680px]">
-              <div
-                className={`w-full md:w-5/12 z-10 flex flex-col justify-center order-2 md:order-1 px-6 md:px-10 lg:px-16 py-12 md:py-16 ${isDark ? "bg-gradient-to-r from-gray-900/90 to-transparent" : "bg-gradient-to-r from-white/95 to-transparent"}`}
-              >
-                <h3
-                  className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 ${text}`}
-                >
-                  Building the <span className="text-red-500">Future</span>
-                </h3>
-                <p
-                  className={`text-lg md:text-xl leading-relaxed mb-8 max-w-xl ${subText}`}
-                >
-                  At we believe technology should empower—not complicate.
-                </p>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="px-8 py-4 rounded-full font-semibold transition w-fit text-white bg-red-600 hover:bg-red-700"
-                >
-                  Get Started
-                </button>
-              </div>
-              <div className="w-full md:w-7/12 self-end order-1 md:order-2">
-                <img
-                  src={img4}
-                  alt="Collaboration"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row-reverse items-stretch min-h-[500px] lg:min-h-[680px]">
-              <div
-                className={`w-full md:w-5/12 z-10 flex flex-col justify-center px-6 md:px-10 lg:px-16 py-12 md:py-16 ${isDark ? "bg-gradient-to-l from-gray-900/90 to-transparent" : "bg-gradient-to-l from-white/95 to-transparent"}`}
-              >
-                <h3
-                  className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 ${text}`}
-                >
-                  Innovation Meets{" "}
-                  <span className="text-red-500">Excellence</span>
-                </h3>
-                <p
-                  className={`text-lg md:text-xl leading-relaxed mb-8 max-w-xl ${subText}`}
-                >
-                  We transform businesses through seamless digital solutions.
-                </p>
-              </div>
-              <div className="w-full md:w-7/12 relative group overflow-hidden order-1 md:order-2">
-                <img
-                  src={img1}
-                  alt="Innovation"
-                  className="w-full h-full object-contain md:object-cover transition-opacity duration-500 group-hover:opacity-0"
-                />
-                <img
-                  src={img6}
-                  alt="Innovation Hover"
-                  className="w-full h-full object-contain md:object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
-              </div>
-            </div>
+        {/* ====================== HERO SECTION ====================== */}
+        <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2340&q=80"
+              alt="About Background"
+              className="w-full h-full object-cover"
+            />
+            <div
+              className={`absolute inset-0 ${isDark ? "bg-gradient-to-br from-black/85 via-black/75 to-black/90" : "bg-gradient-to-br from-black/60 via-black/50 to-black/40"}`}
+            />
           </div>
 
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center px-4"
-          >
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="px-12 py-6 rounded-full text-xl font-bold transition flex items-center gap-2 text-white bg-gradient-to-r from-red-600 to-red-800 shadow-lg shadow-red-900/50 hover:shadow-red-900/70"
-            >
-              Start Building Your Future <ArrowRight className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => navigate("/recentwork")}
-              className="px-10 py-6 border-2 rounded-full transition flex items-center gap-3 font-medium border-red-600/60 hover:bg-red-950/20 text-red-400"
-            >
-              See Our Solutions <ArrowRight className="w-5 h-5" />
-            </button>
-          </motion.div>
-
-          {/* Contact Modal */}
-          <AnimatePresence>
-            {isModalOpen && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
-                onClick={(e) =>
-                  e.target === e.currentTarget && setIsModalOpen(false)
-                }
-              >
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0, y: 50 }}
-                  animate={{ scale: 1, opacity: 1, y: 0 }}
-                  exit={{ scale: 0.8, opacity: 0, y: 50 }}
-                  className={`border rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden ${isDark ? "bg-gray-900 border-red-900/30" : "bg-white border-gray-200"}`}
-                >
-                  <div
-                    className={`px-6 py-4 flex justify-between items-center ${isDark ? "bg-gradient-to-r from-red-900/80 to-red-800/60" : "bg-gradient-to-r from-red-700 to-red-600"}`}
-                  >
-                    <h2 className="text-xl font-bold text-white">
-                      Get in Touch
-                    </h2>
-                    <button
-                      onClick={() => setIsModalOpen(false)}
-                      className="text-white hover:text-red-300 transition"
-                    >
-                      <X className="w-7 h-7" />
-                    </button>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="p-6 space-y-5">
-                    {["name", "email", "phone"].map((field) => (
-                      <input
-                        key={field}
-                        type={
-                          field === "email"
-                            ? "email"
-                            : field === "phone"
-                              ? "tel"
-                              : "text"
-                        }
-                        name={field}
-                        placeholder={`${field.charAt(0).toUpperCase() + field.slice(1)} *`}
-                        value={formData[field]}
-                        onChange={handleChange}
-                        required
-                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${inputClass}`}
-                      />
-                    ))}
-                    <select
-                      name="category"
-                      value={formData.category}
-                      onChange={handleChange}
-                      required
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${inputClass}`}
-                    >
-                      <option value="" disabled>
-                        Select Category *
-                      </option>
-                      <option value="SEO">SEO</option>
-                      <option value="Software Developer">
-                        Software Developer
-                      </option>
-                      <option value="BPO">BPO</option>
-                      <option value="Digital Marketing">
-                        Digital Marketing
-                      </option>
-                      <option value="Web Development">Web Development</option>
-                      <option value="Other">Other</option>
-                    </select>
-                    <textarea
-                      name="message"
-                      placeholder="Your Message / Requirement..."
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={4}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${inputClass}`}
-                    />
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className={`w-full py-4 rounded-lg font-bold text-lg text-white transition ${loading ? "bg-gray-700 cursor-not-allowed" : "bg-red-700 hover:bg-red-600 shadow-lg shadow-red-900/40"}`}
-                    >
-                      {loading ? "Sending..." : "Submit Inquiry"}
-                    </button>
-                    {success && (
-                      <p className="text-green-500 text-center font-medium">
-                        Thank you! We'll get back to you soon.
-                      </p>
-                    )}
-                    {error && (
-                      <p className="text-red-500 text-center">{error}</p>
-                    )}
-                  </form>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </section>
-
-      {/* ====================== ABOUT / STATS SECTION ====================== */}
-      <section
-        className={`relative py-16 px-4 sm:px-6 lg:px-8 transition-colors ${isDark ? "bg-black" : "bg-gray-50"}`}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-12"
-          >
-            <p
-              className={`text-xl md:text-2xl max-w-4xl mx-auto px-4 ${subText}`}
-            >
-              Technology that connects. Solutions that deliver. Partnerships
-              that last.
-            </p>
-          </motion.div>
-
-          <div
-            className={`relative h-96 mb-12 rounded-2xl overflow-hidden border ${isDark ? "border-red-900/20" : "border-red-100"}`}
-          >
+          <div className="absolute inset-0 z-10">
             <Canvas>
               <Suspense fallback={null}>
                 <Scene3D />
@@ -766,550 +512,817 @@ export default function About() {
             </Canvas>
           </div>
 
-          {/* About + Team Carousel */}
+          <div
+            className={`absolute inset-0 z-20 ${isDark ? "bg-gradient-to-br from-red-950/40 via-black/60 to-black/80" : "bg-gradient-to-br from-red-50/70 via-white/60 to-white/80"}`}
+          />
+
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-8 items-center mb-12"
+            className="relative z-30 w-full max-w-7xl mx-auto text-center"
           >
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h5 className="font-semibold text-xl text-red-500">
-                About Our Solution
-              </h5>
-              <h2 className={`text-4xl md:text-5xl font-bold ${text}`}>
-                #1 Partner For Your Business Growth
+            <motion.div variants={fadeInUp} className="mb-10 pt-20 md:pt-24">
+              <h1
+                className={`text-6xl md:text-7xl lg:text-8xl font-black mb-6 ${text}`}
+              >
+                ABOUT AI Knots
+              </h1>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+                <span
+                  className={
+                    isDark
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-red-600"
+                      : "text-red-600"
+                  }
+                >
+                  Your Technology Partner
+                </span>
               </h2>
-              <p className={`text-lg leading-relaxed ${subText}`}>
-                We deliver cutting-edge technology solutions that transform
-                businesses...
-              </p>
-              <div className="grid grid-cols-2 gap-8 my-8">
-                <div>
-                  <div className={`text-4xl font-black text-red-500`}>50+</div>
-                  <p className={subText}>Projects Delivered</p>
+            </motion.div>
+
+            <motion.p
+              variants={fadeInUp}
+              className={`text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed px-4 ${subText}`}
+            >
+              We provide complete digital services,{" "}
+              <span
+                className={`font-semibold ${isDark ? "text-red-500" : "text-red-600"}`}
+              >
+                including SEO, digital marketing,
+              </span>{" "}
+              website development, social media management, software
+              development, and ERP solutions.
+            </motion.p>
+
+            {/* Image Blocks */}
+            <div className="space-y-16 lg:space-y-24 pb-16 pt-20">
+              <div className="flex flex-col md:flex-row items-stretch min-h-[500px] lg:min-h-[680px]">
+                <div
+                  className={`w-full md:w-5/12 z-10 flex flex-col justify-center order-2 md:order-1 px-6 md:px-10 lg:px-16 py-12 md:py-16 ${isDark ? "bg-gradient-to-r from-gray-900/90 to-transparent" : "bg-gradient-to-r from-white/95 to-transparent"}`}
+                >
+                  <h3
+                    className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 ${text}`}
+                  >
+                    Building the <span className="text-red-500">Future</span>
+                  </h3>
+                  <p
+                    className={`text-lg md:text-xl leading-relaxed mb-8 max-w-xl ${subText}`}
+                  >
+                    At we believe technology should empower—not complicate.
+                  </p>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="px-8 py-4 rounded-full font-semibold transition w-fit text-white bg-red-600 hover:bg-red-700"
+                  >
+                    Get Started
+                  </button>
                 </div>
-                <div>
-                  <div className={`text-4xl font-black text-red-500`}>100+</div>
-                  <p className={subText}>Happy Clients</p>
+                <div className="w-full md:w-7/12 self-end order-1 md:order-2">
+                  <img
+                    src={img4}
+                    alt="Collaboration"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
+
+              <div className="flex flex-col md:flex-row-reverse items-stretch min-h-[500px] lg:min-h-[680px]">
+                <div
+                  className={`w-full md:w-5/12 z-10 flex flex-col justify-center px-6 md:px-10 lg:px-16 py-12 md:py-16 ${isDark ? "bg-gradient-to-l from-gray-900/90 to-transparent" : "bg-gradient-to-l from-white/95 to-transparent"}`}
+                >
+                  <h3
+                    className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 ${text}`}
+                  >
+                    Innovation Meets{" "}
+                    <span className="text-red-500">Excellence</span>
+                  </h3>
+                  <p
+                    className={`text-lg md:text-xl leading-relaxed mb-8 max-w-xl ${subText}`}
+                  >
+                    We transform businesses through seamless digital solutions.
+                  </p>
+                </div>
+                <div className="w-full md:w-7/12 relative group overflow-hidden order-1 md:order-2">
+                  <img
+                    src={img1}
+                    alt="Innovation"
+                    className="w-full h-full object-contain md:object-cover transition-opacity duration-500 group-hover:opacity-0"
+                  />
+                  <img
+                    src={img6}
+                    alt="Innovation Hover"
+                    className="w-full h-full object-contain md:object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center px-4"
+            >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-10 py-4 rounded-full text-lg font-semibold transition text-white bg-red-600 hover:bg-red-700"
+                className="px-12 py-6 rounded-full text-xl font-bold transition flex items-center gap-2 text-white bg-gradient-to-r from-red-600 to-red-800 shadow-lg shadow-red-900/50 hover:shadow-red-900/70"
               >
-                Read More →
+                Start Building Your Future <ArrowRight className="w-6 h-6" />
+              </button>
+              <button
+                onClick={() => navigate("/recentwork")}
+                className="px-10 py-6 border-2 rounded-full transition flex items-center gap-3 font-medium border-red-600/60 hover:bg-red-950/20 text-red-400"
+              >
+                See Our Solutions <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>
 
-            <motion.div
-              variants={fadeInRight}
-              className={`relative rounded-2xl shadow-2xl overflow-hidden border aspect-[4/3] md:aspect-[5/4] lg:aspect-[3/2] ${isDark ? "border-red-900/30" : "border-gray-200"}`}
-            >
-              <AnimatePresence initial={false} mode="wait">
-                <motion.img
-                  key={activeImageIndex}
-                  src={teamImages[activeImageIndex]}
-                  alt="Our team working"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  variants={imageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                />
-              </AnimatePresence>
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2.5 z-10">
-                {teamImages.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveImageIndex(idx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === activeImageIndex ? "bg-red-500 shadow-md shadow-red-600/50 scale-125" : "bg-white/50 hover:bg-white/80"}`}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Stats Cards */}
-
-          {/* Stats Cards */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-          >
-            {[
-              { num: "50+", label: "Projects Delivered", icon: Code },
-              { num: "24/7", label: "Support Coverage", icon: Headphones },
-              { num: "90%", label: "Uptime Commitment", icon: ShieldCheck },
-              { num: "99+", label: "Happy Clients", icon: Users },
-            ].map((item, index) => {
-              const isAnimated = !item.num.includes("/");
-              const numericValue = isAnimated ? parseFloat(item.num) : null;
-              return (
+            {/* Contact Modal */}
+            <AnimatePresence>
+              {isModalOpen && (
                 <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={isDark ? { scale: 1.05, y: -8 } : {}}
-                  className={`border rounded-2xl p-8 text-center flex flex-col items-center justify-center min-h-[220px] transition-all duration-300
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+                  onClick={(e) =>
+                    e.target === e.currentTarget && setIsModalOpen(false)
+                  }
+                >
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                    animate={{ scale: 1, opacity: 1, y: 0 }}
+                    exit={{ scale: 0.8, opacity: 0, y: 50 }}
+                    className={`border rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden ${isDark ? "bg-gray-900 border-red-900/30" : "bg-white border-gray-200"}`}
+                  >
+                    <div
+                      className={`px-6 py-4 flex justify-between items-center ${isDark ? "bg-gradient-to-r from-red-900/80 to-red-800/60" : "bg-gradient-to-r from-red-700 to-red-600"}`}
+                    >
+                      <h2 className="text-xl font-bold text-white">
+                        Get in Touch
+                      </h2>
+                      <button
+                        onClick={() => setIsModalOpen(false)}
+                        className="text-white hover:text-red-300 transition"
+                      >
+                        <X className="w-7 h-7" />
+                      </button>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="p-6 space-y-5">
+                      {["name", "email", "phone"].map((field) => (
+                        <input
+                          key={field}
+                          type={
+                            field === "email"
+                              ? "email"
+                              : field === "phone"
+                                ? "tel"
+                                : "text"
+                          }
+                          name={field}
+                          placeholder={`${field.charAt(0).toUpperCase() + field.slice(1)} *`}
+                          value={formData[field]}
+                          onChange={handleChange}
+                          required
+                          className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${inputClass}`}
+                        />
+                      ))}
+                      <select
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                        required
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${inputClass}`}
+                      >
+                        <option value="" disabled>
+                          Select Category *
+                        </option>
+                        <option value="SEO">SEO</option>
+                        <option value="Software Developer">
+                          Software Developer
+                        </option>
+                        <option value="BPO">BPO</option>
+                        <option value="Digital Marketing">
+                          Digital Marketing
+                        </option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <textarea
+                        name="message"
+                        placeholder="Your Message / Requirement..."
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows={4}
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${inputClass}`}
+                      />
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className={`w-full py-4 rounded-lg font-bold text-lg text-white transition ${loading ? "bg-gray-700 cursor-not-allowed" : "bg-red-700 hover:bg-red-600 shadow-lg shadow-red-900/40"}`}
+                      >
+                        {loading ? "Sending..." : "Submit Inquiry"}
+                      </button>
+                      {success && (
+                        <p className="text-green-500 text-center font-medium">
+                          Thank you! We'll get back to you soon.
+                        </p>
+                      )}
+                      {error && (
+                        <p className="text-red-500 text-center">{error}</p>
+                      )}
+                    </form>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </section>
+
+        {/* ====================== ABOUT / STATS SECTION ====================== */}
+        <section
+          className={`relative py-16 px-4 sm:px-6 lg:px-8 transition-colors ${isDark ? "bg-black" : "bg-gray-50"}`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="text-center mb-12"
+            >
+              <p
+                className={`text-xl md:text-2xl max-w-4xl mx-auto px-4 ${subText}`}
+              >
+                Technology that connects. Solutions that deliver. Partnerships
+                that last.
+              </p>
+            </motion.div>
+
+            <div
+              className={`relative h-96 mb-12 rounded-2xl overflow-hidden border ${isDark ? "border-red-900/20" : "border-red-100"}`}
+            >
+              <Canvas>
+                <Suspense fallback={null}>
+                  <Scene3D />
+                </Suspense>
+              </Canvas>
+            </div>
+
+            {/* About + Team Carousel */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="grid md:grid-cols-2 gap-8 items-center mb-12"
+            >
+              <motion.div variants={fadeInLeft} className="space-y-6">
+                <h5 className="font-semibold text-xl text-red-500">
+                  About Our Solution
+                </h5>
+                <h2 className={`text-4xl md:text-5xl font-bold ${text}`}>
+                  #1 Partner For Your Business Growth
+                </h2>
+                <p className={`text-lg leading-relaxed ${subText}`}>
+                  We deliver cutting-edge technology solutions that transform
+                  businesses...
+                </p>
+                <div className="grid grid-cols-2 gap-8 my-8">
+                  <div>
+                    <div className={`text-4xl font-black text-red-500`}>
+                      50+
+                    </div>
+                    <p className={subText}>Projects Delivered</p>
+                  </div>
+                  <div>
+                    <div className={`text-4xl font-black text-red-500`}>
+                      100+
+                    </div>
+                    <p className={subText}>Happy Clients</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-10 py-4 rounded-full text-lg font-semibold transition text-white bg-red-600 hover:bg-red-700"
+                >
+                  Read More →
+                </button>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInRight}
+                className={`relative rounded-2xl shadow-2xl overflow-hidden border aspect-[4/3] md:aspect-[5/4] lg:aspect-[3/2] ${isDark ? "border-red-900/30" : "border-gray-200"}`}
+              >
+                <AnimatePresence initial={false} mode="wait">
+                  <motion.img
+                    key={activeImageIndex}
+                    src={teamImages[activeImageIndex]}
+                    alt="Our team working"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    variants={imageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  />
+                </AnimatePresence>
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2.5 z-10">
+                  {teamImages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === activeImageIndex ? "bg-red-500 shadow-md shadow-red-600/50 scale-125" : "bg-white/50 hover:bg-white/80"}`}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Stats Cards */}
+
+            {/* Stats Cards */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            >
+              {[
+                { num: "50+", label: "Projects Delivered", icon: Code },
+                { num: "24/7", label: "Support Coverage", icon: Headphones },
+                { num: "90%", label: "Uptime Commitment", icon: ShieldCheck },
+                { num: "99+", label: "Happy Clients", icon: Users },
+              ].map((item, index) => {
+                const isAnimated = !item.num.includes("/");
+                const numericValue = isAnimated ? parseFloat(item.num) : null;
+                return (
+                  <motion.div
+                    key={index}
+                    variants={scaleIn}
+                    whileHover={isDark ? { scale: 1.05, y: -8 } : {}}
+                    className={`border rounded-2xl p-8 text-center flex flex-col items-center justify-center min-h-[220px] transition-all duration-300
                     ${
                       isDark
                         ? "bg-gradient-to-br from-gray-900 to-black border-red-900/30"
                         : "bg-white border-gray-200 shadow-md"
                     }`}
-                >
-                  <item.icon
-                    className={`w-14 h-14 mx-auto mb-5 text-red-500`}
-                  />
-                  <div
-                    className={`text-5xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tight leading-none ${text}`}
                   >
-                    {isAnimated ? (
-                      <>
-                        <Counter value={numericValue} duration={2.6} />
-                        {item.num.includes("+") && (
-                          <span className="text-red-500">+</span>
-                        )}
-                        {item.num.includes("%") && (
-                          <span className="text-red-500">%</span>
-                        )}
-                      </>
-                    ) : (
-                      <span className="flex items-baseline justify-center gap-1">
-                        <span>24</span>
-                        <span className="text-6xl font-black text-red-500">
-                          /
-                        </span>
-                        <span>7</span>
-                      </span>
-                    )}
-                  </div>
-                  <p
-                    className={`text-lg md:text-xl font-medium mt-3 ${subText}`}
-                  >
-                    {item.label}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-          <div className="mb-12">
-            <MobileOnboarding />
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== LEADERSHIP SECTION ====================== */}
-      <section
-        className={`relative py-16 px-4 sm:px-6 lg:px-8 transition-colors ${isDark ? "bg-gradient-to-b from-black to-gray-950" : "bg-white"}`}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-12"
-          >
-            <h2 className={`text-5xl md:text-7xl font-black mb-4 ${text}`}>
-              Meet Our <span className="text-red-500">Leadership</span>
-            </h2>
-            <p className={`text-xl md:text-2xl max-w-3xl mx-auto ${subText}`}>
-              The visionaries driving AI Knots toward innovation and excellence
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <LeaderCard
-              isDark={isDark}
-              img={CeoImg}
-              alt="Ghulam Haider"
-              name="Ghulam Haider"
-              role="Founder"
-              exp="15+ Years of Experience"
-              desc="Visionary leader with over 15 years of experience in IT and digital transformation."
-              linkedIn="https://www.linkedin.com/in/aley-nabi-9396b31b/"
-              github="https://github.com/aleynabi-atlaknots"
-            />
-            <LeaderCard
-              isDark={isDark}
-              img={FounderImg}
-              alt="Rakesh Nagar"
-              name="Rakesh Nagar"
-              role="Chief Executive Officer"
-              exp="15+ Years of Experience"
-              desc="Strategic leader with over 15 years of experience in driving business growth and innovation."
-              linkedIn="https://www.linkedin.com/in/aley-nabi-9396b31b/"
-              github="https://github.com/aleynabi-atlaknots"
-            />
-            <LeaderCard
-              isDark={isDark}
-              img={MdImg}
-              alt="Alquma jabeen"
-              name="Alquma jabeen"
-              role="Managing Director"
-              exp="7+ Years of Experience"
-              desc="With over 7 years of expertise in the Banking sector and 3+ years of experience in Business Process Outsourcing (BPO)"
-              linkedIn="https://www.linkedin.com/in/aley-nabi-profile"
-              github="https://github.com/aleynabi-atlaknots"
-            />
-            <LeaderCard
-              isDark={isDark}
-              img={CtoImg}
-              alt="Azhar Uddin"
-              name="Azhar Uddin"
-              role="Chief Technical Officer"
-              exp="7+ Years of Experience"
-              desc="Leading technical innovation, architecture, and engineering teams to deliver cutting-edge solutions."
-              linkedIn="https://www.linkedin.com/in/aley-nabi-profile"
-              github="https://github.com/aleynabi-atlaknots"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== OUR TEAM SECTION ====================== */}
-      <section className="py-16 px-5 sm:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-12"
-          >
-            <h2 className={`text-5xl md:text-6xl font-black mb-4 ${text}`}>
-              Our <span className="text-red-500">Team</span>
-            </h2>
-            <p className={`text-xl md:text-2xl max-w-3xl mx-auto ${subText}`}>
-              The passionate people behind AI Knots' success
-            </p>
-          </motion.div>
-          <div
-            className={`rounded-2xl overflow-hidden border shadow-2xl ${isDark ? "border-red-900/30" : "border-gray-200"}`}
-          >
-            <img
-              src={OurTeam}
-              alt="Our Team"
-              className="w-full h-auto max-h-[700px] object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== SERVICES SECTION ====================== */}
-      <section
-        className={`py-24 relative overflow-hidden ${isDark ? "bg-gradient-to-b from-black to-gray-900" : "bg-gradient-to-b from-gray-50 to-white"}`}
-      >
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2
-              className={`text-4xl md:text-5xl font-bold mb-4 ${headingClass}`}
-            >
-              Our Core Services
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-800 mx-auto mb-6"></div>
-            <p className={`text-lg max-w-2xl mx-auto ${bodyClass}`}>
-              From ideation to 24/7 support — we deliver end-to-end excellence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            {[
-              {
-                title: "Application & Website Development",
-                icon: Code,
-                items: [
-                  { text: "Corporate websites", icon: Building2 },
-                  { text: "Enterprise web applications", icon: Cloud },
-                  { text: "Portals & dashboards", icon: Database },
-                  { text: "Mobile applications", icon: Smartphone },
-                  { text: "Microservices & cloud-based systems", icon: Zap },
-                ],
-              },
-              {
-                title: "Testing & Quality Assurance",
-                icon: Search,
-                items: [
-                  { text: "Manual testing", icon: CheckCircle2 },
-                  { text: "Automation testing", icon: Zap },
-                  { text: "Performance testing", icon: Rocket },
-                  { text: "Security testing", icon: Shield },
-                ],
-              },
-              {
-                title: "Digital Marketing & E-commerce Solutions",
-                icon: ShoppingCart,
-                items: [
-                  { text: "SEO & SEM services", icon: Search },
-                  { text: "Social media marketing", icon: MessageCircle },
-                  { text: "E-commerce platform development", icon: Building2 },
-                  { text: "Content marketing & strategy", icon: Star },
-                  { text: "Conversion rate optimization", icon: ArrowRight },
-                ],
-              },
-              {
-                title: "Production Support & Maintenance",
-                icon: Wrench,
-                items: [
-                  { text: "24×7 application support", icon: Clock },
-                  { text: "Bug fixing & enhancements", icon: Wrench },
-                  { text: "SLA-based support", icon: CheckCircle2 },
-                  { text: "Monitoring & incident management", icon: Shield },
-                ],
-              },
-              {
-                title: "BPO & IT Staffing Solutions",
-                icon: Users,
-                items: [
-                  { text: "IT staffing & recruitment", icon: Building2 },
-                  { text: "BPO services", icon: Landmark },
-                  { text: "Remote team augmentation", icon: Building2 },
-                  { text: "Project-based staffing", icon: ArrowRight },
-                ],
-              },
-            ].map((service, idx) => {
-              const ServiceIcon = service.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`group relative rounded-3xl p-8 border transition-all duration-500 hover:-translate-y-3 ${cardClass}`}
-                >
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all duration-300">
-                      <ServiceIcon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className={`text-2xl font-bold mb-6 ${headingClass}`}>
-                      {service.title}
-                    </h3>
-                    <ul className="space-y-4">
-                      {service.items.map((item, i) => {
-                        const ItemIcon = item.icon;
-                        return (
-                          <li
-                            key={i}
-                            className={`flex items-start gap-3 ${bodyClass} hover:translate-x-2 transition-all duration-300`}
-                          >
-                            <ItemIcon className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
-                            <span>{item.text}</span>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section
-        className={`py-24 relative overflow-hidden ${isDark ? "bg-gradient-to-b from-black to-gray-900" : "bg-gradient-to-b from-gray-50 to-white"}`}
-      >
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2
-              className={`text-4xl md:text-5xl font-bold mb-4 ${headingClass}`}
-            >
-              Industry-Specific Solutions
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-800 mx-auto mb-6"></div>
-            <p className={`text-lg max-w-2xl mx-auto ${bodyClass}`}>
-              Tailored digital solutions designed for diverse industry verticals
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {[
-              {
-                title: "Banking & Financial Services",
-                icon: Landmark,
-                items: [
-                  { text: "Core banking support", icon: Building2 },
-                  { text: "Loan management systems", icon: Database },
-                  { text: "Payment integrations", icon: Zap },
-                  { text: "KYC / AML solutions", icon: Shield },
-                  { text: "Secure APIs & reporting", icon: Code2 },
-                ],
-              },
-              {
-                title: "Retail & E-Commerce",
-                icon: ShoppingCart,
-                items: [
-                  { text: "E-commerce platforms", icon: ShoppingCart },
-                  { text: "Order & inventory management", icon: Database },
-                  { text: "Payment gateways", icon: Zap },
-                  { text: "CRM & loyalty systems", icon: Building2 },
-                ],
-              },
-              {
-                title: "Enterprise Solutions",
-                icon: Building,
-                items: [
-                  { text: "HRMS", icon: Building2 },
-                  { text: "ERP modules", icon: Database },
-                  { text: "Workflow automation", icon: Zap },
-                  { text: "Reporting & analytics", icon: Code2 },
-                ],
-              },
-              {
-                title: "Government & PSU Projects",
-                icon: Landmark,
-                items: [
-                  { text: "Citizen portals", icon: Building2 },
-                  { text: "Data management systems", icon: Database },
-                  { text: "Secure web applications", icon: Shield },
-                  { text: "Long-term support contracts", icon: CheckCircle2 },
-                ],
-              },
-            ].map((domain, idx) => {
-              const DomainIcon = domain.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`group relative rounded-3xl p-8 border transition-all duration-500 hover:-translate-y-3 ${cardClass}`}
-                >
-                  <div className="relative z-10">
-                    {/* Icon Container */}
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all duration-300">
-                      <DomainIcon className="w-8 h-8 text-white" />
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className={`text-2xl font-bold mb-6 ${headingClass} group-hover:text-red-600 transition-colors`}
+                    <item.icon
+                      className={`w-14 h-14 mx-auto mb-5 text-red-500`}
+                    />
+                    <div
+                      className={`text-5xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tight leading-none ${text}`}
                     >
-                      {domain.title}
-                    </h3>
+                      {isAnimated ? (
+                        <>
+                          <Counter value={numericValue} duration={2.6} />
+                          {item.num.includes("+") && (
+                            <span className="text-red-500">+</span>
+                          )}
+                          {item.num.includes("%") && (
+                            <span className="text-red-500">%</span>
+                          )}
+                        </>
+                      ) : (
+                        <span className="flex items-baseline justify-center gap-1">
+                          <span>24</span>
+                          <span className="text-6xl font-black text-red-500">
+                            /
+                          </span>
+                          <span>7</span>
+                        </span>
+                      )}
+                    </div>
+                    <p
+                      className={`text-lg md:text-xl font-medium mt-3 ${subText}`}
+                    >
+                      {item.label}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+            <div className="mb-12">
+              <MobileOnboarding />
+            </div>
+          </div>
+        </section>
 
-                    {/* List Items */}
-                    <ul className="space-y-4">
-                      {domain.items.map((item, i) => {
-                        const ItemIcon = item.icon;
-                        return (
-                          <li
-                            key={i}
-                            className={`flex items-start gap-3 ${bodyClass} hover:translate-x-2 transition-all duration-300`}
-                          >
-                            <ItemIcon className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
-                            <span>{item.text}</span>
-                          </li>
-                        );
-                      })}
-                    </ul>
+        {/* ====================== LEADERSHIP SECTION ====================== */}
+        <section
+          className={`relative py-16 px-4 sm:px-6 lg:px-8 transition-colors ${isDark ? "bg-gradient-to-b from-black to-gray-950" : "bg-white"}`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="text-center mb-12"
+            >
+              <h2 className={`text-5xl md:text-7xl font-black mb-4 ${text}`}>
+                Meet Our <span className="text-red-500">Leadership</span>
+              </h2>
+              <p className={`text-xl md:text-2xl max-w-3xl mx-auto ${subText}`}>
+                The visionaries driving AI Knots toward innovation and
+                excellence
+              </p>
+            </motion.div>
 
-                    {/* Optional "Explore" Button */}
-                    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                      <button className="text-red-600 hover:text-red-700 font-medium flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
-                        Explore Solutions
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <LeaderCard
+                isDark={isDark}
+                img={CeoImg}
+                alt="Ghulam Haider"
+                name="Ghulam Haider"
+                role="Founder"
+                exp="15+ Years of Experience"
+                desc="Visionary leader with over 15 years of experience in IT and digital transformation."
+                linkedIn="https://www.linkedin.com/in/aley-nabi-9396b31b/"
+                github="https://github.com/aleynabi-atlaknots"
+              />
+              <LeaderCard
+                isDark={isDark}
+                img={FounderImg}
+                alt="Rakesh Nagar"
+                name="Rakesh Nagar"
+                role="Chief Executive Officer"
+                exp="15+ Years of Experience"
+                desc="Strategic leader with over 15 years of experience in driving business growth and innovation."
+                linkedIn="https://www.linkedin.com/in/aley-nabi-9396b31b/"
+                github="https://github.com/aleynabi-atlaknots"
+              />
+              <LeaderCard
+                isDark={isDark}
+                img={MdImg}
+                alt="Alquma jabeen"
+                name="Alquma jabeen"
+                role="Managing Director"
+                exp="7+ Years of Experience"
+                desc="With over 7 years of expertise in the Banking sector and 3+ years of experience in Business Process Outsourcing (BPO)"
+                linkedIn="https://www.linkedin.com/in/aley-nabi-profile"
+                github="https://github.com/aleynabi-atlaknots"
+              />
+              <LeaderCard
+                isDark={isDark}
+                img={CtoImg}
+                alt="Azhar Uddin"
+                name="Azhar Uddin"
+                role="Chief Technical Officer"
+                exp="7+ Years of Experience"
+                desc="Leading technical innovation, architecture, and engineering teams to deliver cutting-edge solutions."
+                linkedIn="https://www.linkedin.com/in/aley-nabi-profile"
+                github="https://github.com/aleynabi-atlaknots"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ====================== OUR TEAM SECTION ====================== */}
+        <section className="py-16 px-5 sm:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="text-center mb-12"
+            >
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${text}`}>
+                Our <span className="text-red-500">Team</span>
+              </h2>
+              <p className={`text-xl md:text-2xl max-w-3xl mx-auto ${subText}`}>
+                The passionate people behind AI Knots' success
+              </p>
+            </motion.div>
+            <div
+              className={`rounded-2xl overflow-hidden border shadow-2xl ${isDark ? "border-red-900/30" : "border-gray-200"}`}
+            >
+              <img
+                src={OurTeam}
+                alt="Our Team"
+                className="w-full h-auto max-h-[700px] object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ====================== SERVICES SECTION ====================== */}
+        <section
+          className={`py-24 relative overflow-hidden ${isDark ? "bg-gradient-to-b from-black to-gray-900" : "bg-gradient-to-b from-gray-50 to-white"}`}
+        >
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <h2
+                className={`text-4xl md:text-5xl font-bold mb-4 ${headingClass}`}
+              >
+                Our Core Services
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-800 mx-auto mb-6"></div>
+              <p className={`text-lg max-w-2xl mx-auto ${bodyClass}`}>
+                From ideation to 24/7 support — we deliver end-to-end
+                excellence.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+              {[
+                {
+                  title: "Application & Website Development",
+                  icon: Code,
+                  items: [
+                    { text: "Corporate websites", icon: Building2 },
+                    { text: "Enterprise web applications", icon: Cloud },
+                    { text: "Portals & dashboards", icon: Database },
+                    { text: "Mobile applications", icon: Smartphone },
+                    { text: "Microservices & cloud-based systems", icon: Zap },
+                  ],
+                },
+                {
+                  title: "Testing & Quality Assurance",
+                  icon: Search,
+                  items: [
+                    { text: "Manual testing", icon: CheckCircle2 },
+                    { text: "Automation testing", icon: Zap },
+                    { text: "Performance testing", icon: Rocket },
+                    { text: "Security testing", icon: Shield },
+                  ],
+                },
+                {
+                  title: "Digital Marketing & E-commerce Solutions",
+                  icon: ShoppingCart,
+                  items: [
+                    { text: "SEO & SEM services", icon: Search },
+                    { text: "Social media marketing", icon: MessageCircle },
+                    {
+                      text: "E-commerce platform development",
+                      icon: Building2,
+                    },
+                    { text: "Content marketing & strategy", icon: Star },
+                    { text: "Conversion rate optimization", icon: ArrowRight },
+                  ],
+                },
+                {
+                  title: "Production Support & Maintenance",
+                  icon: Wrench,
+                  items: [
+                    { text: "24×7 application support", icon: Clock },
+                    { text: "Bug fixing & enhancements", icon: Wrench },
+                    { text: "SLA-based support", icon: CheckCircle2 },
+                    { text: "Monitoring & incident management", icon: Shield },
+                  ],
+                },
+                {
+                  title: "BPO & IT Staffing Solutions",
+                  icon: Users,
+                  items: [
+                    { text: "IT staffing & recruitment", icon: Building2 },
+                    { text: "BPO services", icon: Landmark },
+                    { text: "Remote team augmentation", icon: Building2 },
+                    { text: "Project-based staffing", icon: ArrowRight },
+                  ],
+                },
+              ].map((service, idx) => {
+                const ServiceIcon = service.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={`group relative rounded-3xl p-8 border transition-all duration-500 hover:-translate-y-3 ${cardClass}`}
+                  >
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all duration-300">
+                        <ServiceIcon className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className={`text-2xl font-bold mb-6 ${headingClass}`}>
+                        {service.title}
+                      </h3>
+                      <ul className="space-y-4">
+                        {service.items.map((item, i) => {
+                          const ItemIcon = item.icon;
+                          return (
+                            <li
+                              key={i}
+                              className={`flex items-start gap-3 ${bodyClass} hover:translate-x-2 transition-all duration-300`}
+                            >
+                              <ItemIcon className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                              <span>{item.text}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
-      {/* ====================== TESTIMONIALS ====================== */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="mb-12 px-4"
-      >
-        <h2 className={`text-5xl font-black text-center mb-12 ${text}`}>
-          What Our <span className="text-red-500">Clients Say</span>
-        </h2>
-        <div className="relative max-w-4xl mx-auto h-80 md:h-72">
-          {testimonials.map((t, idx) => (
-            <motion.div
-              key={idx}
-              animate={{
-                opacity: idx === activeTestimonial ? 1 : 0,
-                scale: idx === activeTestimonial ? 1 : 0.9,
-              }}
-              transition={{ duration: 0.6 }}
-              className={`absolute inset-0 border rounded-3xl p-10 flex flex-col justify-between ${isDark ? "bg-gradient-to-br from-gray-900/90 to-black/90 border-red-900/30" : "bg-white border-gray-200 shadow-lg"}`}
-              style={{
-                pointerEvents: idx === activeTestimonial ? "auto" : "none",
-              }}
-            >
-              <div className="flex gap-1 text-2xl text-red-500">
-                {"★".repeat(t.rating)}
-              </div>
-              <p
-                className={`text-2xl italic ${isDark ? "text-gray-100" : "text-gray-700"}`}
+        </section>
+
+        <section
+          className={`py-24 relative overflow-hidden ${isDark ? "bg-gradient-to-b from-black to-gray-900" : "bg-gradient-to-b from-gray-50 to-white"}`}
+        >
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <h2
+                className={`text-4xl md:text-5xl font-bold mb-4 ${headingClass}`}
               >
-                "{t.text}"
+                Industry-Specific Solutions
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-800 mx-auto mb-6"></div>
+              <p className={`text-lg max-w-2xl mx-auto ${bodyClass}`}>
+                Tailored digital solutions designed for diverse industry
+                verticals
               </p>
-              <p className={`font-bold ${text}`}>{t.author}</p>
-            </motion.div>
-          ))}
-        </div>
-        <div className="flex justify-center gap-3 mt-8">
-          {testimonials.map((_, i) => (
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+              {[
+                {
+                  title: "Banking & Financial Services",
+                  icon: Landmark,
+                  items: [
+                    { text: "Core banking support", icon: Building2 },
+                    { text: "Loan management systems", icon: Database },
+                    { text: "Payment integrations", icon: Zap },
+                    { text: "KYC / AML solutions", icon: Shield },
+                    { text: "Secure APIs & reporting", icon: Code2 },
+                  ],
+                },
+                {
+                  title: "Retail & E-Commerce",
+                  icon: ShoppingCart,
+                  items: [
+                    { text: "E-commerce platforms", icon: ShoppingCart },
+                    { text: "Order & inventory management", icon: Database },
+                    { text: "Payment gateways", icon: Zap },
+                    { text: "CRM & loyalty systems", icon: Building2 },
+                  ],
+                },
+                {
+                  title: "Enterprise Solutions",
+                  icon: Building,
+                  items: [
+                    { text: "HRMS", icon: Building2 },
+                    { text: "ERP modules", icon: Database },
+                    { text: "Workflow automation", icon: Zap },
+                    { text: "Reporting & analytics", icon: Code2 },
+                  ],
+                },
+                {
+                  title: "Government & PSU Projects",
+                  icon: Landmark,
+                  items: [
+                    { text: "Citizen portals", icon: Building2 },
+                    { text: "Data management systems", icon: Database },
+                    { text: "Secure web applications", icon: Shield },
+                    { text: "Long-term support contracts", icon: CheckCircle2 },
+                  ],
+                },
+              ].map((domain, idx) => {
+                const DomainIcon = domain.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={`group relative rounded-3xl p-8 border transition-all duration-500 hover:-translate-y-3 ${cardClass}`}
+                  >
+                    <div className="relative z-10">
+                      {/* Icon Container */}
+                      <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all duration-300">
+                        <DomainIcon className="w-8 h-8 text-white" />
+                      </div>
+
+                      {/* Title */}
+                      <h3
+                        className={`text-2xl font-bold mb-6 ${headingClass} group-hover:text-red-600 transition-colors`}
+                      >
+                        {domain.title}
+                      </h3>
+
+                      {/* List Items */}
+                      <ul className="space-y-4">
+                        {domain.items.map((item, i) => {
+                          const ItemIcon = item.icon;
+                          return (
+                            <li
+                              key={i}
+                              className={`flex items-start gap-3 ${bodyClass} hover:translate-x-2 transition-all duration-300`}
+                            >
+                              <ItemIcon className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                              <span>{item.text}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      {/* Optional "Explore" Button */}
+                      <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <button className="text-red-600 hover:text-red-700 font-medium flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                          Explore Solutions
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+        {/* ====================== TESTIMONIALS ====================== */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-12 px-4"
+        >
+          <h2 className={`text-5xl font-black text-center mb-12 ${text}`}>
+            What Our <span className="text-red-500">Clients Say</span>
+          </h2>
+          <div className="relative max-w-4xl mx-auto h-80 md:h-72">
+            {testimonials.map((t, idx) => (
+              <motion.div
+                key={idx}
+                animate={{
+                  opacity: idx === activeTestimonial ? 1 : 0,
+                  scale: idx === activeTestimonial ? 1 : 0.9,
+                }}
+                transition={{ duration: 0.6 }}
+                className={`absolute inset-0 border rounded-3xl p-10 flex flex-col justify-between ${isDark ? "bg-gradient-to-br from-gray-900/90 to-black/90 border-red-900/30" : "bg-white border-gray-200 shadow-lg"}`}
+                style={{
+                  pointerEvents: idx === activeTestimonial ? "auto" : "none",
+                }}
+              >
+                <div className="flex gap-1 text-2xl text-red-500">
+                  {"★".repeat(t.rating)}
+                </div>
+                <p
+                  className={`text-2xl italic ${isDark ? "text-gray-100" : "text-gray-700"}`}
+                >
+                  "{t.text}"
+                </p>
+                <p className={`font-bold ${text}`}>{t.author}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-3 mt-8">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveTestimonial(i)}
+                className={`h-3 rounded-full transition-all ${i === activeTestimonial ? "w-10 bg-red-600" : "w-3 bg-gray-400"}`}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ====================== FAQ + FINAL CTA ====================== */}
+        <div className="relative z-10 max-w-6xl mx-auto pb-16 px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className={`text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-6 md:mb-8 tracking-tight ${text}`}
+            >
+              FREQUENTLY <span className="text-red-500">ASKED</span> QUESTIONS
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className={`text-lg sm:text-xl md:text-2xl text-center mb-12 md:mb-16 font-light max-w-4xl mx-auto ${subText}`}
+            >
+              Got questions? We've got clear, straightforward answers.
+            </motion.p>
+            <FAQAccordion isDark={isDark} />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="text-center py-16"
+          >
+            <h3 className={`text-5xl md:text-6xl font-black mb-8 px-4 ${text}`}>
+              Ready to build something{" "}
+              <span className="text-red-500">great</span> together?
+            </h3>
+            <p className={`text-xl mb-10 max-w-2xl mx-auto px-4 ${subText}`}>
+              Let's turn your vision into reality. Our team is ready to start
+              today.
+            </p>
             <button
-              key={i}
-              onClick={() => setActiveTestimonial(i)}
-              className={`h-3 rounded-full transition-all ${i === activeTestimonial ? "w-10 bg-red-600" : "w-3 bg-gray-400"}`}
-            />
-          ))}
+              onClick={() => setIsModalOpen(true)}
+              className="px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition text-white bg-gradient-to-r from-red-600 to-red-800 hover:shadow-red-900/70"
+            >
+              LET'S START THE CONVERSATION →
+            </button>
+          </motion.div>
         </div>
-      </motion.div>
-
-      {/* ====================== FAQ + FINAL CTA ====================== */}
-      <div className="relative z-10 max-w-6xl mx-auto pb-16 px-4">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className={`text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-6 md:mb-8 tracking-tight ${text}`}
-          >
-            FREQUENTLY <span className="text-red-500">ASKED</span> QUESTIONS
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className={`text-lg sm:text-xl md:text-2xl text-center mb-12 md:mb-16 font-light max-w-4xl mx-auto ${subText}`}
-          >
-            Got questions? We've got clear, straightforward answers.
-          </motion.p>
-          <FAQAccordion isDark={isDark} />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="text-center py-16"
-        >
-          <h3 className={`text-5xl md:text-6xl font-black mb-8 px-4 ${text}`}>
-            Ready to build something <span className="text-red-500">great</span>{" "}
-            together?
-          </h3>
-          <p className={`text-xl mb-10 max-w-2xl mx-auto px-4 ${subText}`}>
-            Let's turn your vision into reality. Our team is ready to start
-            today.
-          </p>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition text-white bg-gradient-to-r from-red-600 to-red-800 hover:shadow-red-900/70"
-          >
-            LET'S START THE CONVERSATION →
-          </button>
-        </motion.div>
       </div>
-    </div>
     </>
   );
 }

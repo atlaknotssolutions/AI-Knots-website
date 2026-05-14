@@ -1042,7 +1042,7 @@ export default function Home() {
                     on IT Services & Business Solutions
                   </h2>
                   <p className="text-lg text-red-600 font-medium mb-5">
-                    Grow Your Business with Atla Knots IT Solution
+                    Grow Your Business with AI Knots IT Solution
                   </p>
 
                   <div className="relative flex justify-center my-5">

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-const API_BASE_URL = "http://localhost:8000"; // Change to production URL later
+const API_BASE_URL = "https://ai-knots-it-solution-2.onrender.com"; // Change to production URL later
 
 export default function RecentWork() {
   const [isDark, setIsDark] = useState(() =>

@@ -50,7 +50,7 @@ import {
   incrementPostView,
   togglePostLike,
   sendCommentOtp,
-  postCommentWithOtp,
+  postComment,
 } from "./technologyslice/technologySlice";
 
 const Technology = () => {
@@ -228,10 +228,9 @@ const Technology = () => {
 
     setLoadingAction(true);
     const result = await dispatch(
-      postCommentWithOtp({
+      postComment({
         slug: pendingSlug,
         email: userInfo.email,
-        otp: otp || "000000",
         comment: commentText.trim(),
       }),
     );
