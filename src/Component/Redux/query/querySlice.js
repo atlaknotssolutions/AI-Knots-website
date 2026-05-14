@@ -2,14 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // ─── Async Thunk ────────────────────────────────────────────────────────────
-
 export const submitContactForm = createAsyncThunk(
   "contact/submitForm",
   async (payload, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/contact/create",
-        payload,
+        "http://localhost:8000/query/create",
+        payload
       );
       return response.data;
     } catch (error) {
@@ -21,57 +20,52 @@ export const submitContactForm = createAsyncThunk(
           error.response.data?.error ||
           errorMsg;
       } else if (error.request) {
-        errorMsg =
-          "No response from server. Please check if backend is running.";
+        errorMsg = "No response from server. Please check your connection.";
       }
-
       return rejectWithValue(errorMsg);
     }
-  },
+  }
 );
 
 // ─── Initial State ───────────────────────────────────────────────────────────
-
 const initialFormData = {
-  usernamee: "",
+  name: "",
   email: "",
   phone: "",
-  subject: "",
   message: "",
+  category: "Other",     // Default value as per your schema
 };
 
 const contactSlice = createSlice({
   name: "contact",
   initialState: {
     formData: initialFormData,
-    captchaValue: null,
     loading: false,
     successMessage: null,
     errorMessage: null,
   },
+
   reducers: {
-    // Update any single form field
+    // Update form fields
     updateField(state, action) {
       const { name, value } = action.payload;
       state.formData[name] = value;
     },
-    // Store reCAPTCHA token
-    setCaptcha(state, action) {
-      state.captchaValue = action.payload;
-    },
-    // Reset entire form after success
+
+    // Reset form after successful submission
     resetForm(state) {
-      state.formData = initialFormData;
-      state.captchaValue = null;
+      state.formData = { ...initialFormData };
       state.successMessage = null;
       state.errorMessage = null;
     },
-    // Clear alert messages manually if needed
+
+    // Clear messages
     clearMessages(state) {
       state.successMessage = null;
       state.errorMessage = null;
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(submitContactForm.pending, (state) => {
@@ -83,8 +77,7 @@ const contactSlice = createSlice({
         state.loading = false;
         state.successMessage =
           "Message sent successfully! We'll get back to you soon.";
-        state.formData = initialFormData;
-        state.captchaValue = null;
+        state.formData = { ...initialFormData };
       })
       .addCase(submitContactForm.rejected, (state, action) => {
         state.loading = false;
@@ -93,7 +86,5 @@ const contactSlice = createSlice({
   },
 });
 
-export const { updateField, setCaptcha, resetForm, clearMessages } =
-  contactSlice.actions;
-
+export const { updateField, resetForm, clearMessages } = contactSlice.actions;
 export default contactSlice.reducer;

@@ -18,18 +18,14 @@ import {
 import heroVideo from "../assets/herosectionvideo.mp4";
 
 // ReCAPTCHA & Toast
-import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import {
-  updateField,
-  setCaptcha,
-  clearMessages,
-  submitContactForm,
-} from "./Redux/contact/contactSlice.js";
+
+import { updateField, clearMessages } from "./Redux/query/querySlice.js";
+import { submitContactForm } from "./Redux/query/queryslice.js";
 
 import background from "../assets/Images/backgroundimage1.jpeg";
 import background2 from "../assets/Images/backgroundimage2.jpeg";
@@ -79,8 +75,9 @@ export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // For navigation to Portfolio
 
-  const { formData, captchaValue, loading, successMessage, errorMessage } =
-    useSelector((state) => state.contact);
+  const { formData, loading, successMessage, errorMessage } = useSelector(
+    (state) => state.contact,
+  );
 
   const [showPopup, setShowPopup] = useState(false);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
@@ -119,17 +116,16 @@ export default function Home() {
     dispatch(updateField({ name: e.target.name, value: e.target.value }));
   };
 
-  const handleCaptchaChange = (value) => {
-    dispatch(setCaptcha(value));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!captchaValue) {
-      toast.error("Please verify that you are not a robot.");
-      return;
-    }
-    dispatch(submitContactForm({ ...formData, captcha: captchaValue }));
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      category: formData.category,
+    };
+    dispatch(submitContactForm(payload));
   };
 
   // Navigate to Portfolio Page
@@ -775,8 +771,8 @@ export default function Home() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <input
                       type="text"
-                      name="usernamee"
-                      value={formData.usernamee}
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
                       placeholder="Your Name"
                       required
@@ -806,10 +802,11 @@ export default function Home() {
                   />
                   <input
                     type="text"
-                    name="subject"
-                    value={formData.subject}
+                    name="category"
+                    value={formData.category}
                     onChange={handleChange}
-                    placeholder="Subject (Optional)"
+                    placeholder="Category"
+                    required
                     disabled={loading}
                     className={`w-full px-6 py-4 rounded-2xl border focus:outline-none focus:border-red-500 transition-colors ${isDark ? "bg-gray-900 border-gray-700 text-white" : "bg-gray-50 border-gray-300 text-gray-900"}`}
                   />
@@ -822,11 +819,6 @@ export default function Home() {
                     required
                     disabled={loading}
                     className={`w-full px-6 py-4 rounded-3xl border focus:outline-none focus:border-red-500 transition-colors resize-y ${isDark ? "bg-gray-900 border-gray-700 text-white" : "bg-gray-50 border-gray-300 text-gray-900"}`}
-                  />
-                  <ReCAPTCHA
-                    sitekey="6LfP7nEsAAAAAOLxpk34nW3cU3uYXON85c8n4D2H"
-                    onChange={handleCaptchaChange}
-                    theme={isDark ? "dark" : "light"}
                   />
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <button
@@ -1105,8 +1097,8 @@ export default function Home() {
                   <form onSubmit={handleSubmit} className="space-y-5 flex-1">
                     <input
                       type="text"
-                      name="usernamee"
-                      value={formData.usernamee}
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
                       placeholder="Full Name *"
                       required
@@ -1134,10 +1126,15 @@ export default function Home() {
                       className="w-full px-5 py-3.5 rounded-2xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:border-red-500 outline-none"
                     />
 
-                    <ReCAPTCHA
-                      sitekey="6LfP7nEsAAAAAOLxpk34nW3cU3uYXON85c8n4D2H"
-                      onChange={handleCaptchaChange}
-                      theme={isDark ? "dark" : "light"}
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={3}
+                      placeholder="Tell us about your project..."
+                      required
+                      disabled={loading}
+                      className="w-full px-5 py-3.5 rounded-2xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:border-red-500 outline-none resize-none"
                     />
 
                     <button

@@ -120,10 +120,7 @@ export default function DigitalMarketing() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post(
-        "https://ai-knots-it-solution-2.onrender.com/query/create",
-        formData,
-      );
+      await axios.post("http://localhost:8000/query/create", formData);
       setSuccess(true);
       setFormData({
         name: "",
@@ -627,8 +624,11 @@ export default function DigitalMarketing() {
                     : "bg-red-600 hover:bg-red-700 text-white shadow-red-600/50"
                 }`}
               >
-                <button onClick={() => navigate("/contact")} className="flex items-center gap-3">
-                Get Started Today →
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="flex items-center gap-3"
+                >
+                  Get Started Today →
                 </button>
               </motion.button>
             </motion.div>
