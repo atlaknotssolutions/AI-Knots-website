@@ -1011,11 +1011,11 @@ export default function Home() {
                 animate={{ scale: 1, y: 0, opacity: 1 }}
                 exit={{ scale: 0.9, y: 40, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-4xl w-full overflow-hidden flex flex-col lg:flex-row max-h-[92vh]"
+                className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-4xl w-full overflow-hidden flex flex-col md:flex-row max-h-[92vh]"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Left Side - Offer Content */}
-                <div className="lg:w-1/2 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-900 dark:to-gray-800 p-8 lg:p-10 pb-16 flex flex-col">
+                <div className="hidden md:block md:w-1/2 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-900 dark:to-gray-800 p-6 md:p-8 lg:p-10 pb-12 md:pb-16 flex flex-col">
                   <div className="flex justify-between items-center mb-6">
                     <div className="bg-red-600 text-white font-bold px-6 py-2 rounded-full text-sm tracking-wider">
                       LIMITED TIME OFFER
@@ -1028,12 +1028,12 @@ export default function Home() {
                     </button>
                   </div>
 
-                  <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-gray-900 dark:text-white mb-3">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 dark:text-white mb-3">
                     Get up to <span className="text-red-600">5% OFF</span>
                     <br />
                     on IT Services & Business Solutions
                   </h2>
-                  <p className="text-lg text-red-600 font-medium mb-5">
+                  <p className="text-base md:text-lg lg:text-xl text-red-600 font-medium mb-4 md:mb-5">
                     Grow Your Business with AI Knots IT Solution
                   </p>
 
@@ -1041,7 +1041,7 @@ export default function Home() {
                     <img
                       src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070"
                       alt="AI Knots IT Services"
-                      className="w-56 lg:w-72 rounded-3xl shadow-2xl object-cover"
+                      className="w-40 md:w-56 lg:w-72 rounded-3xl shadow-2xl object-cover"
                     />
 
                     <div className="absolute -top-5 -left-5 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 text-center">
@@ -1084,9 +1084,18 @@ export default function Home() {
                 </div>
 
                 {/* Right Side - Form */}
-                <div className="lg:w-1/2 bg-white dark:bg-gray-900 p-8 lg:p-10 pb-16 flex flex-col">
+                <div className="w-full md:w-1/2 bg-white dark:bg-gray-900 p-6 md:p-8 lg:p-10 pb-12 md:pb-16 flex flex-col">
+                  <div className="flex justify-between items-center mb-6 md:hidden">
+                    <div></div>
+                    <button
+                      onClick={() => setShowPopup(false)}
+                      className="text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors"
+                    >
+                      <X size={28} />
+                    </button>
+                  </div>
                   <div className="text-center mb-8">
-                    <h3 className="text-red-600 text-2xl font-bold">
+                    <h3 className="text-red-600 text-lg md:text-xl lg:text-2xl font-bold">
                       Book Your FREE IT Consultation Today
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm">
@@ -1145,7 +1154,7 @@ export default function Home() {
                       {loading ? "Submitting..." : "Get Free Consultation"}
                     </button>
 
-                    <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
+                    <p className="text-center text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-4">
                       ✅ No spam • 100% Free Consultation • Confidential
                     </p>
                   </form>
