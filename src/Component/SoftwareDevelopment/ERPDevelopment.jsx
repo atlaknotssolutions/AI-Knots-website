@@ -13,7 +13,7 @@ const images = {
     "https://images.unsplash.com/photo-1551288049-b01e1b7d0d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
   process:
     "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
-  industry: industury,
+  industry: "industury",
 };
 
 const industries = [
@@ -89,72 +89,74 @@ export default function ERPDevelopment() {
       }`}
       >
         {/* ====================== HERO SECTION ====================== */}
-        <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-24">
-          <div className="absolute inset-0">
-            <img
-              src={images.hero}
-              alt="ERP software dashboard showing business growth"
-              className="w-full h-full object-cover opacity-25 dark:opacity-30 brightness-50"
-            />
-            <div
-              className={`absolute inset-0 bg-gradient-to-t ${
-                isDark
-                  ? "from-black via-black/80 to-transparent"
-                  : "from-white/90 via-white/80 to-transparent"
-              }`}
-            />
-          </div>
+    <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-24 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={images.hero}
+      alt="ERP software dashboard showing business growth"
+      className="w-full h-full object-cover 
+                 brightness-75 contrast-110 
+                 dark:brightness-50 dark:contrast-125
+                 transition-all duration-700"
+      loading="lazy"
+    />
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="relative z-10 max-w-7xl mx-auto text-center"
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className={`text-5xl md:text-7xl font-black mb-8 tracking-tight leading-tight ${isDark ? "text-white" : "text-gray-900"}`}
-            >
-              Powerful ERP Solutions That{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-                Streamline, Scale & Succeed
-              </span>
-            </motion.h1>
+    {/* Gradient Overlay - Optimized for both themes */}
+    <div className="absolute inset-0 bg-gradient-to-t 
+                    from-black/80 via-black/70 to-black/60 
+                    dark:from-black/90 dark:via-black/85 dark:to-black/80" />
+  </div>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-bold text-red-600 dark:text-red-400 mb-6"
-            >
-              Drive Business Efficiency With ERP Solutions
-            </motion.p>
+  {/* Content */}
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={staggerContainer}
+    className="relative z-10 max-w-7xl mx-auto text-center"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className="text-5xl md:text-7xl font-black mb-8 tracking-tight leading-tight text-white"
+    >
+      Powerful ERP Solutions That{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
+        Streamline, Scale & Succeed
+      </span>
+    </motion.h1>
 
-            <motion.p
-              variants={fadeInUp}
-              className={`text-lg md:text-xl mb-12 max-w-5xl mx-auto leading-relaxed ${isDark ? "text-gray-300" : "text-gray-700"}`}
-            >
-              Partner with the Leading ERP software development company in India
-            </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className="text-3xl md:text-4xl font-bold mb-6 text-red-500 dark:text-red-400"
+    >
+      Drive Business Efficiency With ERP Solutions
+    </motion.p>
 
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
-            >
-              <button
-                onClick={() => navigate("/contact")}
-                className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all duration-300 flex items-center gap-2 group ${
-                  isDark
-                    ? "border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600 shadow-lg shadow-red-900/30"
-                    : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 shadow-lg shadow-red-200"
-                }`}
-              >
-                Free Consultation
-                <span className="group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
-              </button>
-            </motion.div>
-          </motion.div>
-        </section>
+    <motion.p
+      variants={fadeInUp}
+      className="text-lg md:text-xl mb-12 max-w-5xl mx-auto leading-relaxed text-gray-200 dark:text-gray-300"
+    >
+      Partner with the Leading ERP software development company in India
+    </motion.p>
+
+    <motion.div variants={fadeInUp} className="flex justify-center">
+      <button
+        onClick={() => navigate("/contact")}
+        className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-700 
+                   hover:from-red-700 hover:to-red-800 text-white 
+                   rounded-full text-xl md:text-2xl font-bold 
+                   shadow-xl shadow-red-900/60 hover:shadow-red-700 
+                   hover:scale-105 transition-all duration-300 
+                   flex items-center gap-3 group"
+      >
+        Free Consultation
+        <span className="group-hover:translate-x-1 transition-transform text-xl">
+          →
+        </span>
+      </button>
+    </motion.div>
+  </motion.div>
+</section>
 
         {/* ====================== FUEL BUSINESS SUCCESS ====================== */}
         <section

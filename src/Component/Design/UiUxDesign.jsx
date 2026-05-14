@@ -270,86 +270,98 @@ export default function UiUxDesign() {
       ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gray-50 text-gray-900"}`}
     >
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-        <div className="absolute inset-0">
-          <img
-            src={images.hero}
-            alt="Futuristic UI/UX Dashboard"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div
-            className={`absolute inset-0 transition-all duration-700
-            ${
-              isDark
-                ? "bg-gradient-to-t from-black via-black/80 to-transparent opacity-90"
-                : "bg-gradient-to-t from-black/70 via-black/50 to-transparent"
-            }`}
-          />
-        </div>
+      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={images.hero}
+      alt="Futuristic UI/UX Dashboard"
+      className="w-full h-full object-cover 
+                 brightness-75 contrast-110 
+                 dark:brightness-50 dark:contrast-125
+                 transition-all duration-700"
+      loading="lazy"
+    />
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="relative z-10 max-w-7xl mx-auto text-center"
-        >
-          <motion.h1
-            variants={fadeInUp}
-            className={`text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight ${isDark ? "text-white" : "text-gray-900"}`}
-          >
-            Best UI/UX Design Company{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-              AI Knots IT Solutions
-            </span>
-          </motion.h1>
+    {/* Gradient Overlay - Optimized for both themes */}
+    <div className="absolute inset-0 bg-gradient-to-t 
+                    from-black/80 via-black/70 to-black/65 
+                    dark:from-black/90 dark:via-black/85 dark:to-black/80" />
+  </div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-3xl md:text-5xl font-bold text-red-500 mb-8"
-          >
-            Design Experiences That Convert Visitors Into Customers
-          </motion.p>
+  {/* Content */}
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={staggerContainer}
+    className="relative z-10 max-w-7xl mx-auto text-center"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight text-white"
+    >
+      Best UI/UX Design Company{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
+        AI Knots IT Solutions
+      </span>
+    </motion.h1>
 
-          <motion.p
-            variants={fadeInUp}
-            className={`text-xl md:text-2xl mb-10 max-w-5xl mx-auto leading-relaxed ${bodyClass}`}
-          >
-            AI Knots IT Solutions delivers high-performing UI/UX designs,
-            websites, and digital solutions tailored to grow your business in
-            2026 and beyond.
-          </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className="text-3xl md:text-5xl font-bold mb-8 text-red-500 dark:text-red-400"
+    >
+      Design Experiences That Convert Visitors Into Customers
+    </motion.p>
 
-          <motion.p
-            variants={fadeInUp}
-            className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed ${bodyClass}`}
-          >
-            We specialize in intuitive, engaging interfaces enhanced by AI
-            personalization, immersive elements, and user psychology to boost
-            usability, engagement, and conversions.
-          </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className="text-xl md:text-2xl mb-10 max-w-5xl mx-auto leading-relaxed text-gray-200 dark:text-gray-300"
+    >
+      AI Knots IT Solutions delivers high-performing UI/UX designs,
+      websites, and digital solutions tailored to grow your business in
+      2026 and beyond.
+    </motion.p>
 
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-          >
-            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group" onClick={() => navigate("/contact")}>
-              Get Free Design Consultation
-              <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button
-              className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all
-              ${
-                isDark
-                  ? "border-red-600/70 text-red-400 hover:bg-red-950/50"
-                  : "border-red-600 text-red-600 hover:bg-red-50"
-              }`}
-            >
-              Free UX Audit
-            </button>
-          </motion.div>
-        </motion.div>
-      </section>
+    <motion.p
+      variants={fadeInUp}
+      className="text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed text-gray-200 dark:text-gray-300"
+    >
+      We specialize in intuitive, engaging interfaces enhanced by AI
+      personalization, immersive elements, and user psychology to boost
+      usability, engagement, and conversions.
+    </motion.p>
+
+    <motion.div
+      variants={fadeInUp}
+      className="flex flex-col sm:flex-row gap-6 justify-center"
+    >
+      {/* Primary Button */}
+      <button
+        onClick={() => navigate("/contact")}
+        className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-700 
+                   hover:from-red-700 hover:to-red-800 text-white 
+                   rounded-full text-xl md:text-2xl font-bold 
+                   shadow-xl shadow-red-900/60 hover:shadow-red-700 
+                   hover:scale-105 transition-all duration-300 
+                   flex items-center gap-3 group"
+      >
+        Get Free Design Consultation
+        <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+      </button>
+
+      {/* Secondary Button */}
+      <button
+        onClick={() => navigate("/contact")}   // Change route if needed
+        className="px-12 py-6 border-2 border-red-500 text-white 
+                   hover:bg-red-600 hover:border-red-600 
+                   dark:hover:bg-red-700 rounded-full 
+                   text-xl md:text-2xl font-bold transition-all duration-300"
+      >
+        Free UX Audit
+      </button>
+    </motion.div>
+  </motion.div>
+</section>
 
       {/* Why Choose Us */}
       <section

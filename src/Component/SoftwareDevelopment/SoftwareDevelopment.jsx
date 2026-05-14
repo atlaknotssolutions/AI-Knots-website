@@ -132,64 +132,86 @@ export default function SoftwareDevelopment() {
       className={`relative overflow-hidden ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900"}`}
     >
       {/* Hero Section with Photo */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-24">
-        <div className="absolute inset-0">
-          <img
-            src={images.hero}
-            alt="Modern software development team collaborating"
-            className="w-full h-full object-cover opacity-25 brightness-50"
-          />
-          <div
-            className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black via-black/80 to-transparent" : "bg-gradient-to-t from-white via-white/80 to-transparent"}`}
-          />
-        </div>
+      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-24 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={images.hero}
+      alt="Modern software development team collaborating"
+      className="w-full h-full object-cover 
+                 brightness-75 contrast-110 
+                 dark:brightness-50 dark:contrast-125
+                 transition-all duration-700"
+      loading="lazy"
+    />
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="relative z-10 max-w-7xl mx-auto text-center"
-        >
-          <motion.h1
-            variants={fadeInUp}
-            className="text-5xl md:text-7xl font-black mb-8 tracking-tight leading-tight"
-          >
-            Software Development Company India
-          </motion.h1>
+    {/* Gradient Overlay - Optimized for both themes */}
+    <div className="absolute inset-0 bg-gradient-to-t 
+                    from-black/80 via-black/70 to-black/60 
+                    dark:from-black/90 dark:via-black/85 dark:to-black/80" />
+  </div>
 
-          <motion.p
-            variants={fadeInUp}
-            className={`text-2xl md:text-3xl font-bold mb-6 ${isDark ? "text-red-400" : "text-red-600"}`}
-          >
-            Expand your business globally by outsourcing your technology
-            requirements to a trusted partner.
-          </motion.p>
+  {/* Content */}
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={staggerContainer}
+    className="relative z-10 max-w-7xl mx-auto text-center"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className="text-5xl md:text-7xl font-black mb-8 tracking-tight leading-tight text-white"
+    >
+      Software Development Company India
+    </motion.h1>
 
-          <motion.p
-            variants={fadeInUp}
-            className={`text-lg md:text-xl mb-12 max-w-5xl mx-auto leading-relaxed ${isDark ? "text-gray-300" : "text-gray-700"}`}
-          >
-            We provide high-quality software development services to businesses
-            by building secure, scalable, and high-performance software
-            solutions with excellent user experience.
-          </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className="text-2xl md:text-3xl font-bold mb-6 text-red-500 dark:text-red-400"
+    >
+      Expand your business globally by outsourcing your technology
+      requirements to a trusted partner.
+    </motion.p>
 
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-          >
-            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group" onClick={() => navigate("/contact")}>
-              Get in Touch{" "}
-              <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button
-              className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "border-red-600/70 text-red-400 hover:bg-red-950/50" : "border-red-600 text-red-600 hover:bg-red-50"}`} onClick={() => navigate("/portfolio") }
-            >
-              View Portfolio →
-            </button>
-          </motion.div>
-        </motion.div>
-      </section>
+    <motion.p
+      variants={fadeInUp}
+      className="text-lg md:text-xl mb-12 max-w-5xl mx-auto leading-relaxed text-gray-200 dark:text-gray-300"
+    >
+      We provide high-quality software development services to businesses
+      by building secure, scalable, and high-performance software
+      solutions with excellent user experience.
+    </motion.p>
+
+    <motion.div
+      variants={fadeInUp}
+      className="flex flex-col sm:flex-row gap-6 justify-center"
+    >
+      {/* Primary Button */}
+      <button
+        onClick={() => navigate("/contact")}
+        className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-700 
+                   text-white rounded-full text-xl md:text-2xl font-bold 
+                   shadow-xl shadow-red-900/50 hover:shadow-red-700/70 
+                   hover:scale-105 active:scale-95 transition-all duration-300 
+                   flex items-center gap-3 group"
+      >
+        Get in Touch{" "}
+        <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+      </button>
+
+      {/* Secondary Button */}
+      <button
+        onClick={() => navigate("/portfolio")}
+        className="px-12 py-6 border-2 border-red-500 text-white 
+                   hover:bg-red-600 hover:border-red-600 
+                   dark:hover:bg-red-700 rounded-full 
+                   text-xl md:text-2xl font-bold transition-all duration-300"
+      >
+        View Portfolio →
+      </button>
+    </motion.div>
+  </motion.div>
+</section>
 
       {/* Empower Section with Team Photo */}
       <section

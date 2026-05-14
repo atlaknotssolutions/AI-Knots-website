@@ -210,87 +210,112 @@ export default function AIServices() {
         className={`relative ${t.bg} overflow-hidden transition-colors duration-300`}
       >
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-          <div className="absolute inset-0">
-            <img
-              src={images.hero}
-              alt="Futuristic AI Dashboard"
-              className={`w-full h-full object-cover ${isDark ? "opacity-30 brightness-50" : "opacity-15 brightness-75"}`}
-              loading="lazy"
-            />
-            <div
-              className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black via-black/80 to-transparent" : "bg-gradient-to-t from-white via-white/85 to-transparent"}`}
-            />
-          </div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="relative z-10 max-w-7xl mx-auto text-center"
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight"
-            >
-              AI & Machine Learning Services in{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-                Bhopal
-              </span>
-            </motion.h1>
-            <motion.p
-              variants={fadeInUp}
-              className="text-2xl md:text-4xl font-bold text-red-500 mb-8"
-            >
-              Turn Data into Decisions — Automate, Predict, Win
-            </motion.p>
-            <motion.p
-              variants={fadeInUp}
-              className={`text-lg md:text-xl ${t.text} mb-12 max-w-4xl mx-auto leading-relaxed`}
-            >
-              At{" "}
-              <span className="text-red-500 font-semibold">
-                AI Knots IT Solutions
-              </span>
-              , we provide advanced AI & Machine Learning Services that help
-              businesses automate processes, analyze data, and make smarter
-              decisions. In today's fast-growing digital world, using AI is no
-              longer optional — it's essential for staying ahead of the
-              competition.
-            </motion.p>
-            <motion.ul
-              variants={fadeInUp}
-              className="flex flex-wrap justify-center gap-6 mb-12 text-lg"
-            >
-              {[
-                "Understand customer behavior",
-                "Predict future trends",
-                "Automate repetitive tasks",
-                "Improve decision-making",
-                "Deliver personalized user experiences",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-red-500" /> {item}
-                </li>
-              ))}
-            </motion.ul>
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
-            >
-              <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group text-white"  onClick={() => navigate("/contact")}>
-                Get Free AI Consultation
-                <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-              </button>
-              <button
-                className={`px-12 py-6 border-2 border-red-500 text-red-500 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "hover:bg-red-950/50" : "hover:bg-red-50"}`}
-                onClick={() => navigate("/contact")}
-              >
-                Discuss Your Project
-              </button>
-            </motion.div>
-          </motion.div>
-        </section>
+        <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={images.hero}
+      alt="Futuristic AI Dashboard"
+      className="w-full h-full object-cover 
+                 brightness-75 contrast-110 
+                 dark:brightness-45 dark:contrast-125
+                 transition-all duration-700"
+      loading="lazy"
+    />
 
+    {/* Gradient Overlay - Optimized for both themes */}
+    <div className="absolute inset-0 bg-gradient-to-t 
+                    from-black/75 via-black/65 to-black/80 
+                    dark:from-black/90 dark:via-black/85 dark:to-black/90" />
+  </div>
+
+  {/* Content */}
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={staggerContainer}
+    className="relative z-10 max-w-7xl mx-auto text-center"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight text-white"
+    >
+      AI & Machine Learning Services in{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
+        Bhopal
+      </span>
+    </motion.h1>
+
+    <motion.p
+      variants={fadeInUp}
+      className="text-2xl md:text-4xl font-bold mb-8 text-red-500 dark:text-red-400"
+    >
+      Turn Data into Decisions — Automate, Predict, Win
+    </motion.p>
+
+    <motion.p
+      variants={fadeInUp}
+      className="text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed text-gray-200 dark:text-gray-300"
+    >
+      At{" "}
+      <span className="text-red-500 dark:text-red-400 font-semibold">
+        AI Knots IT Solutions
+      </span>
+      , we provide advanced AI & Machine Learning Services that help
+      businesses automate processes, analyze data, and make smarter
+      decisions. In today's fast-growing digital world, using AI is no
+      longer optional — it's essential for staying ahead of the
+      competition.
+    </motion.p>
+
+    <motion.ul
+      variants={fadeInUp}
+      className="flex flex-wrap justify-center gap-6 mb-12 text-lg text-gray-200 dark:text-gray-300"
+    >
+      {[
+        "Understand customer behavior",
+        "Predict future trends",
+        "Automate repetitive tasks",
+        "Improve decision-making",
+        "Deliver personalized user experiences",
+      ].map((item) => (
+        <li key={item} className="flex items-center gap-2">
+          <CheckCircle2 className="w-6 h-6 text-red-500 dark:text-red-400" /> 
+          {item}
+        </li>
+      ))}
+    </motion.ul>
+
+    <motion.div
+      variants={fadeInUp}
+      className="flex flex-col sm:flex-row gap-6 justify-center"
+    >
+      {/* Primary Button */}
+      <button
+        onClick={() => navigate("/contact")}
+        className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-700 
+                   text-white rounded-full text-xl md:text-2xl font-bold 
+                   shadow-xl shadow-red-900/60 hover:shadow-red-700 
+                   hover:scale-105 active:scale-95 transition-all duration-300 
+                   flex items-center gap-3 group"
+      >
+        Get Free AI Consultation
+        <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+      </button>
+
+      {/* Secondary Button */}
+      <button
+        onClick={() => navigate("/contact")}
+        className="px-12 py-6 border-2 border-red-500 text-white 
+                   hover:bg-red-600 hover:border-red-600 
+                   dark:hover:bg-red-700 rounded-full 
+                   text-xl md:text-2xl font-bold transition-all duration-300"
+      >
+        Discuss Your Project
+      </button>
+    </motion.div>
+  </motion.div>
+</section>
         {/* What is AI & ML */}
         <section
           className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg} transition-colors duration-300`}

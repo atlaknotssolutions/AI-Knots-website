@@ -164,7 +164,7 @@ const Footer = () => {
           {/* Services */}
           <div className="lg:col-span-2">
             <h4
-              className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}
+              className={`font-semibold center mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}
             >
               Our Services
             </h4>
