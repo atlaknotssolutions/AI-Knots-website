@@ -209,7 +209,8 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-red-500 mt-0.5 shrink-0" />
                 <span className={isDark ? "text-gray-300" : "text-gray-700"}>
-                  Bhopal, Madhya Pradesh, India
+                  103, Goyal Vihar, Plot No 31-C, Zone 2, M.P. Nagar, Bhopal -
+                  462011 Madhya Pradesh, India
                 </span>
               </li>
 
