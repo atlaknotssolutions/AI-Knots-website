@@ -379,6 +379,7 @@ import React, { useState } from "react";
 import { useTheme } from "../../context/ThemeContext"; // ← Added Theme Hook
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import {
   Palette,
   Code,
@@ -510,7 +511,7 @@ const faqs = [
 
 export default function WebsiteDesignDevelopment() {
   const { isDark } = useTheme(); // ← Theme Hook
-
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(null);
 
   // ====================== THEME CLASSES ======================
@@ -539,85 +540,91 @@ export default function WebsiteDesignDevelopment() {
       className={`min-h-screen transition-colors duration-700 overflow-hidden
       ${isDark ? "bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white" : "bg-gray-50 text-gray-900"}`}
     >
-      {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-        <div className="absolute inset-0">
-          <img
-            src={images.hero}
-            alt="Modern Website Dashboard"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div
-            className={`absolute inset-0 transition-all duration-700
-            ${
-              isDark
-                ? "bg-gradient-to-t from-black via-black/80 to-transparent"
-                : "bg-gradient-to-t from-black/70 via-black/50 to-transparent"
-            }`}
-          />
-        </div>
+     {/* Hero */}
+<section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+  <div className="absolute inset-0">
+    <img
+      src={images.hero}
+      alt="Modern Website Dashboard"
+      className="w-full h-full object-cover"
+      loading="lazy"
+    />
+    
+    {/* Improved Overlay */}
+    <div
+      className={`absolute inset-0 transition-all duration-700 ${
+        isDark
+          ? "bg-gradient-to-b from-black/80 via-black/90 to-black/95"
+          : "bg-gradient-to-b from-black/60 via-black/70 to-black/80"
+      }`}
+    />
+  </div>
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="relative z-10 max-w-7xl mx-auto text-center"
-        >
-          <motion.h1
-            variants={fadeInUp}
-            className={`text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight ${isDark ? "text-white" : "text-gray-900"}`}
-          >
-            Website Design & Development Services{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-              AI Knots IT Solutions
-            </span>
-          </motion.h1>
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={staggerContainer}
+    className="relative z-10 max-w-7xl mx-auto text-center"
+  >
+    <motion.h1
+      variants={fadeInUp}
+      className={`text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight ${
+        isDark ? "text-white" : "text-white"
+      }`}
+    >
+      Website Design & Development Services{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-700">
+        AI Knots IT Solutions
+      </span>
+    </motion.h1>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-3xl md:text-5xl font-bold text-red-500 mb-8"
-          >
-            Fast, Functional and Focused on Results
-          </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className={`text-3xl md:text-5xl font-bold mb-8 ${
+        isDark ? "text-red-400" : "text-red-600"
+      }`}
+    >
+      Fast, Functional and Focused on Results
+    </motion.p>
 
-          <motion.p
-            variants={fadeInUp}
-            className={`text-xl md:text-2xl mb-10 max-w-5xl mx-auto leading-relaxed ${bodyClass}`}
-          >
-            Convert Visitors Into Customers With Smart Web Design
-          </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className={`text-xl md:text-2xl mb-10 max-w-5xl mx-auto leading-relaxed ${
+        isDark ? "text-gray-300" : "text-gray-300"
+      }`}
+    >
+      Convert Visitors Into Customers With Smart Web Design
+    </motion.p>
 
-          <motion.p
-            variants={fadeInUp}
-            className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed ${bodyClass}`}
-          >
-            Don’t lose potential customers because of a poor website. We build
-            fast-loading, conversion-focused sites that generate leads, build
-            trust, and grow your business in 2026.
-          </motion.p>
+    <motion.p
+      variants={fadeInUp}
+      className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed ${
+        isDark ? "text-gray-400" : "text-gray-300"
+      }`}
+    >
+      Don’t lose potential customers because of a poor website. We build
+      fast-loading, conversion-focused sites that generate leads, build
+      trust, and grow your business in 2026.
+    </motion.p>
 
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-          >
-            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group">
-              Get My Free Proposal{" "}
-              <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button
-              className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all
-              ${
-                isDark
-                  ? "border-red-600/70 text-red-400 hover:bg-red-950/50"
-                  : "border-red-600 text-red-600 hover:bg-red-50"
-              }`}
-            >
-              Build My Website
-            </button>
-          </motion.div>
-        </motion.div>
-      </section>
+    <motion.div
+      variants={fadeInUp}
+      className="flex flex-col sm:flex-row gap-6 justify-center"
+    >
+      <button 
+        onClick={() => navigate("/recentwork")}
+        className={`px-12 py-6 rounded-full text-xl md:text-2xl font-bold shadow-2xl transition-all flex items-center gap-3 group hover:scale-105 ${
+          isDark 
+            ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 shadow-red-900/70" 
+            : "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 shadow-red-600/50 text-white"
+        }`}
+      >
+        Our Recent Work
+        <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+      </button>
+    </motion.div>
+  </motion.div>
+</section>
 
       {/* Responsive Mockup Visual */}
       <section
@@ -968,7 +975,9 @@ export default function WebsiteDesignDevelopment() {
             whileTap={{ scale: 0.98 }}
             className="px-14 py-7 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-2xl md:text-3xl font-black shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 transition-all flex items-center gap-4 mx-auto"
           >
-            Contact Us for Free Proposal <ArrowRight className="w-8 h-8" />
+            <button onClick={() => navigate("/contact")}>
+            Contact Us 
+            </button><ArrowRight className="w-auto h-8" />
           </motion.button>
         </div>
       </section>

@@ -564,7 +564,7 @@ export default function About() {
                   <h3
                     className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 ${text}`}
                   >
-                    Building the <span className="text-red-500">Future</span>
+                    Building the <span className="text-red-500">Business</span>
                   </h3>
                   <p
                     className={`text-lg md:text-xl leading-relaxed mb-8 max-w-xl ${subText}`}
@@ -626,7 +626,7 @@ export default function About() {
                 onClick={() => setIsModalOpen(true)}
                 className="px-12 py-6 rounded-full text-xl font-bold transition flex items-center gap-2 text-white bg-gradient-to-r from-red-600 to-red-800 shadow-lg shadow-red-900/50 hover:shadow-red-900/70"
               >
-                Start Building Your Future <ArrowRight className="w-6 h-6" />
+                Start Building Your Business <ArrowRight className="w-6 h-6" />
               </button>
               <button
                 onClick={() => navigate("/recentwork")}
@@ -1318,7 +1318,7 @@ export default function About() {
               onClick={() => setIsModalOpen(true)}
               className="px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition text-white bg-gradient-to-r from-red-600 to-red-800 hover:shadow-red-900/70"
             >
-              LET'S START THE CONVERSATION →
+              Let's Start Your Business →
             </button>
           </motion.div>
         </div>

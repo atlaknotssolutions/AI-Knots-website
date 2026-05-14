@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-
+import { useNavigate } from "react-router-dom";
+import report from "../../assets/report.pdf";
 import {
   ArrowRight,
   Target,
@@ -45,7 +46,7 @@ function PaidAdvertising() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
@@ -157,95 +158,107 @@ function PaidAdvertising() {
       ${isDark ? "bg-black text-white" : "bg-gray-50 text-gray-900"}`}
     >
       {/* ====================== HERO CAROUSEL ====================== */}
-      <section className="relative h-screen overflow-hidden">
-        {carouselImages.map((img, index) => (
-          <motion.div
-            key={index}
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: index === currentSlide ? 1 : 0 }}
-            transition={{ duration: 1.8, ease: "easeInOut" }}
+     <section className="relative h-[85vh] overflow-hidden">   {/* ← Changed here */}
+  {carouselImages.map((img, index) => (
+    <motion.div
+      key={index}
+      className="absolute inset-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: index === currentSlide ? 1 : 0 }}
+      transition={{ duration: 1.8, ease: "easeInOut" }}
+    >
+      <motion.img
+        src={img}
+        alt="Paid Advertising Performance"
+        className="w-full h-full object-cover brightness-75"
+      />
+      
+      <div
+        className={`absolute inset-0 bg-gradient-to-b 
+          ${isDark 
+            ? "from-black/55 via-black/75 to-black/90" 
+            : "from-black/45 via-black/70 to-black/85"} 
+          flex items-center justify-center`}
+      >
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+          className="text-center px-6 max-w-6xl z-10"
+        >
+          <motion.h1
+            variants={fadeInUp}
+            className="text-6xl sm:text-7xl md:text-8xl font-black mb-6 tracking-tight bg-gradient-to-r from-red-400 via-red-500 to-white bg-clip-text text-transparent"
           >
-            <motion.img
-              src={img}
-              alt="Paid Advertising Performance"
-              className="w-full h-full object-cover brightness-50"
-            />
-            <div
-              className={`absolute inset-0 bg-gradient-to-b ${isDark ? "from-black/80 via-black/95 to-black" : "from-black/70 via-black/85 to-black"} flex items-center justify-center`}
-            >
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-                className="text-center px-6 max-w-6xl z-10"
-              >
-                <motion.h1
-                  variants={fadeInUp}
-                  className="text-6xl sm:text-8xl md:text-9xl font-black mb-6 tracking-tight bg-gradient-to-r from-red-400 via-red-500 to-white bg-clip-text text-transparent"
-                >
-                  AI Knots
-                </motion.h1>
-                <motion.p
-                  variants={fadeInUp}
-                  className="text-3xl sm:text-5xl md:text-6xl font-bold mb-8 text-red-400"
-                >
-                  Paid Advertising Agency
-                  <br className="sm:hidden" /> in Bhopal
-                </motion.p>
-                <motion.p
-                  variants={fadeInUp}
-                  className={`text-xl sm:text-3xl max-w-4xl mx-auto leading-tight mb-10 ${isDark ? "text-gray-200" : "text-white/90"}`}
-                >
-                  Driving High-Performance Ads Across India • Real Growth •
-                  Measurable ROI
-                </motion.p>
-                <motion.p
-                  variants={fadeInUp}
-                  className={`text-lg md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed ${isDark ? "text-gray-300" : "text-white/90"}`}
-                >
-                  At AI Knots, a creative paid advertising agency in Bhopal, we
-                  go beyond clicks and impressions — we focus on real business
-                  growth.
-                </motion.p>
+            AI Knots
+          </motion.h1>
 
-                <motion.div
-                  variants={fadeInUp}
-                  className="mt-10 flex flex-col sm:flex-row gap-6 justify-center"
-                >
-                  <button className={premiumButton}>
-                    Free Campaign Audit
-                    <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-                  </button>
-                  <button
-                    className={`px-12 py-7 border-2 border-red-500/70 rounded-2xl text-2xl font-bold transition-all
-                      ${isDark ? "text-red-400 hover:bg-red-950/60 hover:border-red-500" : "text-red-600 hover:bg-red-50"}`}
-                  >
-                    Get Started →
-                  </button>
-                </motion.div>
-              </motion.div>
-            </div>
-          </motion.div>
-        ))}
+          <motion.p
+            variants={fadeInUp}
+            className="text-3xl sm:text-5xl md:text-6xl font-bold mb-8 text-red-400"
+          >
+            Paid Advertising Agency
+            <br className="sm:hidden" /> in Bhopal
+          </motion.p>
 
-        {/* Carousel dots */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-4 z-20">
-          {carouselImages.map((_, i) => (
+          <motion.p
+            variants={fadeInUp}
+            className={`text-xl sm:text-3xl max-w-4xl mx-auto leading-tight mb-10 ${isDark ? "text-gray-200" : "text-white/90"}`}
+          >
+            Driving High-Performance Ads Across India • Real Growth • Measurable ROI
+          </motion.p>
+
+          <motion.p
+            variants={fadeInUp}
+            className={`text-lg md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed ${isDark ? "text-gray-300" : "text-white/90"}`}
+          >
+            At AI Knots, a creative paid advertising agency in Bhopal, we
+            go beyond clicks and impressions — we focus on real business growth.
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-10 flex flex-col sm:flex-row gap-6 justify-center"
+          >
+            <a href={report} target="_blank" rel="noopener noreferrer">
+              <button className={premiumButton}>
+                Website Audit Report
+                <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+              </button>
+            </a>
+
             <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`w-3.5 h-3.5 rounded-full transition-all duration-700 ${
-                i === currentSlide
-                  ? "bg-red-600 scale-150 shadow-lg shadow-red-600/50"
-                  : isDark
-                    ? "bg-gray-600 hover:bg-red-400"
-                    : "bg-gray-400 hover:bg-red-500"
-              }`}
-            />
-          ))}
-        </div>
-      </section>
+              className={`px-12 py-7 border-2 border-red-500/70 rounded-2xl text-2xl font-bold transition-all
+                ${isDark 
+                  ? "text-red-400 hover:bg-red-950/60 hover:border-red-500" 
+                  : "text-red-600 hover:bg-red-50"}`}
+              onClick={() => navigate("/service")}
+            >
+              Get Started →
+            </button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.div>
+  ))}
+
+  {/* Carousel dots */}
+  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+    {carouselImages.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentSlide(i)}
+        className={`w-3.5 h-3.5 rounded-full transition-all duration-700 ${
+          i === currentSlide
+            ? "bg-red-600 scale-150 shadow-lg shadow-red-600/50"
+            : isDark
+              ? "bg-gray-600 hover:bg-red-400"
+              : "bg-gray-400 hover:bg-red-500"
+        }`}
+      />
+    ))}
+  </div>
+</section>
 
       <main
         className={`max-w-7xl mx-auto px-6 py-24 lg:py-32 space-y-40 ${isDark ? "" : "bg-white"}`}
@@ -483,7 +496,10 @@ function PaidAdvertising() {
             whileTap={{ scale: 0.98 }}
             className={`group px-16 py-8 rounded-full text-3xl font-bold shadow-2xl transition-all flex items-center gap-5 mx-auto ${premiumButton}`}
           >
-            Get Your Free Audit{" "}
+            <button onClick={() => navigate("/contact")} className="flex items-center gap-3">
+             Get Your Free Audit
+            </button>
+           
             <Sparkles className="w-9 h-9 group-hover:rotate-12 transition-transform" />
           </motion.button>
         </motion.section>

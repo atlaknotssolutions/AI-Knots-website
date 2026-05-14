@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import {useNavigate} from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 // High-quality images for visual appeal (Unsplash free stock - perfect for software dev theme)
 const images = {
@@ -96,6 +97,7 @@ const staggerContainer = {
 export default function SoftwareDevelopment() {
   const { isDark } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -176,12 +178,12 @@ export default function SoftwareDevelopment() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group">
+            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group" onClick={() => navigate("/contact")}>
               Get in Touch{" "}
               <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
             </button>
             <button
-              className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "border-red-600/70 text-red-400 hover:bg-red-950/50" : "border-red-600 text-red-600 hover:bg-red-50"}`}
+              className={`px-12 py-6 border-2 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "border-red-600/70 text-red-400 hover:bg-red-950/50" : "border-red-600 text-red-600 hover:bg-red-50"}`} onClick={() => navigate("/portfolio") }
             >
               View Portfolio →
             </button>
@@ -277,14 +279,7 @@ export default function SoftwareDevelopment() {
             <span className="text-red-500">Services</span>
           </motion.h2>
 
-          <motion.img
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            src={images.codeWorkspace}
-            alt="Developers writing clean code for custom software"
-            className="rounded-2xl shadow-2xl border border-red-900/30 mx-auto max-w-4xl w-full object-cover mb-12"
-          />
+        
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => (
@@ -328,14 +323,6 @@ export default function SoftwareDevelopment() {
             <span className="text-red-500">Case Studies</span>
           </motion.h2>
 
-          <motion.img
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            src={images.caseStudyDashboard}
-            alt="Analytics dashboard for media and trading platforms"
-            className="rounded-2xl shadow-2xl border border-red-900/30 mx-auto max-w-4xl w-full object-cover mb-12"
-          />
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -390,20 +377,35 @@ export default function SoftwareDevelopment() {
             Industries We Work With
           </motion.h2>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-20">
-            {industries.map((ind, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.03 }}
-                className={`px-6 py-3 rounded-full text-sm md:text-base transition-all ${isDark ? "bg-gray-900/70 border border-red-900/40 text-gray-200 hover:bg-red-900/40 hover:border-red-600/50" : "bg-white border border-gray-200 text-gray-700 hover:bg-red-50 hover:border-red-500/50 shadow-sm"}`}
-              >
-                {ind}
-              </motion.span>
-            ))}
-          </div>
+         <div className="mb-20">
+  <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDark ? "text-white" : "text-gray-900"}`}>
+    Industries We Serve
+  </h2>
+
+  <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+    {industries.map((ind, i) => (
+      <motion.span
+        key={i}
+        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.04 }}
+        whileHover={{ 
+          scale: 1.08, 
+          y: -4,
+          transition: { duration: 0.2 }
+        }}
+        className={`px-8 py-4 rounded-2xl text-base md:text-lg font-medium cursor-pointer transition-all duration-300 shadow-md ${
+          isDark 
+            ? "bg-zinc-900 border border-red-800/60 text-gray-200 hover:border-red-500 hover:bg-red-950/70 hover:shadow-red-900/30" 
+            : "bg-white border border-gray-200 text-gray-800 hover:border-red-500 hover:bg-red-50 hover:shadow-lg hover:shadow-red-100"
+        }`}
+      >
+        {ind}
+      </motion.span>
+    ))}
+  </div>
+</div>
 
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
@@ -413,15 +415,6 @@ export default function SoftwareDevelopment() {
           >
             Technology <span className="text-red-500">Stack</span>
           </motion.h2>
-
-          <motion.img
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            src={images.cloudDevops}
-            alt="Cloud infrastructure and DevOps technologies"
-            className="rounded-2xl shadow-2xl border border-red-900/30 mx-auto max-w-4xl w-full object-cover mb-12"
-          />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(techStack).map(([category, techs], idx) => (
@@ -454,112 +447,129 @@ export default function SoftwareDevelopment() {
       </section>
 
       {/* Why Sections with Code Photo */}
-      <section
-        className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black/50" : "bg-white/50"}`}
+      <section className={`py-24 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black/50" : "bg-white/50"}`}>
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+      
+      {/* Column 1 */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+        className={`p-8 rounded-2xl border flex flex-col h-full transition-all duration-300 hover:shadow-xl ${
+          isDark 
+            ? "bg-zinc-900 border-red-900/50 hover:border-red-700" 
+            : "bg-white border-red-200 hover:border-red-500"
+        }`}
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.img
+        <h2
+          className={`text-3xl md:text-4xl font-black mb-8 ${isDark ? "text-red-400" : "text-red-600"}`}
+        >
+          Why Software Outsourcing?
+        </h2>
+        
+        <ul className="space-y-4 text-lg flex-1">
+          {[
+            "Reduced software development costs",
+            "Access to skilled developers",
+            "Faster development process",
+            "Access to modern technologies",
+            "Flexible and scalable development teams",
+            "Reduced operational risks",
+          ].map((point, i) => (
+            <motion.li
+              key={i}
               variants={fadeInUp}
-              src={images.codeWorkspace}
-              alt="Developers writing secure code"
-              className={`rounded-2xl shadow-2xl w-full object-cover mb-8 ${isDark ? "border border-red-900/30" : "border border-gray-200"}`}
-            />
-            <h2
-              className={`text-3xl md:text-4xl font-black mb-8 ${isDark ? "text-red-400" : "text-red-600"}`}
+              className="flex items-start gap-4"
             >
-              Why Software Outsourcing?
-            </h2>
-            <ul className="space-y-4 text-lg">
-              {[
-                "Reduced software development costs",
-                "Access to skilled developers",
-                "Faster development process",
-                "Access to modern technologies",
-                "Flexible and scalable development teams",
-                "Reduced operational risks",
-              ].map((point, i) => (
-                <motion.li
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-start gap-4"
-                >
-                  <ArrowRight className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+              <ArrowRight className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+              <span>{point}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <h2
-              className={`text-3xl md:text-4xl font-black mb-8 ${isDark ? "text-red-400" : "text-red-600"}`}
+      {/* Column 2 */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+        className={`p-8 rounded-2xl border flex flex-col h-full transition-all duration-300 hover:shadow-xl ${
+          isDark 
+            ? "bg-zinc-900 border-red-900/50 hover:border-red-700" 
+            : "bg-white border-red-200 hover:border-red-500"
+        }`}
+      >
+        <h2
+          className={`text-3xl md:text-4xl font-black mb-8 ${isDark ? "text-red-400" : "text-red-600"}`}
+        >
+          Why Choose India for Software Development?
+        </h2>
+        
+        <ul className="space-y-4 text-lg flex-1">
+          {[
+            "Cost-effective development solutions",
+            "Highly skilled developer community",
+            "Flexible business models",
+            "24/7 development support for global clients",
+            "Access to the latest technologies",
+            "Faster project delivery",
+          ].map((point, i) => (
+            <motion.li
+              key={i}
+              variants={fadeInUp}
+              className="flex items-start gap-4"
             >
-              Why Choose India for Software Development?
-            </h2>
-            <ul className="space-y-4 text-lg">
-              {[
-                "Cost-effective development solutions",
-                "Highly skilled developer community",
-                "Flexible business models",
-                "24/7 development support for global clients",
-                "Access to the latest technologies",
-                "Faster project delivery",
-              ].map((point, i) => (
-                <motion.li
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-start gap-4"
-                >
-                  <ArrowRight className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+              <ArrowRight className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+              <span>{point}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <h2
-              className={`text-3xl md:text-4xl font-black mb-8 ${isDark ? "text-red-400" : "text-red-600"}`}
+      {/* Column 3 */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+        className={`p-8 rounded-2xl border flex flex-col h-full transition-all duration-300 hover:shadow-xl ${
+          isDark 
+            ? "bg-zinc-900 border-red-900/50 hover:border-red-700" 
+            : "bg-white border-red-200 hover:border-red-500"
+        }`}
+      >
+        <h2
+          className={`text-3xl md:text-4xl font-black mb-8 ${isDark ? "text-red-400" : "text-red-600"}`}
+        >
+          Why Choose Atlas Knots IT Solution?
+        </h2>
+        
+        <ul className="space-y-4 text-lg flex-1">
+          {[
+            "Clear Communication",
+            "Scalable Teams",
+            "Efficient Project Management",
+            "Strong Industry Experience",
+            "Business-Friendly Hiring Models",
+          ].map((point, i) => (
+            <motion.li
+              key={i}
+              variants={fadeInUp}
+              className="flex items-start gap-4"
             >
-              Why Choose Atlas Knots IT Solution?
-            </h2>
-            <ul className="space-y-4 text-lg">
-              {[
-                "Clear Communication",
-                "Scalable Teams",
-                "Efficient Project Management",
-                "Strong Industry Experience",
-                "Business-Friendly Hiring Models",
-              ].map((point, i) => (
-                <motion.li
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-start gap-4"
-                >
-                  <ArrowRight className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </section>
+              <ArrowRight className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+              <span>{point}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
       {/* Development Process + Final CTA with Growth Photo */}
       <section
@@ -640,13 +650,7 @@ export default function SoftwareDevelopment() {
               and mobile applications tailored to your business needs.
             </motion.p>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-14 py-7 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-2xl md:text-3xl font-black shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 transition-all"
-            >
-              Hire Us Now →
-            </motion.button>
+           
           </motion.div>
         </div>
       </section>

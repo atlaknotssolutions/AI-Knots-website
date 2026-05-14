@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
@@ -25,7 +23,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 import aws from "../../assets/Images/aws.jpeg";
-
+import { useNavigate } from "react-router-dom";
 const images = {
   hero: aws,
   neural:
@@ -154,7 +152,7 @@ export default function AIServices() {
   const { isDark } = useTheme();
   const [openFaq, setOpenFaq] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 400);
     window.addEventListener("scroll", handleScroll);
@@ -196,433 +194,438 @@ export default function AIServices() {
   };
 
   return (
-        <>
-              <Helmet>
-                <title>AI & ML Services Company India | Atla IKS</title>
-                <meta
-                  name="description"
-                  content="AI and machine learning services for automation, analytics & smart business solutions."
-                />
-                <meta
-                  name="keywords"
-                  content="AI ML Services Company	Artificial Intelligence Services"
-                />
-              </Helmet>
-    <div
-      className={`relative ${t.bg} overflow-hidden transition-colors duration-300`}
-    >
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-        <div className="absolute inset-0">
-          <img
-            src={images.hero}
-            alt="Futuristic AI Dashboard"
-            className={`w-full h-full object-cover ${isDark ? "opacity-30 brightness-50" : "opacity-15 brightness-75"}`}
-            loading="lazy"
-          />
-          <div
-            className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black via-black/80 to-transparent" : "bg-gradient-to-t from-white via-white/85 to-transparent"}`}
-          />
-        </div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="relative z-10 max-w-7xl mx-auto text-center"
-        >
-          <motion.h1
-            variants={fadeInUp}
-            className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight"
-          >
-            AI & Machine Learning Services in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-              Bhopal
-            </span>
-          </motion.h1>
-          <motion.p
-            variants={fadeInUp}
-            className="text-2xl md:text-4xl font-bold text-red-500 mb-8"
-          >
-            Turn Data into Decisions — Automate, Predict, Win
-          </motion.p>
-          <motion.p
-            variants={fadeInUp}
-            className={`text-lg md:text-xl ${t.text} mb-12 max-w-4xl mx-auto leading-relaxed`}
-          >
-            At{" "}
-            <span className="text-red-500 font-semibold">
-              AI Knots IT Solutions
-            </span>
-            , we provide advanced AI & Machine Learning Services that help
-            businesses automate processes, analyze data, and make smarter
-            decisions. In today's fast-growing digital world, using AI is no
-            longer optional — it's essential for staying ahead of the
-            competition.
-          </motion.p>
-          <motion.ul
-            variants={fadeInUp}
-            className="flex flex-wrap justify-center gap-6 mb-12 text-lg"
-          >
-            {[
-              "Understand customer behavior",
-              "Predict future trends",
-              "Automate repetitive tasks",
-              "Improve decision-making",
-              "Deliver personalized user experiences",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6 text-red-500" /> {item}
-              </li>
-            ))}
-          </motion.ul>
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-          >
-            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group text-white">
-              Get Free AI Consultation
-              <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button
-              className={`px-12 py-6 border-2 border-red-500 text-red-500 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "hover:bg-red-950/50" : "hover:bg-red-50"}`}
-            >
-              Discuss Your Project
-            </button>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* What is AI & ML */}
-      <section
-        className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg} transition-colors duration-300`}
+    <>
+      <Helmet>
+        <title>AI & ML Services Company India | Atla IKS</title>
+        <meta
+          name="description"
+          content="AI and machine learning services for automation, analytics & smart business solutions."
+        />
+        <meta
+          name="keywords"
+          content="AI ML Services Company	Artificial Intelligence Services"
+        />
+      </Helmet>
+      <div
+        className={`relative ${t.bg} overflow-hidden transition-colors duration-300`}
       >
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-10"
-          >
-            What is <span className="text-red-500">AI & Machine Learning</span>{" "}
-            in Business?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`text-xl ${t.text} max-w-5xl mx-auto leading-relaxed`}
-          >
-            Artificial Intelligence (AI) and Machine Learning (ML) are
-            technologies that allow systems to learn from data and improve over
-            time without manual effort.
-            <br />
-            <br />
-            We help businesses turn their data into powerful insights using
-            AI-driven solutions that improve efficiency, reduce manual work, and
-            increase overall performance.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Our Services */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-center mb-16"
-          >
-            Our <span className="text-red-500">AI & ML Services</span>
-          </motion.h2>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {services.map((service, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className={`${t.card} rounded-2xl p-8 md:p-10 hover:shadow-2xl transition-all group flex flex-col items-center text-center min-h-[260px]`}
-              >
-                <service.icon className="w-14 h-14 md:w-16 md:h-16 text-red-500 mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl md:text-2xl font-bold mb-4">
-                  {service.title}
-                </h3>
-                <p className={`${t.text} text-base`}>{service.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.img
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            src={images.analytics}
-            alt="Predictive Analytics Dashboard"
-            className={`rounded-2xl shadow-2xl border ${isDark ? "border-red-900/30" : "border-red-200"} mx-auto mt-16 max-w-4xl w-full object-cover`}
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Key Features */}
-      <section
-        className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg3} transition-colors duration-300`}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-center mb-12"
-          >
-            Key Features of Our AI & ML Solutions
-          </motion.h2>
-          <motion.ul
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
-          >
-            {keyFeatures.map((feature, idx) => (
-              <motion.li
-                key={idx}
-                variants={fadeInUp}
-                className={`${t.featureCard} rounded-xl p-6 text-center text-lg font-medium flex items-center justify-center gap-3`}
-              >
-                <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0" />
-                {feature}
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section
-        className={`py-24 px-4 sm:px-6 lg:px-8 ${t.sectionBg2} transition-colors duration-300`}
-      >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        {/* Hero Section */}
+        <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+          <div className="absolute inset-0">
+            <img
+              src={images.hero}
+              alt="Futuristic AI Dashboard"
+              className={`w-full h-full object-cover ${isDark ? "opacity-30 brightness-50" : "opacity-15 brightness-75"}`}
+              loading="lazy"
+            />
+            <div
+              className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black via-black/80 to-transparent" : "bg-gradient-to-t from-white via-white/85 to-transparent"}`}
+            />
+          </div>
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             variants={staggerContainer}
+            className="relative z-10 max-w-7xl mx-auto text-center"
           >
-            <motion.h2
+            <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-6xl font-black mb-8"
+              className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight"
             >
-              Why Choose{" "}
-              <span className="text-red-500">AI Knots IT Solutions</span>?
-            </motion.h2>
-            <motion.p variants={fadeInUp} className={`text-xl ${t.text} mb-8`}>
-              AI Knots IT Solutions is a trusted provider of AI & Machine
-              Learning Services in Bhopal, focused on delivering practical and
-              result-oriented solutions. We don't just build technology, we
-              build solutions that solve real business problems.
+              AI & Machine Learning Services in{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
+                Bhopal
+              </span>
+            </motion.h1>
+            <motion.p
+              variants={fadeInUp}
+              className="text-2xl md:text-4xl font-bold text-red-500 mb-8"
+            >
+              Turn Data into Decisions — Automate, Predict, Win
             </motion.p>
-            <motion.ul variants={fadeInUp} className="space-y-4 text-lg">
+            <motion.p
+              variants={fadeInUp}
+              className={`text-lg md:text-xl ${t.text} mb-12 max-w-4xl mx-auto leading-relaxed`}
+            >
+              At{" "}
+              <span className="text-red-500 font-semibold">
+                AI Knots IT Solutions
+              </span>
+              , we provide advanced AI & Machine Learning Services that help
+              businesses automate processes, analyze data, and make smarter
+              decisions. In today's fast-growing digital world, using AI is no
+              longer optional — it's essential for staying ahead of the
+              competition.
+            </motion.p>
+            <motion.ul
+              variants={fadeInUp}
+              className="flex flex-wrap justify-center gap-6 mb-12 text-lg"
+            >
               {[
-                "Customized AI solutions for your business",
-                "Experienced development team",
-                "Latest tools and technologies",
-                "Affordable pricing",
-                "Focus on real business outcomes",
-              ].map((point) => (
-                <li key={point} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0" />
-                  {point}
+                "Understand customer behavior",
+                "Predict future trends",
+                "Automate repetitive tasks",
+                "Improve decision-making",
+                "Deliver personalized user experiences",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-6 h-6 text-red-500" /> {item}
                 </li>
               ))}
             </motion.ul>
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+            >
+              <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group text-white"  onClick={() => navigate("/contact")}>
+                Get Free AI Consultation
+                <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+              </button>
+              <button
+                className={`px-12 py-6 border-2 border-red-500 text-red-500 rounded-full text-xl md:text-2xl font-bold transition-all ${isDark ? "hover:bg-red-950/50" : "hover:bg-red-50"}`}
+                onClick={() => navigate("/contact")}
+              >
+                Discuss Your Project
+              </button>
+            </motion.div>
           </motion.div>
-          <motion.img
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            src={images.neural}
-            alt="Neural Network Visualization"
-            className={`rounded-2xl shadow-2xl border ${isDark ? "border-red-900/30" : "border-red-200"} w-full`}
-            loading="lazy"
-          />
-        </div>
-      </section>
+        </section>
 
-      {/* Industries */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-center mb-16"
-          >
-            Industries We Serve
-          </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industries.map((ind, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                className={`${t.cardGrad} rounded-2xl p-10 hover:shadow-2xl transition-all group text-center`}
-              >
-                <ind.icon className="w-16 h-16 text-red-500 mb-6 mx-auto group-hover:scale-110 transition-transform" />
-                <h3 className="text-3xl font-black mb-4">{ind.title}</h3>
-                <p className={`text-lg ${t.text}`}>{ind.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section
-        className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg} transition-colors duration-300`}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-center mb-12"
-          >
-            Use Cases of AI & Machine Learning
-          </motion.h2>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {useCases.map((useCase, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className={`${t.useCase} rounded-xl p-6 flex items-center gap-4 transition-all`}
-              >
-                <useCase.icon className="w-10 h-10 text-red-500 flex-shrink-0" />
-                <span className="text-xl font-bold">{useCase.title}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section
-        className={`py-24 px-4 sm:px-6 lg:px-8 ${t.sectionBg4} transition-colors duration-300`}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-center mb-16"
-          >
-            Frequently Asked <span className="text-red-500">Questions</span>
-          </motion.h2>
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`${t.faqCard} rounded-xl overflow-hidden`}
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className={`w-full px-6 py-5 md:px-8 md:py-6 text-left flex justify-between items-center ${t.faqHover} transition-colors`}
-                >
-                  <span className="text-lg md:text-xl font-bold pr-4">
-                    {faq.q}
-                  </span>
-                  <span
-                    className={`text-red-500 text-xl transition-transform duration-300 ${openFaq === idx ? "rotate-180" : ""}`}
-                  >
-                    ▼
-                  </span>
-                </button>
-                {openFaq === idx && (
-                  <div
-                    className={`px-6 pb-6 md:px-8 ${t.text} text-base leading-relaxed`}
-                  >
-                    {faq.a}
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section
-        className={`py-24 px-4 sm:px-6 lg:px-8 ${t.sectionBg5} transition-colors duration-300`}
-      >
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-8"
-          >
-            Get Started with AI Today
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`text-xl md:text-2xl ${t.text} mb-12 max-w-3xl mx-auto`}
-          >
-            Transform your business with smart technology. Partner with AI Knots
-            IT Solutions for reliable and result-driven AI & Machine Learning
-            Services in Bhopal.
-          </motion.p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-12 py-6 md:px-14 md:py-7 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-3xl font-black shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 transition-all text-white"
-          >
-            Contact Us Now →
-          </motion.button>
-        </div>
-      </section>
-
-      {/* Scroll to Top */}
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-900/50 transition-all duration-300 hover:scale-110 active:scale-95 ${
-          showScrollTop
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-16 pointer-events-none"
-        }`}
-        aria-label="Scroll back to top"
-      >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        {/* What is AI & ML */}
+        <section
+          className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg} transition-colors duration-300`}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          />
-        </svg>
-      </button>
-    </div>
+          <div className="max-w-7xl mx-auto text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black mb-10"
+            >
+              What is{" "}
+              <span className="text-red-500">AI & Machine Learning</span> in
+              Business?
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={`text-xl ${t.text} max-w-5xl mx-auto leading-relaxed`}
+            >
+              Artificial Intelligence (AI) and Machine Learning (ML) are
+              technologies that allow systems to learn from data and improve
+              over time without manual effort.
+              <br />
+              <br />
+              We help businesses turn their data into powerful insights using
+              AI-driven solutions that improve efficiency, reduce manual work,
+              and increase overall performance.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Our Services */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black text-center mb-16"
+            >
+              Our <span className="text-red-500">AI & ML Services</span>
+            </motion.h2>
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {services.map((service, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  className={`${t.card} rounded-2xl p-8 md:p-10 hover:shadow-2xl transition-all group flex flex-col items-center text-center min-h-[260px]`}
+                >
+                  <service.icon className="w-14 h-14 md:w-16 md:h-16 text-red-500 mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl md:text-2xl font-bold mb-4">
+                    {service.title}
+                  </h3>
+                  <p className={`${t.text} text-base`}>{service.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.img
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              src={images.analytics}
+              alt="Predictive Analytics Dashboard"
+              className={`rounded-2xl shadow-2xl border ${isDark ? "border-red-900/30" : "border-red-200"} mx-auto mt-16 max-w-4xl w-full object-cover`}
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        {/* Key Features */}
+        <section
+          className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg3} transition-colors duration-300`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-black text-center mb-12"
+            >
+              Key Features of Our AI & ML Solutions
+            </motion.h2>
+            <motion.ul
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+            >
+              {keyFeatures.map((feature, idx) => (
+                <motion.li
+                  key={idx}
+                  variants={fadeInUp}
+                  className={`${t.featureCard} rounded-xl p-6 text-center text-lg font-medium flex items-center justify-center gap-3`}
+                >
+                  <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0" />
+                  {feature}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section
+          className={`py-24 px-4 sm:px-6 lg:px-8 ${t.sectionBg2} transition-colors duration-300`}
+        >
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.h2
+                variants={fadeInUp}
+                className="text-4xl md:text-6xl font-black mb-8"
+              >
+                Why Choose{" "}
+                <span className="text-red-500">AI Knots IT Solutions</span>?
+              </motion.h2>
+              <motion.p
+                variants={fadeInUp}
+                className={`text-xl ${t.text} mb-8`}
+              >
+                AI Knots IT Solutions is a trusted provider of AI & Machine
+                Learning Services in Bhopal, focused on delivering practical and
+                result-oriented solutions. We don't just build technology, we
+                build solutions that solve real business problems.
+              </motion.p>
+              <motion.ul variants={fadeInUp} className="space-y-4 text-lg">
+                {[
+                  "Customized AI solutions for your business",
+                  "Experienced development team",
+                  "Latest tools and technologies",
+                  "Affordable pricing",
+                  "Focus on real business outcomes",
+                ].map((point) => (
+                  <li key={point} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0" />
+                    {point}
+                  </li>
+                ))}
+              </motion.ul>
+            </motion.div>
+            <motion.img
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              src={images.neural}
+              alt="Neural Network Visualization"
+              className={`rounded-2xl shadow-2xl border ${isDark ? "border-red-900/30" : "border-red-200"} w-full`}
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        {/* Industries */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black text-center mb-16"
+            >
+              Industries We Serve
+            </motion.h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {industries.map((ind, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.08 }}
+                  className={`${t.cardGrad} rounded-2xl p-10 hover:shadow-2xl transition-all group text-center`}
+                >
+                  <ind.icon className="w-16 h-16 text-red-500 mb-6 mx-auto group-hover:scale-110 transition-transform" />
+                  <h3 className="text-3xl font-black mb-4">{ind.title}</h3>
+                  <p className={`text-lg ${t.text}`}>{ind.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Use Cases */}
+        <section
+          className={`py-20 px-4 sm:px-6 lg:px-8 ${t.sectionBg} transition-colors duration-300`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-black text-center mb-12"
+            >
+              Use Cases of AI & Machine Learning
+            </motion.h2>
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {useCases.map((useCase, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  className={`${t.useCase} rounded-xl p-6 flex items-center gap-4 transition-all`}
+                >
+                  <useCase.icon className="w-10 h-10 text-red-500 flex-shrink-0" />
+                  <span className="text-xl font-bold">{useCase.title}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section
+          className={`py-24 px-4 sm:px-6 lg:px-8 ${t.sectionBg4} transition-colors duration-300`}
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black text-center mb-16"
+            >
+              Frequently Asked <span className="text-red-500">Questions</span>
+            </motion.h2>
+            <div className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`${t.faqCard} rounded-xl overflow-hidden`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    className={`w-full px-6 py-5 md:px-8 md:py-6 text-left flex justify-between items-center ${t.faqHover} transition-colors`}
+                  >
+                    <span className="text-lg md:text-xl font-bold pr-4">
+                      {faq.q}
+                    </span>
+                    <span
+                      className={`text-red-500 text-xl transition-transform duration-300 ${openFaq === idx ? "rotate-180" : ""}`}
+                    >
+                      ▼
+                    </span>
+                  </button>
+                  {openFaq === idx && (
+                    <div
+                      className={`px-6 pb-6 md:px-8 ${t.text} text-base leading-relaxed`}
+                    >
+                      {faq.a}
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section
+          className={`py-24 px-4 sm:px-6 lg:px-8 ${t.sectionBg5} transition-colors duration-300`}
+        >
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black mb-8"
+            >
+              Get Started with AI Today
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={`text-xl md:text-2xl ${t.text} mb-12 max-w-3xl mx-auto`}
+            >
+              Transform your business with smart technology. Partner with AI
+              Knots IT Solutions for reliable and result-driven AI & Machine
+              Learning Services in Bhopal.
+            </motion.p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-12 py-6 md:px-14 md:py-7 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-3xl font-black shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 transition-all text-white"
+            >
+              Contact Us Now →
+            </motion.button>
+          </div>
+        </section>
+
+        {/* Scroll to Top */}
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-6 right-6 z-50 p-4 rounded-full bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-900/50 transition-all duration-300 hover:scale-110 active:scale-95 ${
+            showScrollTop
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-16 pointer-events-none"
+          }`}
+          aria-label="Scroll back to top"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
+        </button>
+      </div>
     </>
   );
 }

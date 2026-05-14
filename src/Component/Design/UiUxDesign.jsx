@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext"; // ← Added
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom"; // ← Added
 import {
   Layout,
   PenTool,
@@ -220,7 +221,7 @@ const faqs = [
 
 export default function UiUxDesign() {
   const { isDark } = useTheme(); // ← Theme Hook Added
-
+   const navigate = useNavigate(); // ← Navigation Hook Added
   const [openFaq, setOpenFaq] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -332,8 +333,8 @@ export default function UiUxDesign() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group">
-              Get Free Design Consultation{" "}
+            <button className="px-12 py-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-xl md:text-2xl font-bold shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 hover:scale-105 transition-all flex items-center gap-3 group" onClick={() => navigate("/contact")}>
+              Get Free Design Consultation
               <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
             </button>
             <button
@@ -676,7 +677,9 @@ export default function UiUxDesign() {
             whileTap={{ scale: 0.98 }}
             className="px-14 py-7 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-2xl md:text-3xl font-black shadow-2xl shadow-red-900/60 hover:shadow-red-700/80 transition-all flex items-center gap-4 mx-auto"
           >
+            <button onClick={() => navigate("/contact")} className="flex items-center gap-4">
             Contact Us Today <ArrowRight className="w-8 h-8" />
+            </button>
           </motion.button>
         </div>
       </section>

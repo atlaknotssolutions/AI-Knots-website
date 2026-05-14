@@ -1,46 +1,40 @@
-
-
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  Facebook,
-  Linkedin,
-  Instagram,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 import ATLAknotsDark from "./Mobile/img/ITLogo.png";
 import ATLAknotsLight from "../../src/assets/Images/logoimage2.PNG";
-
 import { useTheme } from "../context/ThemeContext";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faLinkedinIn,
+  faPinterestP,
+} from "@fortawesome/free-brands-svg-icons";
+
 // Social Link Component
-function SocialLink({ href, icon: Icon, label, isDark, isPinterest = false }) {
+const SocialLink = ({ href, icon, label, isDark }) => {
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
-      className={`inline-flex items-center justify-center w-10 h-10 rounded-lg border transition-all duration-300 hover:scale-110 cursor-pointer
-        ${isPinterest
-          ? "bg-[#E60023] hover:bg-[#E60023]/90 border-[#E60023] text-white"
-          : isDark
-            ? "text-gray-400 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/30"
-            : "text-gray-500 hover:text-red-500 hover:bg-red-50 hover:border-red-200"
-        }`}
+      whileHover={{ scale: 1.15, y: -3 }}
+      whileTap={{ scale: 0.95 }}
+      className={`p-3 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+        isDark
+          ? "bg-zinc-900 hover:bg-red-950 border border-zinc-700 hover:border-red-600 text-white"
+          : "bg-white hover:bg-red-50 border border-gray-200 hover:border-red-500 text-gray-700"
+      }`}
+      title={label}
     >
-      {isPinterest ? (
-        <span className="text-2xl font-black leading-none">P</span>
-      ) : (
-        <Icon size={22} />
-      )}
-    </a>
+      <div className="text-xl">{icon}</div>
+    </motion.a>
   );
-}
+};
 
 const Footer = () => {
   const { isDark } = useTheme();
@@ -100,53 +94,52 @@ const Footer = () => {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
-          
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <img
               src={isDark ? ATLAknotsDark : ATLAknotsLight}
-              alt="AI Knots Logo"
+              alt="ATLA Knots Logo"
               className="h-12 w-[200px] md:h-16 md:w-[260px] lg:h-20 lg:w-[320px] mt-2 object-contain"
-              onError={(e) => {
-                e.target.style.display = "none";
-              }}
+              onError={(e) => (e.target.style.display = "none")}
             />
 
-            <div className="flex gap-6 mt-8">
-              {/* New Order: Facebook → Instagram → LinkedIn → Pinterest */}
+            {/* Social Icons - Better Position & Smaller */}
+            <div className="flex gap-3 mt-10">
               <SocialLink
                 href="https://www.facebook.com/profile.php?id=61588297089600"
-                icon={Facebook}
+                icon={<FontAwesomeIcon icon={faFacebookF} size={16} />}
                 label="Facebook"
                 isDark={isDark}
               />
 
               <SocialLink
                 href="https://www.instagram.com/atlaknotsitsolutions/"
-                icon={Instagram}
+                icon={<FontAwesomeIcon icon={faInstagram} size={16} />}
                 label="Instagram"
                 isDark={isDark}
               />
 
               <SocialLink
                 href="https://www.linkedin.com/company/atla-knots-solutions/"
-                icon={Linkedin}
+                icon={<FontAwesomeIcon icon={faLinkedinIn} size={16} />}
                 label="LinkedIn"
                 isDark={isDark}
               />
 
               <SocialLink
                 href="https://in.pinterest.com/atlaknotssolutions/"
+                icon={<FontAwesomeIcon icon={faPinterestP} size={16} />}
                 label="Pinterest"
                 isDark={isDark}
-                isPinterest={true}
               />
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h4
+              className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               Quick Links
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -156,7 +149,9 @@ const Footer = () => {
                     to={item.path}
                     onClick={(e) => handleFooterLink(e, item.path)}
                     className={`transition-all hover:translate-x-1 inline-block duration-200 ${
-                      isDark ? "text-gray-400 hover:text-red-400" : "text-gray-600 hover:text-red-500"
+                      isDark
+                        ? "text-gray-400 hover:text-red-400"
+                        : "text-gray-600 hover:text-red-500"
                     }`}
                   >
                     {item.name}
@@ -168,13 +163,17 @@ const Footer = () => {
 
           {/* Services */}
           <div className="lg:col-span-2">
-            <h4 className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h4
+              className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               Our Services
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
               {services.map((group) => (
                 <div key={group.category}>
-                  <h5 className={`font-medium text-xs uppercase tracking-widest mb-3 ${isDark ? "text-red-400" : "text-red-600"}`}>
+                  <h5
+                    className={`font-medium text-xs uppercase tracking-widest mb-3 ${isDark ? "text-red-400" : "text-red-600"}`}
+                  >
                     {group.category}
                   </h5>
                   <ul className="space-y-2.5 text-sm">
@@ -184,7 +183,9 @@ const Footer = () => {
                           to={service.path}
                           onClick={(e) => handleFooterLink(e, service.path)}
                           className={`transition-all hover:translate-x-1 inline-block duration-200 ${
-                            isDark ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-red-600"
+                            isDark
+                              ? "text-gray-300 hover:text-white"
+                              : "text-gray-700 hover:text-red-600"
                           }`}
                         >
                           {service.name}
@@ -199,7 +200,9 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h4
+              className={`font-semibold mb-4 text-sm uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               Contact Us
             </h4>
             <ul className="space-y-4 text-sm">
@@ -235,7 +238,9 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className={`border-t py-6 text-center text-xs ${isDark ? "border-red-900/20 text-gray-500" : "border-gray-200 text-gray-500"}`}>
+      <div
+        className={`border-t py-6 text-center text-xs ${isDark ? "border-red-900/20 text-gray-500" : "border-gray-200 text-gray-500"}`}
+      >
         <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className={isDark ? "text-gray-500" : "text-gray-600"}>
             © {currentYear} AI Knots IT Solutions. All rights reserved.

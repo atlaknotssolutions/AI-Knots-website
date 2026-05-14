@@ -309,6 +309,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import {useNavigate} from "react-router-dom";
 import {
   ArrowRight,
   ChevronDown,
@@ -389,7 +390,7 @@ export default function LocalMarketing() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openIndex, setOpenIndex] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  const navigate = useNavigate();
   // Theme Observer
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -510,10 +511,7 @@ export default function LocalMarketing() {
                   variants={fadeInUp}
                   className="flex flex-col sm:flex-row gap-6 justify-center"
                 >
-                  <button className={premiumButton}>
-                    Get Special Offer – Enquire Now
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                  </button>
+                
 
                   <a
                     href={PortfolioAtlaknotsitsolutions}
@@ -721,17 +719,8 @@ export default function LocalMarketing() {
             Unlock Your Special Offer – Just Fill the Form Today
           </h2>
           <div className={`max-w-md mx-auto rounded-3xl p-10 ${cardClass}`}>
-            <input
-              type="text"
-              placeholder="Name"
-              className={`w-full p-4 mb-4 rounded-lg outline-none transition-all ${isDark ? "bg-gray-900 border border-gray-700 focus:border-red-500" : "bg-white border border-gray-200 focus:border-red-500"}`}
-            />
-            <input
-              type="tel"
-              placeholder="Number"
-              className={`w-full p-4 mb-6 rounded-lg outline-none transition-all ${isDark ? "bg-gray-900 border border-gray-700 focus:border-red-500" : "bg-white border border-gray-200 focus:border-red-500"}`}
-            />
-            <button className={premiumButton + " w-full text-2xl py-7"}>
+           
+            <button className={premiumButton + " w-full text-2xl py-7"} onClick={() => navigate("/contact")}>
               Request a Call Back <Phone className="w-6 h-6" />
             </button>
           </div>

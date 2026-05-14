@@ -391,7 +391,7 @@ const Technology = () => {
             className="flex flex-wrap justify-center gap-6 animate-slide-up"
             style={{ animationDelay: "0.4s" }}
           >
-            <button className="group relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold px-10 py-5 rounded-lg shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <button className="group relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold px-10 py-5 rounded-lg shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 transform hover:scale-105 transition-all duration-300 overflow-hidden"  onClick={() => navigate("/service")}>
               <span className="relative z-10 flex items-center gap-2">
                 Explore Services{" "}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -400,6 +400,7 @@ const Technology = () => {
             <button
               className={`group relative border-2 font-bold px-10 py-5 rounded-lg hover:scale-105 transition-all duration-300
               ${isDark ? "border-red-500 text-white hover:bg-red-600" : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"}`}
+              onClick={() => navigate("/contact")}
             >
               <span className="flex items-center gap-2">
                 Contact Us{" "}
