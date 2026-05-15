@@ -120,10 +120,7 @@ export default function DigitalMarketing() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post(
-        "https://ai-knots-it-solution-5.onrender.com/query/create",
-        formData,
-      );
+      await axios.post("http://localhost:8000/query/create", formData);
       setSuccess(true);
       setFormData({
         name: "",

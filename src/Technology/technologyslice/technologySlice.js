@@ -4,7 +4,7 @@
 // //   "technology/fetchCategories",
 // //   async (_, { rejectWithValue }) => {
 // //     try {
-// //       const res = await fetch("https://ai-knots-it-solution-5.onrender.com/api/technology/category");
+// //       const res = await fetch("http://localhost:8000/api/technology/category");
 // //       if (!res.ok) throw new Error("Failed to fetch categories");
 // //       const data = await res.json();
 // //       return Array.isArray(data.data) ? data.data : [];
@@ -19,7 +19,7 @@
 // //   "technology/fetchProducts",
 // //   async (categoryId, { rejectWithValue }) => {
 // //     try {
-// //       let url = "https://ai-knots-it-solution-5.onrender.com/api/technology/product";
+// //       let url = "http://localhost:8000/api/technology/product";
 // //       if (categoryId) url += `?category=${categoryId}`;
 
 // //       const res = await fetch(url);
@@ -67,7 +67,7 @@
 // // //   async (slug, { rejectWithValue }) => {
 // // //     try {
 // // //       const res = await fetch(
-// // //         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}`
+// // //         `http://localhost:8000/api/technology/product/technology/${slug}`
 // // //       );
 // // //       if (!res.ok) throw new Error("Failed to fetch post");
 // // //       const data = await res.json();
@@ -104,7 +104,7 @@
 // //   async (slug, { rejectWithValue }) => {
 // //     try {
 // //       const res = await fetch(
-// //         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}`   // ← Correct
+// //         `http://localhost:8000/api/technology/product/technology/${slug}`   // ← Correct
 // //       );
 
 // //       if (!res.ok) throw new Error(`Failed to fetch post: ${res.status}`);
@@ -143,7 +143,7 @@
 // //   async (slug, { rejectWithValue }) => {
 // //     try {
 // //       const res = await fetch(
-// //         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/view`,
+// //         `http://localhost:8000/api/technology/product/technology/${slug}/view`,
 // //         { method: "PUT" }
 // //       );
 // //       const data = await res.json();
@@ -160,7 +160,7 @@
 // //   async ({ slug, email }, { rejectWithValue }) => {
 // //     try {
 // //       const res = await fetch(
-// //         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/like`,
+// //         `http://localhost:8000/api/technology/product/technology/${slug}/like`,
 // //         {
 // //           method: "PUT",
 // //           headers: { "Content-Type": "application/json" },
@@ -181,7 +181,7 @@
 // //   async ({ slug, name, email, phone }, { rejectWithValue }) => {
 // //     try {
 // //       const res = await fetch(
-// //         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/send-otp`,
+// //         `http://localhost:8000/api/technology/product/technology/${slug}/send-otp`,
 // //         {
 // //           method: "POST",
 // //           headers: { "Content-Type": "application/json" },
@@ -202,7 +202,7 @@
 // //   async ({ slug, email, otp, comment }, { rejectWithValue }) => {
 // //     try {
 // //       const res = await fetch(
-// //         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/add-comment`,
+// //         `http://localhost:8000/api/technology/product/technology/${slug}/add-comment`,
 // //         {
 // //           method: "POST",
 // //           headers: { "Content-Type": "application/json" },
@@ -321,7 +321,7 @@
 //   "technology/fetchCategories",
 //   async (_, { rejectWithValue }) => {
 //     try {
-//       const res = await fetch("https://ai-knots-it-solution-5.onrender.com/api/technology/category");
+//       const res = await fetch("http://localhost:8000/api/technology/category");
 //       if (!res.ok) throw new Error("Failed to fetch categories");
 //       const data = await res.json();
 //       return Array.isArray(data.data) ? data.data : [];
@@ -336,7 +336,7 @@
 //   "technology/fetchProducts",
 //   async (categoryId, { rejectWithValue }) => {
 //     try {
-//       let url = "https://ai-knots-it-solution-5.onrender.com/api/technology/product";
+//       let url = "http://localhost:8000/api/technology/product";
 //       if (categoryId) url += `?category=${categoryId}`;
 
 //       const res = await fetch(url);
@@ -381,7 +381,7 @@
 //   async (slug, { rejectWithValue }) => {
 //     try {
 //       const res = await fetch(
-//         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}`
+//         `http://localhost:8000/api/technology/product/technology/${slug}`
 //       );
 
 //       if (!res.ok) throw new Error(`Failed to fetch post: ${res.status}`);
@@ -425,7 +425,7 @@
 //   async (slug, { rejectWithValue }) => {
 //     try {
 //       const res = await fetch(
-//         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/view`,
+//         `http://localhost:8000/api/technology/product/technology/${slug}/view`,
 //         { method: "PUT" }
 //       );
 //       const data = await res.json();
@@ -442,7 +442,7 @@
 //   async ({ slug, email }, { rejectWithValue }) => {
 //     try {
 //       const res = await fetch(
-//         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/like`,
+//         `http://localhost:8000/api/technology/product/technology/${slug}/like`,
 //         {
 //           method: "PUT",
 //           headers: { "Content-Type": "application/json" },
@@ -463,7 +463,7 @@
 //   async ({ slug, name, email, phone }, { rejectWithValue }) => {
 //     try {
 //       const res = await fetch(
-//         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/send-otp`,
+//         `http://localhost:8000/api/technology/product/technology/${slug}/send-otp`,
 //         {
 //           method: "POST",
 //           headers: { "Content-Type": "application/json" },
@@ -484,7 +484,7 @@
 //   async ({ slug, email, otp, comment }, { rejectWithValue }) => {
 //     try {
 //       const res = await fetch(
-//         `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/comment`,
+//         `http://localhost:8000/api/technology/product/technology/${slug}/comment`,
 //         {
 //           method: "POST",
 //           headers: { "Content-Type": "application/json" },
@@ -594,9 +594,7 @@ export const fetchCategories = createAsyncThunk(
   "technology/fetchCategories",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(
-        "https://ai-knots-it-solution-5.onrender.com/api/technology/category",
-      );
+      const res = await fetch("http://localhost:8000/api/technology/category");
       if (!res.ok) throw new Error("Failed to fetch categories");
       const data = await res.json();
       return Array.isArray(data.data) ? data.data : [];
@@ -611,8 +609,7 @@ export const fetchProducts = createAsyncThunk(
   "technology/fetchProducts",
   async (categoryId, { rejectWithValue }) => {
     try {
-      let url =
-        "https://ai-knots-it-solution-5.onrender.com/api/technology/product";
+      let url = "http://localhost:8000/api/technology/product";
       if (categoryId) url += `?category=${categoryId}`;
 
       const res = await fetch(url);
@@ -661,7 +658,7 @@ export const fetchSinglePost = createAsyncThunk(
   async (slug, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}`,
+        `http://localhost:8000/api/technology/product/technology/${slug}`,
       );
 
       if (!res.ok) throw new Error(`Failed to fetch post: ${res.status}`);
@@ -703,7 +700,7 @@ export const incrementPostView = createAsyncThunk(
   async (slug, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/view`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/view`,
         { method: "PUT" },
       );
       const data = await res.json();
@@ -720,7 +717,7 @@ export const togglePostLike = createAsyncThunk(
   async ({ slug, email }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/like`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/like`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -741,7 +738,7 @@ export const sendCommentOtp = createAsyncThunk(
   async ({ slug, name, email, phone }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/send-otp`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/send-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -762,7 +759,7 @@ export const verifyCommentOtp = createAsyncThunk(
   async ({ slug, email, otp }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/verify-otp`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/verify-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -784,7 +781,7 @@ export const postComment = createAsyncThunk(
   async ({ slug, email, comment }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ai-knots-it-solution-5.onrender.com/api/technology/product/technology/${slug}/add-comment`,
+        `http://localhost:8000/api/technology/product/technology/${slug}/add-comment`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
