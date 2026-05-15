@@ -6,7 +6,6 @@ import React, {
   Suspense,
 } from "react";
 import axios from "axios";
-import { buildUrl } from "../api/apiConfig";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { Helmet } from "react-helmet-async";

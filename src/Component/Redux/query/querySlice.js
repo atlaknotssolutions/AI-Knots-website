@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { buildUrl } from "../../../api/apiConfig";
 
 // ─── Async Thunk ────────────────────────────────────────────────────────────
 export const submitContactForm = createAsyncThunk(
   "contact/submitForm",
   async (payload, { rejectWithValue }) => {
     try {
-      const response = await axios.post(buildUrl("query/create"), payload);
+      const response = await axios.post(
+        "http://localhost:8000/query/create",
+        payload,
+      );
       return response.data;
     } catch (error) {
       let errorMsg = "Something went wrong. Please try again.";
