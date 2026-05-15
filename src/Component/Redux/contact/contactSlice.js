@@ -8,7 +8,7 @@ export const submitContactForm = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/contact/create",
+        "https://ai-knots-it-solution-2.onrender.com/api/contact/create",
         payload,
       );
       return response.data;
