@@ -427,13 +427,14 @@ const Contact = () => {
                       <ReCAPTCHA
                         sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                         onChange={handleCaptchaChange}
+                        theme={isDark ? "dark" : "light"}
                       />
 
                       <button
                         type="submit"
-                        disabled={loading}
+                        disabled={loading || !captchaValue}
                         className={`w-full py-4 bg-gradient-to-r from-red-600 to-rose-600 text-white font-semibold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2.5
-                        ${loading ? "opacity-70 cursor-not-allowed" : "hover:from-red-700 hover:to-rose-700 hover:shadow-red-600/40 hover:-translate-y-0.5"}`}
+                        ${loading || !captchaValue ? "opacity-70 cursor-not-allowed" : "hover:from-red-700 hover:to-rose-700 hover:shadow-red-600/40 hover:-translate-y-0.5"}`}
                       >
                         {loading ? (
                           "Sending..."
