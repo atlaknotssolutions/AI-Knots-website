@@ -402,7 +402,10 @@ export default function About() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post("http://localhost:8000/query/create", formData);
+      await axios.post(
+        "https://ai-knots-it-solution-5.onrender.com/query/create",
+        formData,
+      );
       setSuccess(true);
       setFormData({
         name: "",
