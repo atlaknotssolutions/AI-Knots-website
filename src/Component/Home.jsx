@@ -24,10 +24,11 @@ import { Helmet } from "react-helmet-async";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 
-import { updateField, clearMessages } from "./Redux/query/querySlice.js";
-import { submitContactForm } from "./Redux/query/queryslice.js";
-
-
+import {
+  updateField,
+  clearMessages,
+  submitContactForm,
+} from "./Redux/query/querySlice.js";
 
 import background from "../assets/Images/backgroundimage1.jpeg";
 import background2 from "../assets/Images/backgroundimage2.jpeg";
@@ -802,29 +803,33 @@ export default function Home() {
                     disabled={loading}
                     className={`w-full px-6 py-4 rounded-2xl border focus:outline-none focus:border-red-500 transition-colors ${isDark ? "bg-gray-900 border-gray-700 text-white" : "bg-gray-50 border-gray-300 text-gray-900"}`}
                   />
-                 <div className="relative">
-  <select
-    name="category"
-    value={formData.category}
-    onChange={handleChange}
-    required
-    disabled={loading}
-    className={`w-full px-6 py-4 rounded-2xl border focus:outline-none focus:border-red-500 transition-colors appearance-none ${isDark ? "bg-gray-900 border-gray-700 text-white" : "bg-gray-50 border-gray-300 text-gray-900"}`}
-  >
-    <option value="">Select Category</option>
-    <option value="SEO">SEO</option>
-    <option value="BPO">BPO</option>
-    <option value="Software Developer">Software Developer</option>
-    <option value="Digital Marketing">Digital Marketing</option>
-    <option value="Web Development">Web Development</option>
-    <option value="Other">Other</option>
-  </select>
-  
-  {/* Dropdown Arrow */}
-  <div className="pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 text-gray-400">
-    ▼
-  </div>
-</div>
+                  <div className="relative">
+                    <select
+                      name="category"
+                      value={formData.category}
+                      onChange={handleChange}
+                      required
+                      disabled={loading}
+                      className={`w-full px-6 py-4 rounded-2xl border focus:outline-none focus:border-red-500 transition-colors appearance-none ${isDark ? "bg-gray-900 border-gray-700 text-white" : "bg-gray-50 border-gray-300 text-gray-900"}`}
+                    >
+                      <option value="">Select Category</option>
+                      <option value="SEO">SEO</option>
+                      <option value="BPO">BPO</option>
+                      <option value="Software Developer">
+                        Software Developer
+                      </option>
+                      <option value="Digital Marketing">
+                        Digital Marketing
+                      </option>
+                      <option value="Web Development">Web Development</option>
+                      <option value="Other">Other</option>
+                    </select>
+
+                    {/* Dropdown Arrow */}
+                    <div className="pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 text-gray-400">
+                      ▼
+                    </div>
+                  </div>
                   <textarea
                     name="message"
                     value={formData.message}
