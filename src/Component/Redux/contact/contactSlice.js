@@ -7,22 +7,33 @@ export const submitContactForm = createAsyncThunk(
   "contact/submitForm",
   async (payload, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "https://ai-knots-it-solution-4.onrender.com/api/contact/create",
-        payload,
-      );
+      const apiUrl = `${import.meta.env.VITE_API_URL}/contact/create`;
+      console.log("📤 API URL:", apiUrl);
+      console.log("📦 Payload:", payload);
+
+      const response = await axios.post(apiUrl, payload);
+      console.log("✅ Response:", response.data);
       return response.data;
     } catch (error) {
+      console.error("❌ Error Details:", error);
       let errorMsg = "Something went wrong. Please try again.";
 
       if (error.response) {
+        console.error(
+          "Response Error:",
+          error.response.status,
+          error.response.data,
+        );
         errorMsg =
           error.response.data?.message ||
           error.response.data?.error ||
           errorMsg;
       } else if (error.request) {
+        console.error("Request Error - No response from server");
         errorMsg =
           "No response from server. Please check if backend is running.";
+      } else {
+        console.error("Error Message:", error.message);
       }
 
       return rejectWithValue(errorMsg);
