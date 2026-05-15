@@ -403,7 +403,7 @@ export default function About() {
     setSuccess(false);
     try {
       await axios.post(
-        "https://ai-knots-it-solution-3.onrender.com/query/create",
+        "https://ai-knots-it-solution-4.onrender.com/query/create",
         formData,
       );
       setSuccess(true);
