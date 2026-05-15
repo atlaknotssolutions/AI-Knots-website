@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { buildUrl } from "../../api/apiConfig";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
@@ -120,10 +121,7 @@ export default function DigitalMarketing() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post(
-        "https://ai-knots-it-solution-6.onrender.com:8000/query/create",
-        formData,
-      );
+      await axios.post("http://localhost:8000/query/create", formData);
       setSuccess(true);
       setFormData({
         name: "",

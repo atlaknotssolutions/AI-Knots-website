@@ -1,15 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { buildUrl } from "../../../api/apiConfig";
 
 // ─── Async Thunk ────────────────────────────────────────────────────────────
 export const submitContactForm = createAsyncThunk(
   "contact/submitForm",
   async (payload, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "https://ai-knots-it-solution-6.onrender.com:8000/query/create",
-        payload
-      );
+      const response = await axios.post(buildUrl("query/create"), payload);
       return response.data;
     } catch (error) {
       let errorMsg = "Something went wrong. Please try again.";
@@ -24,7 +22,7 @@ export const submitContactForm = createAsyncThunk(
       }
       return rejectWithValue(errorMsg);
     }
-  }
+  },
 );
 
 // ─── Initial State ───────────────────────────────────────────────────────────
@@ -33,7 +31,7 @@ const initialFormData = {
   email: "",
   phone: "",
   message: "",
-  category: "Other",     // Default value as per your schema
+  category: "Other", // Default value as per your schema
 };
 
 const contactSlice = createSlice({

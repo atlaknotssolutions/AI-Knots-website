@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { buildUrl } from "../../../api/apiConfig";
 
 // ─── Async Thunk ────────────────────────────────────────────────────────────
 
@@ -7,7 +8,7 @@ export const submitContactForm = createAsyncThunk(
   "contact/submitForm",
   async (payload, { rejectWithValue }) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API_URL}/contact/create`;
+      const apiUrl = buildUrl("api/contact/create");
       console.log("📤 API URL:", apiUrl);
       console.log("📦 Payload:", payload);
 

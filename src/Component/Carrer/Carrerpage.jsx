@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { buildUrl } from "../../api/apiConfig";
 function CareerPage() {
   const { isDark } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -42,9 +43,7 @@ function CareerPage() {
         setLoading(true);
         setError(null);
 
-        const res = await fetch(
-          "https://ai-knots-it-solution-6.onrender.com:8000/jobapply",
-        );
+        const res = await fetch(buildUrl("jobapply"));
 
         if (!res.ok) throw new Error("Failed to load job openings");
 
@@ -139,7 +138,7 @@ function CareerPage() {
       formDataToSend.append("resume", resumeFile); // ← Must match multer.single('resume')
 
       const res = await fetch(
-        `https://ai-knots-it-solution-6.onrender.com:8000/jobapplication/apply/${selectedJob._id}`,
+        buildUrl(`jobapplication/apply/${selectedJob._id}`),
         {
           method: "POST",
           body: formDataToSend,
@@ -190,7 +189,7 @@ function CareerPage() {
   //     formDataToSend.append('phone', formData.phone);
   //     formDataToSend.append('resume', resumeFile);
 
-  //     const res = await fetch(`https://ai-knots-it-solution-6.onrender.com:8000/jobapplication/apply/${selectedJob._id}`, {
+  //     const res = await fetch(`http://localhost:8000/jobapplication/apply/${selectedJob._id}`, {
   //       method: 'POST',
   //       body: formDataToSend,
   //     });

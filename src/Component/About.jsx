@@ -6,6 +6,7 @@ import React, {
   Suspense,
 } from "react";
 import axios from "axios";
+import { buildUrl } from "../api/apiConfig";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { Helmet } from "react-helmet-async";
@@ -402,10 +403,7 @@ export default function About() {
     setError("");
     setSuccess(false);
     try {
-      await axios.post(
-        "https://ai-knots-it-solution-6.onrender.com:8000/query/create",
-        formData,
-      );
+      await axios.post("http://localhost:8000/query/create", formData);
       setSuccess(true);
       setFormData({
         name: "",
